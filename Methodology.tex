@@ -1,0 +1,86 @@
+\subsection{Introduction}
+    This is a quick write-up of the methods, techniques, and settings used for the analysis. It aims to give a succinct yet complete description, specifically including details that may differ from the run 2 analysis.
+    
+    The goal of the analysis is to determine the correlation functions of cascade pairs, split into species ($\Xi$, $\Omega$) and sign difference (same-sign SS, opposite-sign OS). The correlation functions are presented as a function of $\Delta\varphi$ and/or $\Delta y$. 
+
+    % ADD RELEVENT PIECES/LINKS TO THE CODE IN CERTAIN PLACES
+
+\subsection{Selection criteria}
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            \multicolumn{2}{|c|}{Cascade selection} \\
+            \hline
+            $|\eta_\text{tracks}|$ & $< 0.8$ \\
+            \hline
+            Number of TPC crossed rows & $> 50$ \\
+            \hline
+            TPC d$E$/d$x$ & $< 5\sigma$ \\
+            \hline
+            DCA V0 daughters & $< 0.5$ \\
+            \hline
+            DCA cascade daughters & $< 0.25$ \\
+            \hline
+            DCA pos V0 daughter to PV & $> 0.05$ \\
+            \hline
+            DCA neg V0 daughter to PV & $> 0.05$ \\
+            \hline
+            DCA V0 to PV & $> 0.03$ \\
+            \hline
+            DCA bach to PV & $> 0.04$ \\
+            \hline
+            V0 $\cos(\text{PA})$ & $> 0.9876$ \\
+            \hline
+            Cascade $\cos(\text{PA})$ & $> 0.9947$ \\
+            \hline
+            V0 radius & $> 0.55$ \\
+            \hline
+            Cascade radius & $> 1.01$ \\
+            \hline
+            V0 mass window & $< 11.6$ MeV/$c^2$\\
+            \hline
+            
+        \end{tabular}
+        \caption{Cascade selection criteria}
+        \label{tab:cascsel}
+    \end{table}
+
+    % \begin{figure}[ht]
+    %     \centering
+    %     \begin{subfigure}[t]{.49\textwidth}
+    %         \centering
+    %         \includegraphics[width=\textwidth]{figures/EffXiMin.pdf}
+    %         \caption{$\Xi^-$ efficiency for $|y| < 0.5$}
+    %         \label{fig:Ximass06}
+    %     \end{subfigure}
+    %     \hfill
+    %     \begin{subfigure}[t]{.49\textwidth}
+    %         \centering
+    %         \includegraphics[width=\textwidth]{figures/EffXiPlus.pdf}
+    %         \caption{$\Xi^+$ efficiency for $|y| < 0.5$}
+    %         \label{fig:Ximass10}
+    %     \end{subfigure}
+
+    %     \begin{subfigure}[t]{.49\textwidth}
+    %         \centering
+    %         \includegraphics[width=\textwidth]{figures/EffOmegaMin.pdf}
+    %         \caption{$\Omega^-$ efficiency for $|y| < 0.5$}
+    %         \label{fig:Ximass06}
+    %     \end{subfigure}
+    %     \hfill
+    %     \begin{subfigure}[t]{.49\textwidth}
+    %         \centering
+    %         \includegraphics[width=\textwidth]{figures/EffOmegaPlus.pdf}
+    %         \caption{$\Omega^+$ efficiency for $|y| < 0.5$}
+    %         \label{fig:Ximass10}
+    %     \end{subfigure}
+    % \end{figure}
+
+\subsection{Corrections}
+    Corrections may be split into two different categories: single-particle corrections and pair corrections. The former consists mainly of a cascade reconstruction efficiency correction, while the latter is a mixed events correction that takes the ``two-particle efficiency" due to the detector acceptance into account
+\subsubsection{Efficiency}
+\subsubsection{Mixed events}
+
+\subsection{MC closure test}
+This section describes the methodology used for calculating the correlations at the MC truth level. It is very similar 
