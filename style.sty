@@ -1,9 +1,20 @@
 \usepackage{
-    amsmath,    
+    amsmath,       
+    geometry,
+    parskip,
     graphicx,      % Required for inserting images
     hyperref,      % hyperlinks
-    multirow,      % multirow in tables
     float,         % Helps with floating objects such as figures and tables. Also adds the 'H' float option, very useful
     caption,       % For subfigures
     subcaption     % For subfigures
 }
+
+\geometry{left=25mm, top=25mm, right=25mm, bottom=25mm}
+\graphicspath{{figures/}}
+
+% TODO: MOVE TO BIBLATEX
+% \usepackage{natbib}
+% \bibliographystyle{unsrtnat}
+
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
