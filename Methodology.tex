@@ -1,8 +1,8 @@
 \subsection{Introduction}
 \label{sec:intro}
-    This is a quick write-up of the methods, techniques, and settings used for the analysis. It aims to give a succinct yet complete description, specifically including details that may differ from the run 2 analysis.
+    This is a quick write-up of the methods, techniques, and settings used for the analysis. It aims to give a succinct yet complete description, specifically including details that may differ from the run 2 analysis. The analysis code can be found at \url{https://github.com/AliceO2Group/O2Physics/blob/master/PWGLF/Tasks/Strangeness/cascadecorrelations.cxx}.
     
-    The goal of the analysis is to determine the correlation functions of cascade pairs, split into species ($\Xi$, $\Omega$) and sign difference (same-sign SS, opposite-sign OS). The correlation functions are presented as a function of $\Delta\varphi$ and/or $\Delta y$. For now we focus on \Xi\ - \Xi\ correlations and the comparison with run 2 results as published [here]. 
+    The goal of the analysis is to determine the correlation functions of cascade pairs, split into species ($\Xi$, $\Omega$) and sign difference (same-sign SS, opposite-sign OS). The correlation functions are presented as a function of $\Delta\varphi$ and/or $\Delta y$. For now we focus on \Xi\ - \Xi\ correlations and the comparison with run 2 results as published [here]. %TODO
 
     In much the same way as the run 2 analysis, we define the correlation function as the number of trigger-associate pairs $N_\text{pairs}$ as a function of $\dphi,\dy$, divided by the number of triggers \Ntrig :
     \begin{align}
@@ -160,7 +160,46 @@
 \newpage
 \subsection{MC closure test}
 \label{sec:MCclosure}
-    This section describes the methodology used for calculating the correlations at the MC truth level. In principle this is a straightforward task, as we are only interested in the MC truth level information so no detector effects have to be corrected. We do however have to make sure to use the same definition for our signal (\pt, $\eta$ ranges), which causes a two-particle acceptance effect when applying these ranges to both the trigger and associate. A we have to keep the signal ranges for the trigger. To avoid this two-particle acceptance effect we release the $\eta$ selection for the associate while keeping it for the trigger, as we want to be able to normalize to the number of triggers. On top of this we require the cascades to be physical primaries with the \texttt{isPhysicalPrimary} flag. 
+    \subsubsection{2-particle efficiency considerations in MC truth}
+    This section describes the methodology used for calculating the correlations at the MC truth level. In principle this is a straightforward task, as we are only interested in the MC truth level information so no detector effects have to be corrected. We do however have to make sure to use the same definition for our signal (\pt, $\eta$ ranges), which causes a two-particle acceptance effect when applying these ranges to both the trigger and associate. To avoid this two-particle acceptance effect we release the $\eta$ selection for the associate while keeping it for the trigger, as we want to be able to normalize to the number of triggers. On top of this we require the generated collision to have exactly one matched reconstructed counterpart, and the cascades have to be physical primaries (checked with the \texttt{isPhysicalPrimary} flag). 
+
+    The results of the MC closure test are presented in Figure \ref{fig:closure}. It can be seen that the data agrees with the MC truth level for both the OS and SS cases. There is a bit of tension in the edges of the near-side peak.
+
+    \begin{figure}[ht]
+        \centering
+        \begin{subfigure}[t]{.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/closure/hOS.pdf}
+            \caption{OS}
+            \label{fig:closureOS}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[t]{.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/closure/hSS.pdf}
+            \caption{SS}
+            \label{fig:closureSS}
+        \end{subfigure}
+        \begin{subfigure}[t]{.49\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/closure/hSubtracted.pdf}
+            \caption{OS - SS}
+            \label{fig:closureSubtracted}
+        \end{subfigure}
+        \caption{MC closure test, \dphi\ projections}
+        \label{fig:closure}
+    \end{figure}
+
+    \subsubsection{Comparison with run 2 MC closure}
+
+    By comparing the run 3 closure test with the closure test results taken from the run 2 analysis note, one can see that the discrepancy between run 3 and 2 is not just on the reconstructed level. A snapshot of the MC closure test from the run 2 analysis note can be seen in Fig. \ref{fig:closureRun2} to make the comparison more convenient. Looking at the maximum of the near-side peak, one notices that there is a significant difference: a bit under 0.03 for run 3 vs. a bit under 0.05 for run 2. The fact that this discrepancy persists on the MC truth level hints at a possible difference in definition, as there should be very few differences between run 2 and run 3 on the MC truth level. 
+
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=\textwidth]{figures/closureRun2.png}
+        \caption{Run 2 closure test from analysis note}
+        \label{fig:closureRun2}
+    \end{figure}
 
 \newpage
 \subsection{Results}
