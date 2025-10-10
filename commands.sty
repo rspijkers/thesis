@@ -1,7 +1,11 @@
+\newcommand{\ensuretext}[1]{\ifmmode\text{#1}\else#1\fi}
+
 \let\oldXi\Xi
 \let\oldOmega\Omega
+\let\oldLambda\Lambda
 \renewcommand{\Xi}{\ensuremath{\oldXi}}
 \renewcommand{\Omega}{\ensuremath{\oldOmega}}
+\renewcommand{\Lambda}{\ensuremath{\oldLambda}}
 \let\oldphi\phi
 \let\oldepsilon\epsilon
 \renewcommand{\phi}{\varphi}
@@ -11,6 +15,9 @@
 % \newcommand{\slfrac}[2]{\left.#1\right/#2} % ???
 \newcommand{\Xibar}{\ensuremath{\overline{\Xi}^{+}}}
 \newcommand{\Omegabar}{\ensuremath{\overline{\Omega}^{+}}}
+\newcommand{\K}{\ensuretext{K}}
+\newcommand{\p}{\ensuretext{p}}
+
 \newcommand{\pt}{\ensuremath{p_{\text{T}}}}
 \newcommand{\mev}{MeV/$c^2$}
 \newcommand{\gev}{GeV/$c^2$}

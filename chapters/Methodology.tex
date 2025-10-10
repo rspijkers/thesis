@@ -1,0 +1,308 @@
+% so base this on the write-up you sent to Alice, expanding on the explanations
+
+This chapter describes the necessary steps to build up the balance functions, including the reconstruction of cascades and corrections accounting for detector effects. 
+
+In order to study the angular correlations of cascade pairs we first need to reconstruct cascades. Cascades are reconstructed via their decay chains
+\begin{align}
+  & \Xi^- \rightarrow \Lambda + \pi^- \text{ and } \Xi^+ \rightarrow \overline{\Lambda} + \pi^+, \text{ (BR  99.9\%)} \label{eq:Xidecay} \\
+  & \Omega^- \rightarrow \Lambda + \K^- \text{ and } \Omega^+ \rightarrow \overline{\Lambda} + \K^+, \text{ (BR  67.8\%)} \label{eq:Omegadecay}
+\end{align}
+where
+\begin{align}
+  \Lambda \rightarrow \p + \pi^- \text{ and } \overline{\Lambda} \rightarrow \overline{\p} + \pi^+. \text{ (BR  63.9\%)} \label{eq:Lambdadecay} 
+\end{align}
+% cite this?: https://academic.oup.com/ptep/article/2022/8/083C01/6651666
+Both \Xi\ and \Omega\ baryons have this characteristic ``cascading'' decay pattern and so the name ``cascade" encapsulates both. Though having a similar decay channel has its advantages in analysing their correlations, it is not the motivation for being the subject of our analysis but rather a consequence of their similar quark contents. The difference in branching ratio's between the \Xi\ and \Omega\ (99.9\% and 67.8\% respectively) may also be attributed to their different quark contents. In addition to Eq. \ref{eq:Omegadecay} \Omega\ baryons may decay according to $\Omega \rightarrow \Xi^0 + \pi$ with a branching ratio of 23.6\% and $\Omega \rightarrow \Xi + \pi^0$ with a branching ratio of 8.6\% (and their charge conjugates). However, $\pi^0$ mesons predominantly decay to two photons that do not leave hits the ITS nor TPC and are therefor much harder to accurately reconstruct. As $\Xi^0$ baryons decay into $\Lambda + \pi^0$ with a branching ratio of 99.5\%, the difficulty of reconstruction the $\pi^0$ meson is actually the reason that both alternative decay channels for the \Omega\ are disfavoured. Other alternative decay modes for both \Xi\ and \Omega\ baryons that produce exclusively charged final states are either kinematically unfavourable, leading to a low branching ratio, or even kinematically forbidden. 
+% I think it's important to touch on why we use these decay modes to reconstruct cascades, and why we do not use alternatives (and to a lesser extent why there are no alternatives). But maybe this is a bit much or a bit too long-winded?
+\section{\Xi\ and \Omega\ reconstruction}
+  When reconstructing particles we start from the decay products and work our way up the decay chain. Starting with charged tracks that possibly represent the charged final states (protons, pions, kaons) we create a pair consisting of oppositely charged tracks. Based on selection variables that are explained below the pair is either accepted or rejected as a \Lambda\ candidate. If it is accepted we repeat the exercise by combining the acquired \Lambda\ candidate with another charged track, again accepting or rejecting it based on slightly different selection variables to obtain cascade candidates.
+  Because certain calculations such as accurately propagating a charged track through a magnetic field are computationally expensive, the pair combinations are first made using looser but computationally less expensive selections, after which the unique indices of the tracks that are consistent with \Lambda\ (cascade) candidates are stored. This is particularly effective since the number of computations scales with the number of pair combinations, which in turn scales quadratically (or even cubically in case of cascades) with the number of charged tracks in an event. Only the stored pair combinations are then fully built into \Lambda\ (cascade) candidates, at which point the more computationally expensive properties are properly calculated and available for selections. 
+
+  Besides the selection criteria for \Lambda\ and cascade candidates, we also apply a few basic selections to the charged tracks that are used to build the pairs. These are generally motivated by ensuring that the track is of sufficient quality to be used in the reconstruction. For example, we require that the track has at least 50 crossed rows in the TPC, and that the $\chi^2$ per TPC cluster is less than 4. Though we do not require a minimum number of ITS hits, we do require that the $\chi^2$ per ITS cluster is less than 36. On top of this we only use tracks within $|\eta| < 0.8$ and with a transverse momentum $\pt > 0.15$ GeV/$c$, where
+
+  \subsection{Selection criteria for \Lambda\ reconstruction}
+
+  \subsection{Selection criteria for \Xi\ and \Omega\ reconstruction}
+
+
+The goal of the analysis is to determine the correlation functions of cascade pairs, split into species ($\Xi$, $\Omega$) and sign difference (same-sign SS, opposite-sign OS). The correlation functions are presented as a function of $\Delta\varphi$ and/or $\Delta y$. For now we focus on \Xi\ - \Xi\ correlations and the comparison with run 2 results as published [here]. %TODO
+
+In much the same way as the run 2 analysis, we define the correlation function as the number of trigger-associate pairs $N_\text{pairs}$ as a function of $\dphi,\dy$, divided by the number of triggers \Ntrig :
+\begin{align}
+    S(\dy,\dphi) = \frac{1}{\Ntrig}\frac{\d^2 N_\text{pairs}}{\d\dphi\d\dy} \label{eq:corrfunction}
+\end{align}
+Each trigger and associate cascade is weighted by the inverse of the single-particle efficiency $1/\epsilon(\pt,\y)$ (Sec. \ref{sec:efficiency}), and the resulting distribution is divided by the mixed events correction (Sec. \ref{sec:ME}). The expression in equation \ref{eq:corrfunction} is evaluated separately for each sign-combination and subsequently averaged based on the sign difference: OS = $\frac{1}{2}[(-,+) + (+,-)]$ and SS = $\frac{1}{2}[(-,-) + (+,+)]$. 
+
+\section{Selection criteria}
+\label{seq:selections}
+
+  \subsection{Event selections}
+    We use the following criteria to select events for our data signal. Note that these same event selections are applied when requiring that a generated collision has a matched reconstructed collision that passes event selections, which is the case in our efficiency calculation.
+
+    \begin{enumerate}
+      \item \texttt{sel8}: events with the sel8 selection flag 
+      \item INEL$>0$: at least 1 central charged track that contributes to the PV 
+      \item $V_z < 10$cm 
+      \item \texttt{kNoSameBunchPileup}: events without same bunch pile-up
+    \end{enumerate}
+
+  \subsection{Cascade selections}
+    The cascades are selected based on the criteria presented in Table \ref{tab:cascsel}, they are heavily inspired by the run 3 cascade spectra analysis. On top of the selection criteria in the table, we also require candidates to be within $|\eta| < 0.8$.
+    \begin{table}[ht]
+      \centering
+      \begin{tabular}{|c|c|}
+        \hline
+        \multicolumn{2}{|c|}{Cascade selection} \\
+        \hline
+        $|\eta_\text{tracks}|$ & $< 0.8$ \\
+        \hline
+        Number of TPC crossed rows & $> 50$ \\
+        \hline
+        TPC d$E$/d$x$ & $< 5\sigma$ \\
+        \hline
+        TPC $\chi^2$ & $< 4$ \\
+        \hline
+        ITS $\chi^2$ & $< 36$ \\
+        \hline
+        DCA V0 daughters & $< 0.5$ \\
+        \hline
+        DCA cascade daughters & $< 0.25$ \\
+        \hline
+        DCA pos V0 daughter to PV & $> 0.05$ \\
+        \hline
+        DCA neg V0 daughter to PV & $> 0.05$ \\
+        \hline
+        DCA V0 to PV & $> 0.03$ \\
+        \hline
+        DCA bach to PV & $> 0.04$ \\
+        \hline
+        V0 $\cos(\text{PA})$ & $> 0.9876$ \\
+        \hline
+        Cascade $\cos(\text{PA})$ & $> 0.9947$ \\
+        \hline
+        V0 radius & $> 0.55$ \\
+        \hline
+        Cascade radius & $> 1.01$ \\
+        \hline
+        V0 mass window & $< 11.6$ MeV/$c^2$\\
+        \hline
+      \end{tabular}
+      \caption{Cascade selection criteria}
+      \label{tab:cascsel}
+    \end{table}
+
+    After these topological selections the invariant mass of the \Xi\ candidates are fitted by a double gaussian on top of a second order polynomial, see Fig. \ref{fig:Ximass}. We take the signal region to be $\mu \pm 3\sigma$, where $\mu = \half(\mu_1 + \mu_2)$ and $\sigma = \half(\sigma_1 + \sigma_2)$, the average mean and standard deviation of the two gaussians. 
+    \begin{figure}[ht!]
+      \centering
+      \includegraphics[width=.8\textwidth]{figures/Methodology/Ximass1.0_10.0.pdf}
+      \caption{\Xi\ invariant mass, fitted by a double gaussian on top of a second order polynomial.}
+      \label{fig:Ximass}
+    \end{figure}
+
+\section{Corrections}
+\label{sec:corrections}
+  Corrections may be split into two different categories: single-particle corrections and pair corrections. The former consists mainly of a cascade reconstruction efficiency correction, while the latter is a mixed events correction that takes the ``two-particle efficiency" due to the detector acceptance into account.
+
+  \subsection{Efficiency}
+  \label{sec:efficiency}
+    We define the efficiency as number of reconstructed cascades divided by the number of generated cascades, with $|\eta| < 0.8$ and requiring that the generated cascade is a physical primary. Keeping in mind that we want to calculate \textit{per trigger} quantities, we also require that the generated collision has at least one matched reconstructed collision that passes our event selections. This is relevant because any inefficiency due to event loss is implicitly accounted for in the normalization by the number of triggers, so we should only correct for inefficiencies due the cascade reconstruction procedure and the detector acceptance. 
+    \[
+    \epsilon(\pt, \y) = \frac{N_\text{rec. casc.}(\pt, \y)}{N_\text{gen. casc. w/ rec. event}(\pt, \y)}
+    \]
+    As our main observables are functions of $(\Delta)y$ we choose to explicitly correct for efficiency in terms of \y as well as \pt, see Fig. \ref{fig:eff}. Note that with the procedure outlined in this section we correct for efficiency, acceptance, and branching ratio (as coded in PYTHIA) in one go. The efficiency is applied for both trigger and associate cascade, and in case of the trigger it's applied both in the pair counts as well as the normalization, which means it effectively cancels out. 
+    \begin{figure}[ht]
+      \centering
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Methodology/hXiMinEff.pdf}
+        \caption{$\Xi^-$ efficiency}
+        \label{fig:XiMinEff}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Methodology/hXiPlusEff.pdf}
+        \caption{$\Xi^+$ efficiency}
+        \label{fig:XiPlusEff}
+      \end{subfigure}
+
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Methodology/hOmegaMinEff.pdf}
+        \caption{$\Omega^-$ efficiency}
+        \label{fig:OmegaMinEff}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Methodology/hOmegaPlusEff.pdf}
+        \caption{$\Omega^+$ efficiency}
+        \label{fig:OmegaPlusEff}
+      \end{subfigure}
+      \caption{Efficiency corrections}
+      \label{fig:eff}
+    \end{figure}
+
+  \subsection{Mixed events}
+  \label{sec:ME}
+    The limited acceptance of the ALICE detector does not only affect the single-particle efficiency (as can be seen in Fig. \ref{fig:eff} from the drop in effciency at larger $|\y|$), it also impacts the correlation functions depending on the angular differences \dphi, \dy\ between the two cascades. For example, a pair with a \dy corresponding roughly to the ends of the ALICE detector has a very low probably of being detected: there is only ``one" way the cascades may be oriented such that both cascades fall into the detector acceptance (both at the respective ends of the detector). On the other hand, a pair with negligible angular difference does not suffer from this: if the trigger falls in the detector acceptance then so does the associate. 
+    
+    One cannot correct for these effects on a single-particle level (obviously) so we do this on the two-particle level by means of a mixed events correction. By calculating the correlation function of two cascades from different events we can determine the effect on the correlation function that is purely due to detector effects. It is important to realize that we do still apply the single-particle efficiency correction while computing the correlation function for mixed events. This is because the uncorrected correlation function in mixed events is essentially a convolution of single-particle and two-particle efficiencies, but we want the correlation function to \textit{only} encapsulate the two-particle efficiency. 
+
+    Ideally the mixed event correction is normalized such that it is 1 at $(\dphi,\dy) = (0,0)$, but due to limited statistics we normalize by the average in the region defined by $|\y| < 0.1$ and $-\pi/2 < \dphi < \pi/2$. The mixed events correction for \Xi\ - \Xi\ correlations are presented in Figure \ref{fig:ME2D}. The 1D projections are presented in Figure \ref{fig:ME1D}, where the normalization is no longer to 1 but to the average of the other dimension. 
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=.8\textwidth]{figures/Methodology/ME/XiXi.pdf}
+      \caption{\Xi\ - \Xi\ mixed events correction}
+      \label{fig:ME2D}
+    \end{figure}
+
+    \begin{figure}[ht]
+      \centering
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Methodology/ME/XiXidPhi.pdf}
+        \caption{Projected onto the \dphi\ axis}
+        \label{fig:MEdPhi}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Methodology/ME/XiXidY.pdf}
+        \caption{Projected onto the \dy\ axis}
+        \label{fig:MEdY}
+      \end{subfigure}
+      \caption{1D projections of \Xi\ - \Xi\ mixed events corrections}
+      \label{fig:ME1D}
+    \end{figure}
+
+\newpage
+\section{MC closure test}
+\label{sec:MCclosure}
+  \subsection{2-particle efficiency considerations in MC truth}
+  This section describes the methodology used for calculating the correlations at the MC truth level. In principle this is a straightforward task, as we are only interested in the MC truth level information so no detector effects have to be corrected. We do however have to make sure to use the same definition for our signal (\pt, $\eta$ ranges), which causes a two-particle acceptance effect when applying these ranges to both the trigger and associate. To avoid this two-particle acceptance effect we release the $\eta$ selection for the associate while keeping it for the trigger, as we want to be able to normalize to the number of triggers. On top of this we require the generated collision to have exactly one matched reconstructed counterpart, and the cascades have to be physical primaries (checked with the \texttt{isPhysicalPrimary} flag). 
+
+  The results of the MC closure test are presented in Figure \ref{fig:closure}. It can be seen that the data agrees with the MC truth level for both the OS and SS cases. There is a bit of tension in the edges of the near-side peak.
+
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/closure/hOS.pdf}
+      \caption{OS}
+      \label{fig:closureOS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/closure/hSS.pdf}
+      \caption{SS}
+      \label{fig:closureSS}
+    \end{subfigure}
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/closure/hSubtracted.pdf}
+      \caption{OS - SS}
+      \label{fig:closureSubtracted}
+    \end{subfigure}
+    \caption{MC closure test, \dphi\ projections}
+    \label{fig:closure}
+  \end{figure}
+
+  \subsection{Comparison with run 2 MC closure}
+
+  By comparing the run 3 closure test with the closure test results taken from the run 2 analysis note, one can see that the discrepancy between run 3 and 2 is not just on the reconstructed level. A snapshot of the MC closure test from the run 2 analysis note can be seen in Fig. \ref{fig:closureRun2} to make the comparison more convenient. Looking at the maximum of the near-side peak, one notices that there is a significant difference: a bit under 0.03 for run 3 vs. a bit under 0.05 for run 2. The fact that this discrepancy persists on the MC truth level hints at a possible difference in definition, as there should be very few differences between run 2 and run 3 on the MC truth level. 
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/Methodology/closureRun2.png}
+    \caption{Run 2 closure test from analysis note}
+    \label{fig:closureRun2}
+  \end{figure}
+
+\newpage
+\section{Results}
+\label{sec:results}
+  We present the corrected 2D correlation functions in Figures \ref{fig:resultssplit} and \ref{fig:resultscomb}. Note that for the OS and SS correlations, we have averaged over both sign combinations as outlined in the introduction. On top of this we've defined that the trigger is the \Xi\ with the highest \pt. For example, a $[+,-]$ pair where the positively charged \Xi\ has the highest \pt\ will only contribute to the histogram in Fig. \ref{fig:XiPlusXiMin}, it will not contribute to Fig. \ref{fig:XiMinXiPlus}. The \dphi\ projections of the averaged and subtracted correlations are plotted together with the run 2 results in Fig. \ref{fig:results1D}.
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/results/hXi-Xi+pT_1.0_10.0.pdf}
+      \caption{$\Xi^-$ - $\Xi^+$}
+      \label{fig:XiMinXiPlus}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/results/hXi+Xi-pT_1.0_10.0.pdf}
+      \caption{$\Xi^+$ - $\Xi^-$}
+      \label{fig:XiPlusXiMin}
+    \end{subfigure}
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/results/hXi-Xi-pT_1.0_10.0.pdf}
+      \caption{$\Xi^-$ - $\Xi^-$}
+      \label{fig:XiMinXiMin}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/results/hXi+Xi+pT_1.0_10.0.pdf}
+      \caption{$\Xi^+$ - $\Xi^+$}
+      \label{fig:XiPlusXiPlus}
+    \end{subfigure}
+    \caption{\Xi\ - \Xi\ correlation results, split by sign combination}
+    \label{fig:resultssplit}
+  \end{figure}
+
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/results/hXiOS_pT_1.0_10.0.pdf}
+      \caption{OS}
+      \label{fig:XiXiOS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/results/hXiSS_pT_1.0_10.0.pdf}
+      \caption{SS}
+      \label{fig:XiXiSS}
+    \end{subfigure}
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/results/hXiSub_pT_1.0_10.0.pdf}
+      \caption{Subtracted}
+      \label{fig:XiXiSub}
+    \end{subfigure}
+    \caption{\Xi\ - \Xi\ correlation results, combined into OS, SS, and subtracted}
+    \label{fig:resultscomb}
+  \end{figure}
+
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/OSRatio.pdf}
+      \caption{OS}
+      \label{fig:XiXiOS1D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/SSRatio.pdf}
+      \caption{SS}
+      \label{fig:XiXiSS1D}
+    \end{subfigure}
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Methodology/Run2Ratio.pdf}
+      \caption{Subtracted}
+      \label{fig:XiXiSub1D}
+    \end{subfigure}
+    \caption{\Xi\ - \Xi\ correlation results, combined into OS, SS, and subtracted}
+    \label{fig:results1D}
+  \end{figure}

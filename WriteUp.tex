@@ -1,19 +1,19 @@
 \subsection{Introduction}
-\label{sec:intro}
+\label{writeup:sec:intro}
     This is a quick write-up of the methods, techniques, and settings used for the analysis. It aims to give a succinct yet complete description, specifically including details that may differ from the run 2 analysis. The analysis code can be found at \url{https://github.com/AliceO2Group/O2Physics/blob/master/PWGLF/Tasks/Strangeness/cascadecorrelations.cxx}.
     
     The goal of the analysis is to determine the correlation functions of cascade pairs, split into species ($\Xi$, $\Omega$) and sign difference (same-sign SS, opposite-sign OS). The correlation functions are presented as a function of $\Delta\varphi$ and/or $\Delta y$. For now we focus on \Xi\ - \Xi\ correlations and the comparison with run 2 results as published [here]. %TODO
 
     In much the same way as the run 2 analysis, we define the correlation function as the number of trigger-associate pairs $N_\text{pairs}$ as a function of $\dphi,\dy$, divided by the number of triggers \Ntrig :
     \begin{align}
-        S(\dy,\dphi) = \frac{1}{\Ntrig}\frac{\d^2 N_\text{pairs}}{\d\dphi\d\dy} \label{eq:corrfunction}
+        S(\dy,\dphi) = \frac{1}{\Ntrig}\frac{\d^2 N_\text{pairs}}{\d\dphi\d\dy} \label{writeup:eq:corrfunction}
     \end{align}
-    Each trigger and associate cascade is weighted by the inverse of the single-particle efficiency $1/\epsilon(\pt,\y)$ (Sec. \ref{sec:efficiency}), and the resulting distribution is divided by the mixed events correction (Sec. \ref{sec:ME}). The expression in equation \ref{eq:corrfunction} is evaluated separately for each sign-combination and subsequently averaged based on the sign difference: OS = $\frac{1}{2}[(-,+) + (+,-)]$ and SS = $\frac{1}{2}[(-,-) + (+,+)]$. 
+    Each trigger and associate cascade is weighted by the inverse of the single-particle efficiency $1/\epsilon(\pt,\y)$ (Sec. \ref{writeup:sec:efficiency}), and the resulting distribution is divided by the mixed events correction (Sec. \ref{writeup:sec:ME}). The expression in equation \ref{writeup:eq:corrfunction} is evaluated separately for each sign-combination and subsequently averaged based on the sign difference: OS = $\frac{1}{2}[(-,+) + (+,-)]$ and SS = $\frac{1}{2}[(-,-) + (+,+)]$. 
 
     % ADD RELEVENT PIECES/LINKS TO THE CODE IN CERTAIN PLACES
 
 \subsection{Selection criteria}
-\label{seq:selections}
+\label{writeup:seq:selections}
 
     \subsubsection{Event selections}
         We use the following criteria to select events for our data signal. Note that these same event selections are applied when requiring that a generated collision has a matched reconstructed collision that passes event selections, which is the case in our efficiency calculation.
@@ -26,7 +26,7 @@
         \end{enumerate}
 
     \subsubsection{Cascade selections}
-        The cascades are selected based on the criteria presented in Table \ref{tab:cascsel}, they are heavily inspired by the run 3 cascade spectra analysis. On top of the selection criteria in the table, we also require candidates to be within $|\eta| < 0.8$.
+        The cascades are selected based on the criteria presented in Table \ref{writeup:tab:cascsel}, they are heavily inspired by the run 3 cascade spectra analysis. On top of the selection criteria in the table, we also require candidates to be within $|\eta| < 0.8$.
         \begin{table}[ht]
             \centering
             \begin{tabular}{|c|c|}
@@ -68,221 +68,221 @@
                 
             \end{tabular}
             \caption{Cascade selection criteria}
-            \label{tab:cascsel}
+            \label{writeup:tab:cascsel}
         \end{table}
 
-        After these topological selections the invariant mass of the \Xi\ candidates are fitted by a double gaussian on top of a second order polynomial, see Fig. \ref{fig:Ximass}. We take the signal region to be $\mu \pm 3\sigma$, where $\mu = \half(\mu_1 + \mu_2)$ and $\sigma = \half(\sigma_1 + \sigma_2)$, the average mean and standard deviation of the two gaussians. 
+        After these topological selections the invariant mass of the \Xi\ candidates are fitted by a double gaussian on top of a second order polynomial, see Fig. \ref{writeup:fig:Ximass}. We take the signal region to be $\mu \pm 3\sigma$, where $\mu = \half(\mu_1 + \mu_2)$ and $\sigma = \half(\sigma_1 + \sigma_2)$, the average mean and standard deviation of the two gaussians. 
         \begin{figure}[ht!]
             \centering
-            \includegraphics[width=.8\textwidth]{figures/Ximass1.0_10.0.pdf}
+            \includegraphics[width=.8\textwidth]{figures/writeup/Ximass1.0_10.0.pdf}
             \caption{\Xi\ invariant mass, fitted by a double gaussian on top of a second order polynomial.}
-            \label{fig:Ximass}
+            \label{writeup:fig:Ximass}
         \end{figure}
 
 \subsection{Corrections}
-\label{sec:corrections}
+\label{writeup:sec:corrections}
     Corrections may be split into two different categories: single-particle corrections and pair corrections. The former consists mainly of a cascade reconstruction efficiency correction, while the latter is a mixed events correction that takes the ``two-particle efficiency" due to the detector acceptance into account.
 
     \subsubsection{Efficiency}
-    \label{sec:efficiency}
+    \label{writeup:sec:efficiency}
         We define the efficiency as number of reconstructed cascades divided by the number of generated cascades, with $|\eta| < 0.8$ and requiring that the generated cascade is a physical primary. Keeping in mind that we want to calculate \textit{per trigger} quantities, we also require that the generated collision has at least one matched reconstructed collision that passes our event selections. This is relevant because any inefficiency due to event loss is implicitly accounted for in the normalization by the number of triggers, so we should only correct for inefficiencies due the cascade reconstruction procedure and the detector acceptance. 
         \[
         \epsilon(\pt, \y) = \frac{N_\text{rec. casc.}(\pt, \y)}{N_\text{gen. casc. w/ rec. event}(\pt, \y)}
         \]
-        As our main observables are functions of $(\Delta)y$ we choose to explicitly correct for efficiency in terms of \y as well as \pt, see Fig. \ref{fig:eff}. Note that with the procedure outlined in this section we correct for efficiency, acceptance, and branching ratio (as coded in PYTHIA) in one go. The efficiency is applied for both trigger and associate cascade, and in case of the trigger it's applied both in the pair counts as well as the normalization, which means it effectively cancels out. 
+        As our main observables are functions of $(\Delta)y$ we choose to explicitly correct for efficiency in terms of \y as well as \pt, see Fig. \ref{writeup:fig:eff}. Note that with the procedure outlined in this section we correct for efficiency, acceptance, and branching ratio (as coded in PYTHIA) in one go. The efficiency is applied for both trigger and associate cascade, and in case of the trigger it's applied both in the pair counts as well as the normalization, which means it effectively cancels out. 
         \begin{figure}[ht]
             \centering
             \begin{subfigure}[t]{.49\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figures/hXiMinEff.pdf}
+                \includegraphics[width=\textwidth]{figures/writeup/hXiMinEff.pdf}
                 \caption{$\Xi^-$ efficiency}
-                \label{fig:XiMinEff}
+                \label{writeup:fig:XiMinEff}
             \end{subfigure}
             \hfill
             \begin{subfigure}[t]{.49\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figures/hXiPlusEff.pdf}
+                \includegraphics[width=\textwidth]{figures/writeup/hXiPlusEff.pdf}
                 \caption{$\Xi^+$ efficiency}
-                \label{fig:XiPlusEff}
+                \label{writeup:fig:XiPlusEff}
             \end{subfigure}
 
             \begin{subfigure}[t]{.49\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figures/hOmegaMinEff.pdf}
+                \includegraphics[width=\textwidth]{figures/writeup/hOmegaMinEff.pdf}
                 \caption{$\Omega^-$ efficiency}
-                \label{fig:OmegaMinEff}
+                \label{writeup:fig:OmegaMinEff}
             \end{subfigure}
             \hfill
             \begin{subfigure}[t]{.49\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{hOmegaPlusEff.pdf}
                 \caption{$\Omega^+$ efficiency}
-                \label{fig:OmegaPlusEff}
+                \label{writeup:fig:OmegaPlusEff}
             \end{subfigure}
             \caption{Efficiency corrections}
-            \label{fig:eff}
+            \label{writeup:fig:eff}
         \end{figure}
 
     \subsubsection{Mixed events}
-    \label{sec:ME}
-        The limited acceptance of the ALICE detector does not only affect the single-particle efficiency (as can be seen in Fig. \ref{fig:eff} from the drop in effciency at larger $|\y|$), it also impacts the correlation functions depending on the angular differences \dphi, \dy\ between the two cascades. For example, a pair with a \dy corresponding roughly to the ends of the ALICE detector has a very low probably of being detected: there is only ``one" way the cascades may be oriented such that both cascades fall into the detector acceptance (both at the respective ends of the detector). On the other hand, a pair with negligible angular difference does not suffer from this: if the trigger falls in the detector acceptance then so does the associate. 
+    \label{writeup:sec:ME}
+        The limited acceptance of the ALICE detector does not only affect the single-particle efficiency (as can be seen in Fig. \ref{writeup:fig:eff} from the drop in effciency at larger $|\y|$), it also impacts the correlation functions depending on the angular differences \dphi, \dy\ between the two cascades. For example, a pair with a \dy corresponding roughly to the ends of the ALICE detector has a very low probably of being detected: there is only ``one" way the cascades may be oriented such that both cascades fall into the detector acceptance (both at the respective ends of the detector). On the other hand, a pair with negligible angular difference does not suffer from this: if the trigger falls in the detector acceptance then so does the associate. 
         
         One cannot correct for these effects on a single-particle level (obviously) so we do this on the two-particle level by means of a mixed events correction. By calculating the correlation function of two cascades from different events we can determine the the effect on the correlation function that is purely due to detector effects. It is important to realize that we do still apply the single-particle efficiency correction while computing the correlation function for mixed events. This is because the uncorrected correlation function in mixed events is essentially a convolution of single-particle and two-particle efficiencies, but we want the correlation function to \textit{only} encapsulate the two-particle efficiency. 
 
-        Ideally the mixed event correction is normalized such that it is 1 at $(\dphi,\dy) = (0,0)$, but due to limited statistics we normalize by the average in the region defined by $|\y| < 0.1$ and $-\pi/2 < \dphi < \pi/2$. The mixed events correction for \Xi\ - \Xi\ correlations are presented in Figure \ref{fig:ME2D}. The 1D projections are presented in Figure \ref{fig:ME1D}, where the normalization is no longer to 1 but to the average of the other dimension. 
+        Ideally the mixed event correction is normalized such that it is 1 at $(\dphi,\dy) = (0,0)$, but due to limited statistics we normalize by the average in the region defined by $|\y| < 0.1$ and $-\pi/2 < \dphi < \pi/2$. The mixed events correction for \Xi\ - \Xi\ correlations are presented in Figure \ref{writeup:fig:ME2D}. The 1D projections are presented in Figure \ref{writeup:fig:ME1D}, where the normalization is no longer to 1 but to the average of the other dimension. 
 
         \begin{figure}[ht]
             \centering
-            \includegraphics[width=.8\textwidth]{figures/ME/XiXi.pdf}
+            \includegraphics[width=.8\textwidth]{figures/writeup/ME/XiXi.pdf}
             \caption{\Xi\ - \Xi\ mixed events correction}
-            \label{fig:ME2D}
+            \label{writeup:fig:ME2D}
         \end{figure}
 
         \begin{figure}[ht]
             \centering
             \begin{subfigure}[t]{.49\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figures/ME/XiXidPhi.pdf}
+                \includegraphics[width=\textwidth]{figures/writeup/ME/XiXidPhi.pdf}
                 \caption{Projected onto the \dphi\ axis}
-                \label{fig:MEdPhi}
+                \label{writeup:fig:MEdPhi}
             \end{subfigure}
             \hfill
             \begin{subfigure}[t]{.49\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figures/ME/XiXidY.pdf}
+                \includegraphics[width=\textwidth]{figures/writeup/ME/XiXidY.pdf}
                 \caption{Projected onto the \dy\ axis}
-                \label{fig:MEdY}
+                \label{writeup:fig:MEdY}
             \end{subfigure}
             \caption{1D projections of \Xi\ - \Xi\ mixed events corrections}
-            \label{fig:ME1D}
+            \label{writeup:fig:ME1D}
         \end{figure}
 
 \newpage
 \subsection{MC closure test}
-\label{sec:MCclosure}
+\label{writeup:sec:MCclosure}
     \subsubsection{2-particle efficiency considerations in MC truth}
     This section describes the methodology used for calculating the correlations at the MC truth level. In principle this is a straightforward task, as we are only interested in the MC truth level information so no detector effects have to be corrected. We do however have to make sure to use the same definition for our signal (\pt, $\eta$ ranges), which causes a two-particle acceptance effect when applying these ranges to both the trigger and associate. To avoid this two-particle acceptance effect we release the $\eta$ selection for the associate while keeping it for the trigger, as we want to be able to normalize to the number of triggers. On top of this we require the generated collision to have exactly one matched reconstructed counterpart, and the cascades have to be physical primaries (checked with the \texttt{isPhysicalPrimary} flag). 
 
-    The results of the MC closure test are presented in Figure \ref{fig:closure}. It can be seen that the data agrees with the MC truth level for both the OS and SS cases. There is a bit of tension in the edges of the near-side peak.
+    The results of the MC closure test are presented in Figure \ref{writeup:fig:closure}. It can be seen that the data agrees with the MC truth level for both the OS and SS cases. There is a bit of tension in the edges of the near-side peak.
 
     \begin{figure}[ht]
         \centering
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/closure/hOS.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/closure/hOS.pdf}
             \caption{OS}
-            \label{fig:closureOS}
+            \label{writeup:fig:closureOS}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/closure/hSS.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/closure/hSS.pdf}
             \caption{SS}
-            \label{fig:closureSS}
+            \label{writeup:fig:closureSS}
         \end{subfigure}
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/closure/hSubtracted.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/closure/hSubtracted.pdf}
             \caption{OS - SS}
-            \label{fig:closureSubtracted}
+            \label{writeup:fig:closureSubtracted}
         \end{subfigure}
         \caption{MC closure test, \dphi\ projections}
-        \label{fig:closure}
+        \label{writeup:fig:closure}
     \end{figure}
 
     \subsubsection{Comparison with run 2 MC closure}
 
-    By comparing the run 3 closure test with the closure test results taken from the run 2 analysis note, one can see that the discrepancy between run 3 and 2 is not just on the reconstructed level. A snapshot of the MC closure test from the run 2 analysis note can be seen in Fig. \ref{fig:closureRun2} to make the comparison more convenient. Looking at the maximum of the near-side peak, one notices that there is a significant difference: a bit under 0.03 for run 3 vs. a bit under 0.05 for run 2. The fact that this discrepancy persists on the MC truth level hints at a possible difference in definition, as there should be very few differences between run 2 and run 3 on the MC truth level. 
+    By comparing the run 3 closure test with the closure test results taken from the run 2 analysis note, one can see that the discrepancy between run 3 and 2 is not just on the reconstructed level. A snapshot of the MC closure test from the run 2 analysis note can be seen in Fig. \ref{writeup:fig:closureRun2} to make the comparison more convenient. Looking at the maximum of the near-side peak, one notices that there is a significant difference: a bit under 0.03 for run 3 vs. a bit under 0.05 for run 2. The fact that this discrepancy persists on the MC truth level hints at a possible difference in definition, as there should be very few differences between run 2 and run 3 on the MC truth level. 
 
     \begin{figure}[ht]
         \centering
-        \includegraphics[width=\textwidth]{figures/closureRun2.png}
+        \includegraphics[width=\textwidth]{figures/writeup/closureRun2.png}
         \caption{Run 2 closure test from analysis note}
-        \label{fig:closureRun2}
+        \label{writeup:fig:closureRun2}
     \end{figure}
 
 \newpage
 \subsection{Results}
-\label{sec:results}
-    We present the corrected 2D correlation functions in Figures \ref{fig:resultssplit} and \ref{fig:resultscomb}. Note that for the OS and SS correlations, we have averaged over both sign combinations as outlined in the introduction. On top of this we've defined that the trigger is the \Xi\ with the highest \pt. For example, a $[+,-]$ pair where the positively charged \Xi\ has the highest \pt\ will only contribute to the histogram in Fig. \ref{fig:XiPlusXiMin}, it will not contribute to Fig. \ref{fig:XiMinXiPlus}. The \dphi\ projections of the averaged and subtracted correlations are plotted together with the run 2 results in Fig. \ref{fig:results1D}.
+\label{writeup:sec:results}
+    We present the corrected 2D correlation functions in Figures \ref{writeup:fig:resultssplit} and \ref{writeup:fig:resultscomb}. Note that for the OS and SS correlations, we have averaged over both sign combinations as outlined in the introduction. On top of this we've defined that the trigger is the \Xi\ with the highest \pt. For example, a $[+,-]$ pair where the positively charged \Xi\ has the highest \pt\ will only contribute to the histogram in Fig. \ref{writeup:fig:XiPlusXiMin}, it will not contribute to Fig. \ref{writeup:fig:XiMinXiPlus}. The \dphi\ projections of the averaged and subtracted correlations are plotted together with the run 2 results in Fig. \ref{writeup:fig:results1D}.
     \begin{figure}[ht]
         \centering
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/results/hXi-Xi+pT_1.0_10.0.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/results/hXi-Xi+pT_1.0_10.0.pdf}
             \caption{$\Xi^-$ - $\Xi^+$}
-            \label{fig:XiMinXiPlus}
+            \label{writeup:fig:XiMinXiPlus}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/results/hXi+Xi-pT_1.0_10.0.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/results/hXi+Xi-pT_1.0_10.0.pdf}
             \caption{$\Xi^+$ - $\Xi^-$}
-            \label{fig:XiPlusXiMin}
+            \label{writeup:fig:XiPlusXiMin}
         \end{subfigure}
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/results/hXi-Xi-pT_1.0_10.0.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/results/hXi-Xi-pT_1.0_10.0.pdf}
             \caption{$\Xi^-$ - $\Xi^-$}
-            \label{fig:XiMinXiMin}
+            \label{writeup:fig:XiMinXiMin}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/results/hXi+Xi+pT_1.0_10.0.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/results/hXi+Xi+pT_1.0_10.0.pdf}
             \caption{$\Xi^+$ - $\Xi^+$}
-            \label{fig:XiPlusXiPlus}
+            \label{writeup:fig:XiPlusXiPlus}
         \end{subfigure}
         \caption{\Xi\ - \Xi\ correlation results, split by sign combination}
-        \label{fig:resultssplit}
+        \label{writeup:fig:resultssplit}
     \end{figure}
 
     \begin{figure}[ht]
         \centering
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/results/hXiOS_pT_1.0_10.0.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/results/hXiOS_pT_1.0_10.0.pdf}
             \caption{OS}
-            \label{fig:XiXiOS}
+            \label{writeup:fig:XiXiOS}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/results/hXiSS_pT_1.0_10.0.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/results/hXiSS_pT_1.0_10.0.pdf}
             \caption{SS}
-            \label{fig:XiXiSS}
+            \label{writeup:fig:XiXiSS}
         \end{subfigure}
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/results/hXiSub_pT_1.0_10.0.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/results/hXiSub_pT_1.0_10.0.pdf}
             \caption{Subtracted}
-            \label{fig:XiXiSub}
+            \label{writeup:fig:XiXiSub}
         \end{subfigure}
         \caption{\Xi\ - \Xi\ correlation results, combined into OS, SS, and subtracted}
-        \label{fig:resultscomb}
+        \label{writeup:fig:resultscomb}
     \end{figure}
 
     \begin{figure}[ht]
         \centering
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/OSRatio.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/OSRatio.pdf}
             \caption{OS}
-            \label{fig:XiXiOS1D}
+            \label{writeup:fig:XiXiOS1D}
         \end{subfigure}
         \hfill
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/SSRatio.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/SSRatio.pdf}
             \caption{SS}
-            \label{fig:XiXiSS1D}
+            \label{writeup:fig:XiXiSS1D}
         \end{subfigure}
         \begin{subfigure}[t]{.49\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/Run2Ratio.pdf}
+            \includegraphics[width=\textwidth]{figures/writeup/Run2Ratio.pdf}
             \caption{Subtracted}
-            \label{fig:XiXiSub1D}
+            \label{writeup:fig:XiXiSub1D}
         \end{subfigure}
         \caption{\Xi\ - \Xi\ correlation results, combined into OS, SS, and subtracted}
-        \label{fig:results1D}
+        \label{writeup:fig:results1D}
     \end{figure}
