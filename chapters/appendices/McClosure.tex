@@ -1,0 +1,42 @@
+\msg{this is simply copy-pasted from the write-up at this stage}
+
+\section{2-particle efficiency considerations in MC truth}
+This section describes the methodology used for calculating the correlations at the MC truth level. In principle this is a straightforward task, as we are only interested in the MC truth level information so no detector effects have to be corrected. We do however have to make sure to use the same definition for our signal (\pt, $\eta$ ranges), which causes a two-particle acceptance effect when applying these ranges to both the trigger and associate. To avoid this two-particle acceptance effect we release the $\eta$ selection for the associate while keeping it for the trigger, as we want to be able to normalise to the number of triggers. On top of this we require the generated collision to have exactly one matched reconstructed counterpart, and the cascades have to be physical primaries (checked with the \texttt{isPhysicalPrimary} flag). 
+
+The results of the MC closure test are presented in Figure \ref{fig:closure}. It can be seen that the data agrees with the MC truth level for both the OS and SS cases. There is a bit of tension in the edges of the near-side peak.
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}[t]{.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Methodology/closure/hOS.pdf}
+    \caption{OS}
+    \label{fig:closureOS}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Methodology/closure/hSS.pdf}
+    \caption{SS}
+    \label{fig:closureSS}
+  \end{subfigure}
+  \begin{subfigure}[t]{.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/Methodology/closure/hSubtracted.pdf}
+    \caption{OS - SS}
+    \label{fig:closureSubtracted}
+  \end{subfigure}
+  \caption{MC closure test, \dphi\ projections}
+  \label{fig:closure}
+\end{figure}
+
+\section{Comparison with run 2 MC closure}
+
+By comparing the run 3 closure test with the closure test results taken from the run 2 analysis note, one can see that the discrepancy between run 3 and 2 is not just on the reconstructed level. A snapshot of the MC closure test from the run 2 analysis note can be seen in Fig. \ref{fig:closureRun2} to make the comparison more convenient. Looking at the maximum of the near-side peak, one notices that there is a significant difference: a bit under 0.03 for run 3 vs. a bit under 0.05 for run 2. The fact that this discrepancy persists on the MC truth level hints at a possible difference in definition, as there should be very few differences between run 2 and run 3 on the MC truth level. 
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{figures/Methodology/closureRun2.png}
+  \caption{Run 2 closure test from analysis note}
+  \label{fig:closureRun2}
+\end{figure}

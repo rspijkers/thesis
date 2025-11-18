@@ -1,0 +1,22 @@
+\msg{This section deals with the single \Xi\ spectra check I did to make sure the normalisation (and all things contributing to it) were correct. I think this can be split into 2 parts: the different efficiency correction related to the ``event factor'', and the actual results. This section is still a pretty rough draft.}
+
+[this is a small introduction]
+
+We performed a short analysis on the single \Xi\ spectra. This was motivated by the discrepancy between the results presented in this thesis and the analysis performed on data gathered in the previous data-taking period (Run 2). \cite{Adolfson2024} 
+
+\section{Efficiency correction for single \texorpdfstring{\Xi}{Xi} spectra}
+  \label{sec:intermezzo:efficiency_correction}
+
+  The efficiency correction is different for single particle yields compared to correlation studies. This is due to the fact that in correlation studies we are interested in quantities \textit{per trigger}, whereas in single particle spectra we are interested in quantities \textit{per event}. This results in a slightly different definition of the cascade reconstruction efficiency, as well as an additional factor that can be thought of as an ``event reconstruction efficiency''. 
+
+  The cascade reconstruction efficiency is only altered at the generated level. Instead of requiring that each generated collision has a matched reconstructed counterpart, we only require that the generated collision is reconstructible, i.e. that pass our event selections. However, some of our event selections are based on reconstructed level information such as the \texttt{sel8} selection criterium, and we by definition do not have access to this information at the generated level. So we only apply the event selections that can be defined at the generated level, albeit slightly different from the reconstructed level due to fundamental differences between generated and reconstructed information. This consists of two different event selections:
+    \begin{itemize}
+      \item $V_z < 10$cm: as the position of the primary vertex is available at the generated level, this is a rather straightforward analogy to the reconstructed level selection.
+      \item INEL$>0$: at the reconstructed level this selection is applied at track level by requiring at least one central charged track that contributes to the PV. The generated level equivalent is to require at least one charged primary particle within $|\eta| < 0.8$. 
+    \end{itemize}
+
+    \msg{put eff plots here}
+
+\section{Results for single \texorpdfstring{\Xi}{Xi} spectra}
+  \label{sec:intermezzo:results}
+  [this is where the results go]

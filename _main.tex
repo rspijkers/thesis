@@ -1,4 +1,4 @@
-\documentclass{book}
+\documentclass[12pt, twoside]{book}
 \usepackage{style}
 \usepackage{commands}
 
@@ -8,6 +8,8 @@
 
 \begin{document}
 
+\linenumbers
+
 % \maketitle
 
 % \section*{Thesis skeleton}
@@ -15,8 +17,23 @@
 
 \chapter{Introduction}
 \input{chapters/Introduction}
+
+\chapter{Detector}
+\input{chapters/Detector.tex}
+
 \chapter{Methodology}
 \input{chapters/Methodology.tex}
+
+\chapter{Intermezzo}
+\input{chapters/Intermezzo.tex}
+
+\chapter{Results}
+\input{chapters/Results.tex}
+
+\appendix
+
+\chapter{MC closure}
+\input{chapters/appendices/McClosure.tex}
 
 %\section{Methodology write-up}
 % \input{WriteUp.tex}
@@ -24,6 +41,6 @@
 % dummy citation
 % This is a dummy citation to stop the compilation errors. \cite{WWW}
 
-% \printbibliography
+\printbibliography
 
 \end{document}
