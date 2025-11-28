@@ -1,4 +1,4 @@
-\msg{this is simply copy-pasted from the write-up at this stage}
+\rs{this is simply copy-pasted from the write-up at this stage}
 
 \section{2-particle efficiency considerations in MC truth}
 This section describes the methodology used for calculating the correlations at the MC truth level. In principle this is a straightforward task, as we are only interested in the MC truth level information so no detector effects have to be corrected. We do however have to make sure to use the same definition for our signal (\pt, $\eta$ ranges), which causes a two-particle acceptance effect when applying these ranges to both the trigger and associate. To avoid this two-particle acceptance effect we release the $\eta$ selection for the associate while keeping it for the trigger, as we want to be able to normalise to the number of triggers. On top of this we require the generated collision to have exactly one matched reconstructed counterpart, and the cascades have to be physical primaries (checked with the \texttt{isPhysicalPrimary} flag). 
