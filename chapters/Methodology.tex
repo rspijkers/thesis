@@ -1,29 +1,65 @@
-% so base this on the write-up you sent to Alice, expanding on the explanations
-\pc{I suggest to change the title of the chapter to something like ``Analysis details'' and start by descriving the event sample, the event selection criteria and only after move to =the selection of cascades and the track related variables. What I'm missing is the paragraph where you introduce the 2pc technique and how you measure the correlation function and normalise to the number of triggers. You can then introeuce there the correction factors which are currently described later in this chapter, but w/o imho any prior connection to the measurement.}
+% This chapter describes the necessary steps to build up the balance functions, including the reconstruction of cascades and corrections accounting for detector effects. 
 
-\pc{I suggest to avoid introducing what will be covered in the chapter at the start of it; you can, instead, devote a paragraph at the end of your intro, summarising the contents of each chapter.}This chapter describes the necessary steps to build up the balance functions, including the reconstruction of cascades and corrections accounting for detector effects. 
+% \pc{I suggest to change the title of the chapter to something like ``Analysis details'' and start by descriving the event sample, the event selection criteria and only after move to =the selection of cascades and the track related variables. What I'm missing is the paragraph where you introduce the 2pc technique and how you measure the correlation function and normalise to the number of triggers. You can then introeuce there the correction factors which are currently described later in this chapter, but w/o imho any prior connection to the measurement.}
 
-In order to study the angular correlations of cascade pairs we first need to reconstruct cascades. Cascades are reconstructed via their decay chains
+We will study the angular correlations of cascade pairs via correlation functions 
 \begin{align}
-  & \Xi^- \rightarrow \Lambda + \pi^- \text{ and } \Xi^+ \rightarrow \overline{\Lambda} + \pi^+, \text{ (BR  99.9\%)} \label{eq:Xidecay} \\
-  & \Omega^- \rightarrow \Lambda + \K^- \text{ and } \Omega^+ \rightarrow \overline{\Lambda} + \K^+, \text{ (BR  67.8\%)} \label{eq:Omegadecay}
+  C^\text{T,A}(\dphi, \dy) = \frac{\d^2N_\text{pairs}}{\d\dphi \d\dy}, \label{eq:correlationfunction}
 \end{align}
-where
+% perhaps note the species as subscript in the correlation function?
+where T, A denote the trigger and associate cascades, and \dphi\ and \dy\ are the differences in azimuthal angle and rapidity respectively between the two cascades. These correlation functions are computed separately for the four different charge combinations of the cascades. Even though we do not study the balancing of electric charges, it provides a convenient proxy to the strangeness and baryon quantum numbers as the electric charge of the cascade directly corresponds to both the strangeness and baryon quantum number it carries. 
+
+The Opposite-Sign (OS) correlation functions ($C^{+,-}$ and $C^{-,+}$) contain not only cascade pairs originating from the same hadronisation process, but also cascades that have been produced independently of each other and only belong to the same event by chance. These ``uncorrelated" pairs form a combinatorial background that needs to be accounted for in order to study the physical correlations. We do this by subtracting the Same-Sign (SS) correlation functions ($C^{+,+}$ and $C^{-,-}$) from the OS correlation functions, as the SS correlation functions are expected to only contain pairs that are produced in separate hadronisation processes. It is important to realise that there may still be physical correlations present due to other factors such as the event shape (e.g. in an event with one or multiple jets one may find angular correlations between two cascades unrelated to the hadronisation process). However, these correlations are not the object of our study, and as they are expected to be charge independent they will be properly accounted for through the SS subtraction. 
+
+As we are interested in the balancing of strangeness and baryon number, we normalise to the number of triggers to obtain a per-trigger yield. We normalise the two charges separately to account for any difference in the yields. Note that cascades that are not matched to another cascade \textit{do} contribute to the normalisation via $N^-$ and $N^+$. By combining the SS subtraction with the per-trigger normalisation we obtain the Balance Function (BF):
 \begin{align}
-  \Lambda \rightarrow \p + \pi^- \text{ and } \overline{\Lambda} \rightarrow \overline{\p} + \pi^+. \text{ (BR  63.9\%)} \label{eq:Lambdadecay} 
+  B(\dphi, \dy) = \frac{1}{2} \Big[ \frac{1}{N^-}(C^{-,+} - C^{-,-}) + \frac{1}{N^+}(C^{+,-} - C^{+,+}) \Big]. \label{eq:BF}
 \end{align}
-% cite this?: https://academic.oup.com/ptep/article/2022/8/083C01/6651666
-Both \Xi\ and \Omega\ baryons have this characteristic ``cascading'' decay pattern and so the name ``cascade" encapsulates both. Though having a similar decay channel has its advantages in analysing their correlations, it is not the motivation for being the subject of our analysis but rather a consequence of their similar quark contents. The difference in branching ratios between the \Xi\ and \Omega\ (99.9\% and 67.8\% respectively) may also be attributed to their different quark contents. In addition to Eq. \ref{eq:Omegadecay} \Omega\ baryons may decay according to $\Omega \rightarrow \Xi^0 + \pi$ with a branching ratio of 23.6\% and $\Omega \rightarrow \Xi + \pi^0$ \pc{Add the charges in both cases like $\Omega^{\pm}$} with a branching ratio of 8.6\% (and their charge conjugates). However, $\pi^0$ mesons predominantly decay to two photons that do not leave hits the ITS nor TPC and are therefor much harder to accurately reconstruct. As $\Xi^0$ baryons decay into $\Lambda + \pi^0$ with a branching ratio of 99.5\%, the difficulty of reconstruction the $\pi^0$ meson is actually the reason that both alternative decay channels for the \Omega\ are disfavoured. Other alternative decay modes for both \Xi\ and \Omega\ baryons that produce exclusively charged final states are either kinematically unfavourable, leading to a low branching ratio, or even kinematically forbidden. 
-\rs{RS: I think it's important to touch on why we use these decay modes to reconstruct cascades, and why we do not use alternatives (and to a lesser extent why there are no alternatives). But maybe this is a bit much or a bit too long-winded?}
-\section{\texorpdfstring{\Xi}{Xi} and \texorpdfstring{\Omega}{Omega} reconstruction}
+Here the positive and negative superscripts denote the charge of the trigger and associate cascades respectively, while $N^-$ ($N^+$) are the total number of negative (positive) cascades. Balance Functions were first proposed as a tool to probe the hadronization timescale in Pb-Pb collisions by looking at how electric charge is balanced \cite{BalanceFunctions}, but the concept can also be applied to other quantum numbers such as strangeness or baryon number. 
+\rs{for now I've not mentioned the species, but this can be added later if needed (maybe as a subscript in the correlation/balance functions)}
+\rs{the factor 1/2 would be equivalent to the pT,trig > pT,assoc requirement. For now I just leave it as written, but I should make a decision soon on whether to keep this pT requirement or not. depending on that the 1/2 may or may not be needed.}
+
+\section{Datasets etc.}
+  \label{sec:datasets}
+
+  For this analysis we use the \texttt{LHC24\_pass1\_MinBias} dataset, which consists of roughly $1.5 \times 10^{10}$ pp collisions (before event selections) at $\sqrt{s} = 13.6$ TeV recorded during the 2024 data taking period. We also use two datasets consisting of pp collisions simulated by PYTHIA~\cite{PythiaManual,PythiaCode} and propagated through the detector simulated using GEANT4~\cite{GEANT4}: \texttt{LHC24f4d} and \texttt{LHC24j7}. \texttt{LHC24f4d} is a ``general purpose'' Monte-Carlo (MC) dataset anchored to the 2024 data taking period, which means that the conditions and detector state were simulated to match those during the data taking as closely as possible. The \texttt{LHC24j7} dataset is also anchored to the 2024 data taking period, but it is a ``strangeness enriched'' dataset, meaning that cascades were manually added to the generated events to drastically increase the number of cascades per event (or rather reduce the number of events without cascades). This makes it much more efficient to analyze, both computationally speaking as well as regarding the disk size the data occupies. We use the \texttt{LHC24j7} dataset to determine the reconstruction efficiency as described in Section~\ref{sec:efficiency}, while we use the \texttt{LHC24f4d} dataset to perform MC closure tests as described in Chapter~\ref{ch:mc_closure}. \rs{appendix?} We do not use the strangeness enriched dataset for the MC closure test as we do not know the effect (if any) the manual addition of cascades has on the correlation functions.
+  \rs{in case we include omega we should most likely mention here that we use the triggered/skimmed datasets as well}
+
+  \subsection{Event selections}
+    We use the following criteria to select events for our signal. Note that these same event selections are applied when requiring that a generated collision has a matched reconstructed collision that passes event selections, which is the case in our efficiency calculation.
+
+    \begin{enumerate}
+      \item \texttt{sel8}: events with the sel8 selection flag 
+      \item INEL$>0$: at least 1 central charged track that contributes to the PV 
+      \item $V_z < 10$cm 
+      \item \texttt{kNoSameBunchPileup}: events without same bunch pile-up
+    \end{enumerate}
+
+    \rs{expand on the selections, what and why}
+
+    \rs{maybe add a plot that shows the number of events that pass certain selections?}
+
+\section{Cascade reconstruction}
+  In order to study the angular correlations of cascade pairs we first need to reconstruct cascades. Cascades are reconstructed via their decay chains \cite{PDG2024}
+  \begin{align}
+    & \Xi^- \rightarrow \Lambda + \pi^- \text{ and } \Xi^+ \rightarrow \overline{\Lambda} + \pi^+, \text{ (BR  99.9\%)} \label{eq:Xidecay} \\
+    & \Omega^- \rightarrow \Lambda + \K^- \text{ and } \Omega^+ \rightarrow \overline{\Lambda} + \K^+, \text{ (BR  67.8\%)} \label{eq:Omegadecay}
+  \end{align}
+  where
+  \begin{align}
+    \Lambda \rightarrow \p + \pi^- \text{ and } \overline{\Lambda} \rightarrow \overline{\p} + \pi^+. \text{ (BR  63.9\%)} \label{eq:Lambdadecay} 
+  \end{align}
+  Both \Xi\ and \Omega\ baryons have this characteristic ``cascading'' decay pattern and so the name ``cascade" encapsulates both. Though having a similar decay channel has its advantages in analysing their correlations, it is not the motivation for being the subject of our analysis but rather a consequence of their similar quark contents. The difference in branching ratios between the \Xi\ and \Omega\ (99.9\% and 67.8\% respectively) may also be attributed to their different quark contents. In addition to Eq. \ref{eq:Omegadecay}, \Omega\ baryons may decay according to $\Omega^\pm \rightarrow \Xi^0 + \pi^\pm$ with a branching ratio of 23.6\% and $\Omega^\pm \rightarrow \Xi^\pm + \pi^0$ with a branching ratio of 8.6\% (and their charge conjugates). However, $\pi^0$ mesons predominantly decay to two photons that do not leave hits the ITS nor TPC and are therefor much harder to accurately reconstruct. As $\Xi^0$ baryons decay into $\Lambda + \pi^0$ with a branching ratio of 99.5\%, the difficulty of reconstruction the $\pi^0$ meson is actually the reason that both alternative decay channels for the \Omega\ are disfavoured. Other alternative decay modes for both \Xi\ and \Omega\ baryons that exclusively produce charged final states are either kinematically unfavourable, leading to a low branching ratio, or even kinematically forbidden. 
+  % \rs{I think it's important to touch on why we use these decay modes to reconstruct cascades, and why we do not use alternatives (and to a lesser extent why there are no alternatives). But maybe this is a bit much or a bit too long-winded?}
+
   When reconstructing particles we start from the decay products and work our way up the decay chain. Starting with charged tracks that possibly represent the charged final states (protons, pions, kaons) we create a pair consisting of oppositely charged tracks. Based on selection variables that are explained below the pair is either accepted or rejected as a \Lambda\ candidate. If it is accepted we repeat the exercise by combining the acquired \Lambda\ candidate with another charged track, again accepting or rejecting it based on slightly different selection variables to obtain cascade candidates.
   Because certain calculations such as accurately propagating a charged track through a magnetic field are computationally expensive, the pair combinations are first made using looser but computationally less expensive selections, after which the unique indices of the tracks that are consistent with \Lambda\ (cascade) candidates are stored. This is particularly effective since the number of computations scales with the number of pair combinations, which in turn scales quadratically (or even cubically in case of cascades) with the number of charged tracks in an event. Only the stored pair combinations are then fully built into \Lambda\ (cascade) candidates, at which point the more computationally expensive properties are properly calculated and available for selections. 
 
   \subsection{Selection criteria for \texorpdfstring{\Xi}{Xi} and \texorpdfstring{\Omega}{Omega} reconstruction}
 
-    The cascade candidates are selected based on the criteria summarised in Table \ref{tab:cascsel}. Most selections may be split into two categories: particle identification (PID) \pc{remove one} selections, and topological selections, both of which are explained in more detail below. An invariant mass selection is applied on the \Lambda\ candidates. This selection is defined as a symmetrical window around the \Lambda\ mass as defined \mvl{listed/found/given} by the PDG \rs{cite}.
+    The cascade candidates are selected based on the criteria summarised in Table \ref{tab:cascsel}. Most selections may be split into two categories: particle identification (PID), and topological selections, both of which are explained in more detail below. An invariant mass selection is applied on the \Lambda\ candidates. This selection is defined as a symmetrical window around the \Lambda\ mass as listed by the PDG \cite{PDG2024}.
 
-    Besides the selection criteria for \Lambda\ and cascade candidates, we also apply a few basic \pc{requirements (to avoid the usage of of the word selection yet again)} selections to the charged tracks that are used to build the pairs. These are generally motivated by ensuring that the track is of sufficient quality to be used in the reconstruction. For example, we require that the track has at least 50 crossed rows in the TPC, and that the $\chi^2$ per TPC cluster is less than 4. Though we do not require a minimum number of ITS hits, we do require that the $\chi^2$ per ITS cluster is less than 36 \mvl{Check whether there is an intrinsic minimum in the tracking (iirc the tracking does standalone track finding for ITS and TPC first and then combines the tracks, so there is probably a 3- or 4- hit minimum. Maybe there is a 'afterburner' pass with a less strict requirement}. On top of this we only use tracks within $|\eta| < 0.8$ and with a transverse momentum $\pt > 0.15$ GeV/$c$, as these are the kinematic ranges in which the ALICE detector has a good efficiency. 
+    Besides the selection criteria for \Lambda\ and cascade candidates, we also apply a few basic requirements to the charged tracks that are used to build the pairs. These are generally motivated by ensuring that the track is of sufficient quality to be used in the reconstruction. For example, we require that the track has at least 50 crossed rows in the TPC, and that the $\chi^2$ per TPC cluster is less than 4. Though we do not require a minimum number of ITS hits, we do require that the $\chi^2$ per ITS cluster is less than 36 \mvl{Check whether there is an intrinsic minimum in the tracking (iirc the tracking does standalone track finding for ITS and TPC first and then combines the tracks, so there is probably a 3- or 4- hit minimum. Maybe there is a 'afterburner' pass with a less strict requirement}. On top of this we only use tracks within $|\eta| < 0.8$ and with a transverse momentum $\pt > 0.15$ GeV/$c$, as these are the kinematic ranges in which the ALICE detector has a good efficiency. 
 
     \begin{table}[ht]
       \centering
@@ -68,78 +104,100 @@ Both \Xi\ and \Omega\ baryons have this characteristic ``cascading'' decay patte
       \label{tab:cascsel}
     \end{table}
 
-    \subsection{PID}
-      The PID selection is based on the energy loss d$E$/d$x$ in the TPC being within 5$\sigma$ \pc{explain what this $\sigma$ is for people in the committee who are not familiar} of the expected value for (anti-)protons, pions, and kaons. As the 5$\sigma$ bands around the Bethe-Bloch curves may overlap, it is possible for a track to be consistant with multiple PID hypotheses. In this case we do not reject any of the hypotheses but simply accept all of them. For high momentum tracks the bands start to overlap more significantly which means there is very little to no separation power between different PID hypotheses. For these tracks the PID selection has effectively no impact other than removing tracks with a very off d$E$/d$x$ measurement.
-      
-      \rs{add energy loss plots? or maybe we should put those in the detector chapter?}
-      \pc{I would indeed add some plots here; At the same time, I wonder how relevant this paragraph is since the 5$\sigma$ selection you apply by default doesn't alter significantly either the efficciency or the purity of your samples. Maybe it becomes more relevant, however, when you discuss your systematics where some variations on the number of $\sigma$ will be performed?}
-
-    \subsection{Topological selections}
-\pc{I would not start a new sub-section for each topoligical variable. In addition, I would add a plot for each of them showing, if possible (e.g. from MC) the distributions highlighting with different filled colours the part of the signal and the none of the bkg. I suggest also to give the numbers and cite the table}
-
-      \subsubsection{Distance of closest approach (DCA)}
-        \mvl{Maybe: 'In the selection of weak decay candidates, two different DCA values are used:'}The DCA has two different implementations in the selection criteria: the DCA between two daughters, and the DCA between a daughter and the primary vertex (PV). The former is used to ensure that the two daughters are close enough to each other to be consistent with originating from a common secondary vertex, while the latter is used to diminish the combinatorial background by requiring that the daughters are not consistent with originating from the PV.
-
-      \subsubsection{Cosine of the pointing angle (CPA)}
-        The CPA is defined as the cosine of the angle between the momentum vector of the cascade candidate and the vector pointing from the PV to the cascade decay vertex. The momentum vector is calculated directly from the daughters' four-momentum vectors, while the vector pointing from the PV to the decay vertex is obtained from the daughters' point of closest approach and the determination of the PV. A CPA close to 1 indicates that the momentum vector is aligned with the vector from the PV to the decay vertex, which is consistent with the cascade candidate originating from the PV. Small deviations from 1 may be due to imperfect momentum resolution or errors in determining the PV or decay vertex positions.
-
-        We also apply a minimum CPA selection on the \Lambda\ candidate when reconstructing cascades, even though the momentum vector of the \Lambda\ should point from the cascade decay vertex to the \Lambda\ decay vertex. In cascade decays, the \Lambda\ daughter carries most of the momentum of the cascade, so the CPA of the \Lambda\ is still a useful variable to discriminate against combinatorial background. The minimum CPA selection for the \Lambda\ candidate is therefore slightly lower than that of the cascade candidate itself.
-
-      \subsubsection{Radius}
-        The radius selection is based on the distance of the cascade (\Lambda) decay vertex from the PV. We require that this distance is larger than a certain threshold to ensure that the cascade (\Lambda) candidate is consistent with coming from a weak decay some distance away from the PV. 
+  \subsection{PID}
+    The PID selection is based on the energy loss d$E$/d$x$ in the TPC being within 5$\sigma$ of the expected value for (anti-)protons, pions, and kaons. The $\sigma$ refers to the width of the band around the curve expressed in standard deviations, so a 5$\sigma$ cut means that only one in a few million true particles would fall outside the band. As the 5$\sigma$ bands around the Bethe-Bloch curves may overlap, it is possible for a track to be consistant with multiple PID hypotheses. In this case we do not reject any of the hypotheses but simply accept all of them. For high momentum tracks the bands start to overlap more significantly which means there is very little to no separation power between different PID hypotheses. For these tracks the PID selection has effectively no impact other than removing tracks with a very off d$E$/d$x$ measurement.
     
-    \subsection{Invariant mass}
+    \rs{add energy loss plots? or maybe we should put those in the detector chapter?}
+    \pc{I would indeed add some plots here; At the same time, I wonder how relevant this paragraph is since the 5$\sigma$ selection you apply by default doesn't alter significantly either the efficciency or the purity of your samples. Maybe it becomes more relevant, however, when you discuss your systematics where some variations on the number of $\sigma$ will be performed?}
+
+  \subsection{Topological selections}
+% \pc{I would not start a new sub-section for each topoligical variable. In addition, I would add a plot for each of them showing, if possible (e.g. from MC) the distributions highlighting with different filled colours the part of the signal and the none of the bkg. I suggest also to give the numbers and cite the table}
+
+    \subsubsection{Distance of closest approach (DCA)}
+      In the selection of weak decay candidates, two different DCA values are used: the DCA between two daughters, and the DCA between a daughter and the primary vertex (PV). The former is used to ensure that the two daughters are close enough to each other to be consistent with originating from a common secondary vertex, while the latter is used to diminish the combinatorial background by requiring that the daughters are not consistent with originating from the PV.
+
+    \subsubsection{Cosine of the pointing angle (CPA)}
+      The CPA is defined as the cosine of the angle between the momentum vector of the cascade candidate and the vector pointing from the PV to the cascade decay vertex. The momentum vector is calculated directly from the daughters' four-momentum vectors, while the vector pointing from the PV to the decay vertex is obtained from the daughters' point of closest approach and the determination of the PV. A CPA close to 1 indicates that the momentum vector is aligned with the vector from the PV to the decay vertex, which is consistent with the cascade candidate originating from the PV. Small deviations from 1 may be due to imperfect momentum resolution or errors in determining the PV or decay vertex positions.
+
+      We also apply a minimum CPA selection on the \Lambda\ candidate when reconstructing cascades, even though the momentum vector of the \Lambda\ should point from the cascade decay vertex to the \Lambda\ decay vertex. In cascade decays, the \Lambda\ daughter carries most of the momentum of the cascade, so the CPA of the \Lambda\ is still a useful variable to discriminate against combinatorial background. The minimum CPA selection for the \Lambda\ candidate is therefore slightly lower than that of the cascade candidate itself.
+
+    \subsubsection{Radius}
+      The radius selection is based on the distance of the cascade (\Lambda) decay vertex from the PV. We require that this distance is larger than a certain threshold to ensure that the cascade (\Lambda) candidate is consistent with coming from a weak decay some distance away from the PV. 
+  
+  \subsection{Invariant mass}
     \rs{different subsection title?}
     \pc{Would it make sense to provide the inv. mass for the three $p_T$ bins that you use in your analysis? Maybe also using log on the y-axis?}
     
-    After all these selections are applied, we turn to the invariant mass distribution of the cascade candidates in Figure \ref{fig:Ximass}. This shows a well-defined peak around the nominal mass of the \Xi\ baryon (1321.71 MeV/$c^2$ \rs{cite}) on top of the combinatorial background. Candidates far away from the mass peak are likely to be false positives so we apply an invariant mass selection to only keep candidates within the signal region. To properly define this signal region we fit the invariant mass distribution with a double gaussian on top of a second order polynomial\mvl{this sentence could describe a fit to determine the peak (to determine the integration interval) or it could be to determine the background level. Say more clearly upfront which one (or both) it is}. \footnote{The double gaussian (as opposed to a single gaussian) is motivated by the fact that we use both the ITS and the TPC in reconstructing the cascades. These detectors give two different resolution contributions to the invariant mass distribution.} The second order polynomial accounts for the combinatorial background and is fitted before the double gaussian and excluding the peak region to prevent the background function from fitting (part of) the signal. As we have not defined the signal region we take a conservative estimate of $[1305, 1335]$ Mev/$c^2$ and manually exclude this window from the background fitting procedure. After fitting the background, we fix the parameters of the polynomial and fit the double gaussian to the entire distribution. We define the signal region to be $\mu \pm 3\sigma$, where $\mu = \half(\mu_1 + \mu_2)$ and $\sigma = \half(\sigma_1 + \sigma_2)$, the average mean and standard deviation of the two gaussians. 
-
-    \rs{would it make sense to report some purity numbers here?}\mvl{Yes I think that would be useful. You could also show one or two fits with the signal range etc as illustration.}
+    % comment on the sentence of the fit: \mvl{this sentence could describe a fit to determine the peak (to determine the integration interval) or it could be to determine the background level. Say more clearly upfront which one (or both) it is}
+    After all these selections are applied, we turn to the invariant mass distribution of the cascade candidates in Figure \ref{fig:Ximass}. This shows a well-defined peak around the nominal mass of the \Xi\ baryon (1321.71 MeV/$c^2$ \cite{PDG2024}) on top of the combinatorial background. Candidates far away from the mass peak are likely to be false positives so we apply an invariant mass selection to only keep candidates within the signal region. 
+    \mvl{this sentence could describe a fit to determine the peak (to determine the integration interval) or it could be to determine the background level. Say more clearly upfront which one (or both) it is}
+    To properly define both this signal region as well as the combinatorial background we fit the invariant mass distribution with a double gaussian on top of a second order polynomial. \footnote{The double gaussian (as opposed to a single gaussian) is motivated by the fact that we use both the ITS and the TPC in reconstructing the cascades. These detectors give two different resolution contributions to the invariant mass distribution.} The second order polynomial accounts for the combinatorial background and is fitted before the double gaussian and excluding the peak region to prevent the background function from fitting (part of) the signal. As we have not defined the signal region we take a conservative estimate of $[1305, 1335]$ Mev/$c^2$ and manually exclude this window from the background fitting procedure. After fitting the background, we fix the parameters of the polynomial and fit the double gaussian to the entire distribution. We define the signal region to be $\mu \pm 3\sigma$, where $\mu = \half(\mu_1 + \mu_2)$ and $\sigma = \half(\sigma_1 + \sigma_2)$, the average mean and standard deviation of the two gaussians. 
+    % \rs{would it make sense to report some purity numbers here?}\mvl{Yes I think that would be useful. You could also show one or two fits with the signal range etc as illustration.}
 
     \begin{figure}[ht]
       \centering
-      \includegraphics[width=.8\textwidth]{figures/Methodology/Ximass1.0_10.0.pdf}
-      \caption{\Xi\ invariant mass, fitted by a double gaussian on top of a second order polynomial. \rs{placeholder, put here both Xi+ and Xi- in all pT bins. also probably visualise signal and bkg fits separately, and maybe even the 3sigma region?.}}
+      \includegraphics[width=.8\textwidth]{figures/Methodology/XiMinus1.0_8.0.pdf}
+      \caption{\Xi\ invariant mass, fitted by a double gaussian on top of a second order polynomial. The dashed vertical lines represent the 3, 4, and 10 $\sigma$ levels on either side of the mass peak. \rs{placeholder, put here both Xi+ and Xi- in all pT bins.}}
       \label{fig:Ximass}
     \end{figure}
 
-    Ideally we would like to perform a background subtraction procedure to minimise the impact of the combinatorial background on the correlation functions. This would however require knowledge of whether specific candidates are signal or background, which is not possible - we can only make statements about the statistical properties of the signal and background distributions as a whole. \mvl{This makes it more complex, but in principle you could perform a background subtraction at the level of the associated particle distribution; you can estimate the background using side bands and subtract. Depending on the bkg level, it may be useful to show the sideband corralations in a later section.}
+\section{Sideband subtraction \& trigger normalisation}
+  \label{sec:sideband}
+  To estimate the scale of the combinatorial background under the mass peak, we first calculate thepurity $\eta$ of the selected cascade sample. This is done with the counts of the invariant mass histogram $S$ and the area under the fitted background polynomial $B$, both within the signal region:
+  \begin{align}
+    \eta = \frac{S - B}{S}. \label{eq:purity}
+  \end{align}
+  \rs{todo: pT bins, maybe add a small table here}
+  The purity is quite high, which indicates that there is limited contamination from the combinatorial background in our selected cascade sample. Nevertheless, we want to estimate the effect of this background on the correlation functions. To do this we determine the correlation function between two cascades where the trigger is taken from one of the sideband regions defined as $[\mu - 10\sigma, \mu - 4\sigma]$ and $[\mu + 4\sigma, \mu + 10\sigma]$, while the associate is taken from the signal region as usual. The correlation functions obtained from the two sidebands are then averaged to obtain the sideband correlation function $C_\text{SB}$ presented in Figure \ref{fig:CSB}, split into OS and SS. 
 
-  \subsection{Event selections}
-    We use the following criteria to select events for our signal. Note that these same event selections are applied when requiring that a generated collision has a matched reconstructed collision that passes event selections, which is the case in our efficiency calculation.
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{example-image-a}
+      \caption{$\Xi^-$ efficiency}
+      \label{fig:CSBOS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{example-image-a}
+      \caption{$\Xi^+$ efficiency}
+      \label{fig:CSBSS}
+    \end{subfigure}
+    \caption{Sideband correlation functions for (a) OS and (b) SS combinations. \rs{placeholder}}
+    \label{fig:CSB}
+  \end{figure}
+  
+  The sideband correlation functions are then subtracted from the signal correlation functions before applying the trigger normalisation to either function. This way we ensure that the combinatorial background contribution is accounted for with the proper amplitude.\footnote{To first order this is expected to be 1-$\eta$ times the signal correlation function.} Now that the combinatorial background is corrected for, we may apply the trigger normalisations in Eq. \ref{eq:BF} taking the purity into account by scaling $N^+$ and $N^-$ by the purity $\eta$, such that we normalise to the number of true cascades only.
 
-    \begin{enumerate}
-      \item \texttt{sel8}: events with the sel8 selection flag 
-      \item INEL$>0$: at least 1 central charged track that contributes to the PV 
-      \item $V_z < 10$cm 
-      \item \texttt{kNoSameBunchPileup}: events without same bunch pile-up
-    \end{enumerate}
-
-    \rs{expand on the selections, what and why}
+  % Ideally we would like to perform a background subtraction procedure to minimise the impact of the combinatorial background on the correlation functions. This would however require knowledge of whether specific candidates are signal or background, which is not possible - we can only make statements about the statistical properties of the signal and background distributions as a whole. \mvl{This makes it more complex, but in principle you could perform a background subtraction at the level of the associated particle distribution; you can estimate the background using side bands and subtract. Depending on the bkg level, it may be useful to show the sideband corralations in a later section.}
 
 \section{Corrections}
 \label{sec:corrections}
-  In experimental particle physics there is always one invariable challenge: the detector does not measure the ``true'' physical quantities directly, but rather a convolution of the underlying physical processes with detector effects. The ALICE detector is no exception to this, and so \mvl{Be more assertive: 'we need to correct for detector effects.'} we try to correct for these detector effects as best as we can. There are many different detector effects we want to correct for, but \mvl{remove 'luckily'} we can accomplish this with only two main corrections: a reconstruction efficiency correction which acts on the single-particle level, and a mixed events correction which acts on the two-particle level. These two corrections will be discussed in more details in Sections \ref{sec:efficiency} and \ref{sec:ME} respectively.
-
-  % acceptance (modular phi, eta/y coverage)
-  %   this leads to 2-particle acceptance effects. 
+  In experimental particle physics there is always one invariable challenge: the detector does not measure the ``true'' physical quantities directly, but rather a convolution of the underlying physical processes with detector effects. The ALICE detector is no exception to this, and so we need to correct for these detector effects. There are many different detector effects we want to correct for, but we can accomplish this with only two main corrections: a reconstruction efficiency correction which acts on the single-particle level, and a mixed events correction which acts on the two-particle level. These two corrections will be discussed in more details in Sections \ref{sec:efficiency} and \ref{sec:ME} respectively.
 
   \subsection{Reconstruction efficiency}
   \label{sec:efficiency}
 
     There are numerous underlying reasons for the ALICE detector to not reconstruct every cascade that traverses it. One of the most straightforward reasons is that the hardware itself is not perfect: chips or even entire staves of the ITS may malfunction leading to dead zones, readout modules of any subdetector module could be temporarily down, etc. Analogous to hardware issues, the algorithms used to form tracks from the raw detector data may also introduce inefficiencies, for instance due to ambiguous ITS hit. Related to tracking inefficiencies are kinematic challenges: low \pt\ tracks are notoriously hard to reconstruct due to their substantial curvature caused by the magnetic field. A large curvature means that the track may have a large shift in $\phi$ between different layers of the detector, making it hard to correctly associate hits to the same track. It may even curve so much that it does not reach the outer sections of the TPC, or worse yet curve back on the same layer of the ITS forming a helix. Large $|\eta|$ cascades also suffer inefficiencies as their daughter tracks traverse less ITS layers and/or TPC pad rows, or even fly out of the detector acceptance completely.
 
-    All of these effects are encapsulated in the reconstruction efficiency, which we calculate using Monte Carlo simulations. \mvl{Consider inverting the flow of this sentence: start by saying that the simulation propagates particles through the detector taking into account multiple scattering and hadronic and EM interaction with the material and then say that the output is a list of input particles and reconstructed tracks} In simulations we have access to the truth level information of generated particles as well as the reconstructed level information, the latter of which is obtained by propagating the generated particles through a virtual model of the ALICE detector using GEANT4 \cite{GEANT4} and then reconstructing the detector response with the same algorithms used for data. By comparing the reconstructed cascades to the generated cascades, using the truth level information as a sort of ``answer key'', we can determine the efficiency of our reconstruction procedure. This is done as a function of \pt\ and \y to properly account for the expected kinematic dependencies of the efficiency.
+    All of these effects are encapsulated in the reconstruction efficiency, which we calculate using Monte Carlo simulations. 
+    % \mvl{Consider inverting the flow of this sentence: start by saying that the simulation propagates particles through the detector taking into account multiple scattering and hadronic and EM interaction with the material and then say that the output is a list of input particles and reconstructed tracks} 
+    In these simulations we generate particles according to known physics processes, propagate them through a virtual model of the ALICE detector using GEANT4, and reconstruct the detector response with the same algorithms used for data. This way we have access to both the truth level information of generated particles as well as the reconstructed level information. By comparing the reconstructed cascades to the generated cascades, using the truth level information as a sort of ``answer key'', we can determine the efficiency of our reconstruction procedure. This is done as a function of \pt\ and \y to properly account for the expected kinematic dependencies of the efficiency.
 
     An important detail to note is that any inefficiencies due to cascades or \Lambda\ baryons decaying into unobserved channels are automatically accounted for in this efficiency calculation, as we do not put a constraint on the decay channel at the generated level. 
 
-    We define the efficiency as the number of reconstructed cascades, \textit{with a matched counterpart at the generated level}, divided by the number of generated cascades. The matching requirement ensures that we discard all false positives. For the generated cascades we make sure that they are within $|\eta| < 0.8$ and that they are a physical primary (discounting cascades that originate from weak decays or scattering in the detector). Keeping in mind that we want to calculate \textit{per trigger} quantities, we also require that the generated collision has at least one matched reconstructed collision that passes our event selections. This is relevant because any inefficiency due to event loss is implicitly accounted for in the normalization by the number of triggers, so we should only correct for inefficiencies due the cascade reconstruction procedure. \rs{maybe word it like ``the trigger efficiency corrections cancels in the equation, leaving only the associate efficiency correction. As the existance of an associate cascade implies the existence of a trigger, and therefor the event being reconstructed, we only need to correct for the associate cascade reconstruction efficiency \textit{assuming} the event is reconstructed.''} \mvl{instead of using 'assuming', consider using a phrasing based on 'conditional probability', i.e. the probability that a cascade is reconstructed \textit{given that} the event (primary vertex) is found and passes the selections.}
+    We define the efficiency as the number of reconstructed cascades, \textit{with a matched counterpart at the generated level}, divided by the number of generated cascades. The matching requirement ensures that we discard all false positives. For the generated cascades we make sure that they are within $|\eta| < 0.8$ and that they are a physical primary (discounting cascades that originate from weak decays or scattering in the detector). Keeping in mind that we want to calculate \textit{per trigger} quantities, we also require that the generated collision has at least one matched reconstructed collision that passes our event selections. This is relevant because any inefficiency due to event loss is implicitly accounted for in the normalization by the number of triggers. 
+    And because the trigger efficiency corrections cancels out in the equation, that leaves only the associate efficiency correction. As the existance of an associate cascade implies the existence of a trigger, and therefor the event being reconstructed, we only need to correct for the associate cascade reconstruction efficiency \textit{Given that} the event is reconstructed.
+    % \rs{maybe word it like ``The trigger efficiency corrections cancels out in the equation, leaving only the associate efficiency correction. As the existance of an associate cascade implies the existence of a trigger, and therefor the event being reconstructed, we only need to correct for the associate cascade reconstruction efficiency \textit{Given that} the event is reconstructed.''} 
+    % \mvl{instead of using 'assuming', consider using a phrasing based on 'conditional probability', i.e. the probability that a cascade is reconstructed \textit{given that} the event (primary vertex) is found and passes the selections.}
     
     \begin{align}
       \epsilon(\pt, \y) = \frac{N_\text{rec. casc.}(\pt, \y)}{N_\text{gen. casc. w/ rec. event}(\pt, \y)} \label{eq:efficiency}
     \end{align}
 
-    The efficiencies as function of \pt\ and \y\ are presented in Figure \ref{fig:eff}. Projections onto the \pt axis are presented in Figure \ref{fig:effPt}. 
+    The inverse of these efficiencies are applied as a weight to each cascade when constructing the pairs, as well as to the trigger normalizations. The efficiencies as function of \pt\ and \y\ are presented in Figure \ref{fig:eff}. Projections of the onto the \pt axis are presented in Figure \ref{fig:effPt}. 
 
     \begin{figure}[ht]
       \centering
@@ -210,17 +268,22 @@ Both \Xi\ and \Omega\ baryons have this characteristic ``cascading'' decay patte
 
   \subsection{Mixed events}
   \label{sec:ME}
-    % 2-particle acceptance
-    % normalization (2D)
-    
 
     The limited acceptance of the ALICE detector does not only affect the single-particle efficiency (as can be seen in Fig. \ref{fig:eff} from the drop in effciency at larger $|\y|$), it also impacts the correlation functions depending on the angular differences \dphi, \dy\ between the two cascades. For example, a pair with a \dy\ corresponding roughly to the ends of the ALICE detector has a very low probably of being detected - there is only ``one" way the cascades may be oriented such that both cascades fall into the detector acceptance: both at the respective ends of the detector. On the other hand, a pair with negligible angular difference does not suffer from this, if the trigger falls in the detector acceptance then so does the associate. 
     
     One cannot correct for these effects on a single-particle level so we do this on the two-particle level by means of a mixed events correction. By calculating the correlation function of two cascades from different events we can determine the effect on the correlation function that is purely due to detector effects. It is important to realise that we do still apply the single-particle efficiency correction while computing the correlation function for mixed events. This is because the uncorrected correlation function in mixed events is essentially a convolution of single-particle and two-particle efficiencies, but we want the correlation function to \textit{only} encapsulate the two-particle efficiency. 
 
-    The 
-
-    Ideally the mixed event correction is normalised such that it is 1 at $(\dphi,\dy) = (0,0)$, but due to limited statistics we normalise by the average in the region defined by $|\y| < 0.1$ and $-\pi/2 < \dphi < \pi/2$. The mixed events correction for \Xi\ - \Xi\ correlations are presented in Figure \ref{fig:ME2D}. The 1D projections are presented in Figure \ref{fig:ME1D}, where the normalization is no longer to 1 but to the average of the other dimension. 
+    When constructing the mixed events correlation function we only combine events that are have similar $V_z$: We split the $V_z$ range (between -10 cm and 10 cm) into 10 bins of 2 cm each, and only combine events that fall into the same $V_z$ bin. This minimises any effect that may arise due to different $V_z$ positions leading to different detector acceptances. To increase the statistics of the mixed events correlation function we take all cascade charge combinations together, as the mixed events correction is expected to be charge independent. This leads to the mixed events correlation function in equation \ref{eq:ME}:
+    \begin{align}
+      C_\text{ME} = \frac{1}{\xi} \frac{\d^2N^\text{ME}_\text{pairs}}{\d\dphi \d\dy} \label{eq:ME}
+    \end{align}
+    where $\xi$ is a normalisation factor. Ideally the mixed event correction is normalised such that it is 1 at $(\dphi,\dy) = (0,0)$, but due to limited statistics we normalise by the average in the region defined by $|\y| < 0.1$ and $-\pi/2 < \dphi < \pi/2$. 
+    
+    This mixed events correlation function is then used to correct the signal correlation functions by dividing the signal correlation functions by the mixed events correlation function for each charge combination: 
+    \begin{align*}
+      C(\dphi, \dy) = \frac{C^\text{T,A}_\text{SE}(\dphi, \dy)}{C_\text{ME}(\dphi, \dy)}, 
+    \end{align*}
+    where $C^\text{T,A}_\text{SE}$ is the signal correlation function obtained from same events. The mixed events correction for \Xi\ - \Xi\ correlations are presented in Figure \ref{fig:ME2D}. The 1D projections are presented in Figure \ref{fig:ME1D}, where the normalization is no longer to 1 but to the average of the other dimension. 
 
     \begin{figure}[ht]
       \centering
@@ -248,14 +311,16 @@ Both \Xi\ and \Omega\ baryons have this characteristic ``cascading'' decay patte
       \label{fig:ME1D}
     \end{figure}
 
-
   \section{Systematic uncertainties}
   \label{sec:systematics}
     Systematic uncertainties are a measure of our ignorance about biases introduced by choices made in the analysis procedure. It is a challenge to accurately quantify these uncertainties because they try to encapsulate a bias we do not fully understand - if we did, we could correct for it. The sources we consider for systematic uncertainties in this analysis are listed here:
     \begin{itemize}
       \item Cascade selection criteria
-      \item \rs{expand}
+      \item Sideband window definition
+      \item Monte Carlo closure test
     \end{itemize}
+
+    \rs{probably we should add a plot here (or at the very end of this section?) that shows the final systematic uncertainties as a function of \dphi\ and \dy\ for OS, SS, OS-SS.}
 
     \subsection{Systematic uncertainties from selection variables}
       \label{sec:syssel}
@@ -319,3 +384,10 @@ Both \Xi\ and \Omega\ baryons have this characteristic ``cascading'' decay patte
     \caption{$\Xi^-$ reconstruction efficiency for the three different selection sets}
     \label{fig:XiMinEffSys}
     \end{figure}
+
+    \subsection{Sideband window definition}
+      \label{sec:syssb}
+
+
+    \subsection{Monte Carlo closure test}
+      \label{sec:sysmc}
