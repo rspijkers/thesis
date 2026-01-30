@@ -1,0 +1,228 @@
+% theory chapter here, let's make a skeleton first
+
+
+% \begin{enumerate}
+%   \item (SM intro probably in the introduction)
+%   \item QCD intro
+%   \begin{itemize}
+%     \item Generic QCD: Lagrangian (?), asymptotic freedom, confinement, running coupling, gluons and colour charge
+%   \end{itemize}
+%   \item Unanswered questions and unexplained phenomena relevant to this analysis (e.g. strangeness enhancement, baryon production, hadronisation models that disagree with data)
+%   \item Tie this into hadronisation and how we can probe this with correlation studies
+%   \item Hadronisation
+%   \begin{itemize}
+%     \item String model basics
+%     \item Schwinger production mechanism (?)
+%     \item different tunes and why (colour reconnection, junctions, ropes, ...) - link to unanswered questions / results with tension. 
+%   \end{itemize}
+% \end{enumerate}
+
+% systematics uncertainty before results? at least explain it
+
+% keep theory (specifically models/tunes explanations) brief, but complete
+% maybe for each model/tune show a plot/result that qualitatively highlights the difference/reason/motivation for said model/tune
+% maybe show a "historical" result that shows that even the most basic Lund string models do reproduce key variables well
+% 	this motivates that it looks like something like string breaking is really going on behind the scenes
+
+% Schwinger production mechanism is good to talk about as an analogy - but keep in mind that there still is some handwaving involved when motivating string breaking
+% - yes there is a (QCD) field to motivate q-qbar pair creation, but why is the field linear? (lattice QCD, magic, ...)
+
+\rs{I think I should mention the four fundamental forces in the general introduction chapter, including some examples and basic considerations. Then we can immediately zoom in on the strong interaction and QCD in this theory chapter.}
+
+
+\section{QCD}
+
+  Quantum Chromodynamics (QCD) is the theory that describes the strong interaction, the force that binds quarks and gluons into hadrons. As is often done to understand more complicated theories, we draw parallels and analogues to the simpler and more familiar theory of Quantum Electrodynamics (QED). Just as QED describes the interaction between electrically charged particles with the photon acting as the mediator, QCD describes the interaction between colour charged particles (quarks and gluons) with the gluon acting as the mediator. The underlying symmetry group of QED is U(1), which gives rise to a single degree of freedom (electric charge) and one generator that refers to a single massless gauge boson (the photon). However, when studying the $\Delta^{++}$ baryon consisting of three up quarks ($uuu$) with aligned spins, it is clear that an additional quantum number is needed to satisfy the Pauli exclusion principle. On top of this, the quantum number must have three degrees of freedom to ensure that the total wavefunction is antisymmetric as baryons are fermions. This quantum number is called colour charge, with the fundamental degrees of freedom being labeled as red, green, and blue. 
+
+  The underlying symmetry group of QCD is SU(3), where the 3 refers to the three colour charges. Compared to U(1), SU(3) has 8 generators, leading to 8 massless gauge bosons known as gluons. Unlike photons in QED, gluons themselves carry colour charge, which means they may interact with each other. As the self-interaction of gluons is a key feature of QCD that is closely related to important phenomena such as asymptotic freedom and confinement, it is worth to briefly consider how this arises from the underlying symmetry group. Without deriving the full QCD Lagrangian, which is tedious and can readily be found in e.g. \cite{LectureNotesQCD}, we note that SU(3) is a non-abelian group, meaning that the generators do not commute. This non-commutativity leads to additional terms in the QCD Lagrangian, specifically in the part that describes the gluon fields. These terms contain ``interactions'' between three and even four gluon fields, which correspond to three-gluon and four-gluon vertices in Feynman diagrams. To summarize, gluon self-interaction follows directly from the non-abelian nature of the SU(3) symmetry group underlying QCD.
+
+  %%% asymptotic freedom and confinement %%%
+  \subsection{Colour confinement and the QCD potential}
+
+    The fundamental particles that carry colour charge, quarks, are never observed in isolation. This phenomenon is known as (colour) confinement, which states that only colour-singlet states may exist as free particles. Colour singlet states are combinations of (anti)colours that result in net-zero colour charge: the specific combinations are defined by the SU(3) algebra. For example, mesons consisting of a quark-antiquark pair are in the colour singlet state given by $\frac{1}{\sqrt{3}}(r\overline{r} + g\overline{g} + b\overline{b})$. This is the \textit{only} possible way to combine a quark and an antiquark into a colour singlet. Perhaps counterintuitively, a state given by $r\overline{r}$ is decidedly not a colour singlet! Similarly for baryons, which consist of three quarks, the only colour singlet state is given by $\frac{1}{\sqrt{6}}(rgb - rbg + gbr - grb + brg - bgr)$.
+
+    There is no first principles argument for colour confinement. However, the current hypothesis is that colour confinement originates from the gluon self-interaction. To motivate this we turn our attention to the non-relativistic QCD potential between two colour charges, which can be expressed as a sum of two terms:
+    \begin{align}
+      V(r) = \pm C \frac{\alpha_s}{r} + \kappa r. \label{eq:qcdpotential}
+    \end{align}
+    \rs{maybe add plot}
+    Here the first term is a Coulomb-like potential with the inclusion of a colour factor $C$ that encodes the QCD dynamics, and has to be calculated for each colour combination of the two charges. The second term is a linearly increasing potential that dominates at large distances, and is responsible for quark confinement. Because a linearly increasing potential corresponds to a constant force, this term can be interpreted as the energy stored in a string connecting the two colour charges, with $\kappa$ being the string tension. It is quite straightforward to obtain the coloumb-like term, including calculating the colour factors, by comparing it to the QED analogue.\footnote{See for instance one of the many lecture notes or textbooks on QCD, such as Modern Particle Physics by Thomson \cite{ThomsonMPP}}
+
+    The linear term on the other hand is far less obvious, and cannot be derived from first principles. 
+    Arguably the most convincing evidence comes from lattice QCD calculations, first proposed by Wilson \cite{Wilson1974} in 1974, which show that the potential between two static colour charges indeed increases linearly at large distances. This is a direct consequence of the non-abelian nature of QCD, that is, the fact that gluons themselves carry colour charge and can therefore interact with each other. One way to picture this is by considering a QCD dipole and comparing it to a simple electric charge (i.e. \textit{monopole}, not a dipole). In QED, the field lines spread out evenly in all directions, which leads to the familiar $1/r^2$ dependence of the field strength. This is a classic example of the inverse square law, which arises from the fact that the surface area of a sphere increases with $r^2$. In QCD however, lattice calculations show that the field lines between a quark and an antiquark tend to cluster together into a narrow tube or string, rather than spreading out. Applying the same surface area argument that lead to the inverse square law in QED, we see that the strength of the field between the quark and antiquark remains constant as they move apart - the field lines are not ``diluted'' over a larger area. This constant field strength leads directly to a linearly increasing potential. 
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.8\textwidth]{figures/Theory/E.pdf}
+      \caption{The QCD analogue of electric field lines between a positive and a negative charge. Taken from \cite{bali1998}.}
+      \label{fig:qcd_field_lines}
+    \end{figure}
+
+  \subsection{Asymptotic freedom}
+    Arguably one of the biggest misnomers in particle physics is the term ``coupling constant''. This quantity describes the strength of an interaction, and as the name suggests it was originally thought to be a constant value. However, it is now well established that the coupling ``constant'' actually varies with the energy scale of the interaction, a phenomenon known as the running of the coupling constant. This running of the coupling is present even in QED, where the coupling slightly increases with the energy scale of the interaction. This effect can be calculated by considering higher order corrections to the basic interaction vertex, specifically by including fermion loops in the propagator, see Fig. \ref{fig:qedloops}. These fermion loops leed to a screening of the electric charge, as virtual electron-positron pairs align themselves along the electric field, effectively reducing the observed charge at larger distances (corresponding to lower energy scales). 
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.8\textwidth]{figures/Theory/QEDloops.pdf}
+      \caption{Feynman diagrams showing fermion loop corrections to the photon propagator in QED.}
+      \label{fig:qedloops}
+    \end{figure}
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.85\textwidth]{figures/Theory/QCDloops.pdf}
+      \caption{Feynman diagrams showing first order fermion and boson loop corrections to the gluon propagator in QCD.}
+      \label{fig:qcdloops}
+    \end{figure}
+
+    In QED there is only one vertex to consider when building these fermion loops, so we only need to consider fermion loops in the propagator. In QCD however, the presence of triple and quadruple gluon vertices means that we also need to consider gluon loops in the propagator, see Fig. \ref{fig:qcdloops}. It turns out that these gluon loops have the opposite effect of fermion loops: they lead to an anti-screening of the colour charge, increasing the effective coupling at larger distances (lower energy scales). The strong coupling as a function of the energy scale $q^2$ is given by 
+    \begin{align}
+      \alpha_s(q^2) = \frac{\alpha_s(\mu^2)}{1 + \beta_0\alpha_s(\mu^2)\ln\left(\dfrac{q^2}{\mu^2}\right)}, \label{eq:runcoupling}
+    \end{align}
+    where $\mu^2$ is the reference energy scale and $\beta_0$ is defined as
+    \begin{align}
+      \beta_0 = \frac{11N_c - 2N_f}{12\pi},  \label{eq:beta0}
+    \end{align}
+    with $N_c$ the number of colours (3 in QCD), and $N_f$ the number of quark flavours. Equation \ref{eq:runcoupling} can be simplified by introducing the QCD scale parameter $\Lambda_\text{QCD}$, which is defined as the energy scale where the denominator of Eq. \ref{eq:runcoupling} vanishes. Experimentally, the value of $\Lambda_{QCD}$ is approximately 200-300 MeV. With this definition, we can rewrite Eq. \ref{eq:runcoupling} as
+    \begin{align}
+      \alpha_s(q^2) = \frac{1}{\beta_0\ln\left(\dfrac{q^2}{\Lambda_\text{QCD}^2}\right)}. \label{eq:runcouplingsimplified}
+    \end{align}
+    From this equation it is clear that as $q^2$ increases, the logarithm in the denominator also increases, leading to a decrease in the strong coupling $\alpha_S$. Another way to phrase this is to say that at high energy scales colour charges become asymptotically free, as the coupling becomes very weak. Figure \ref{fig:alphas} shows the running of $\alpha_S$ along with multiple determinations at various energy scales. In the regime where $\alpha_S \ll 1$ we can use perturbative QCD (pQCD) to make calculations, as higher order corrections are suppressed by powers of the strong coupling. At low energy scales however, $\alpha_S$ becomes large and perturbative QCD fails to converge. This regime is often referred to as non-perturbative QCD or soft QCD. As first principles calculations are impossible in this regime, we often resort to phenomenological models combined with MC event simulations to make predictions that can be compared to experimental data. 
+
+    In the context of high energy particle physics experiments at the LHC, perturbative QCD is applicable in the initial hard scattering between 2 partons from the colliding protons, while the subsequent parton showering and hadronisation are mainly non-perturbative processes.  
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\textwidth]{figures/Theory/alphas.pdf}
+      \caption{The running of the strong coupling constant $\alpha_S$ as a function of the energy scale $Q$. Various experimental determinations are shown as points with error bars. Taken from \cite{PDG2024}.}
+      \label{fig:alphas}
+    \end{figure}
+
+\section{Unanswered questions}
+\label{sec:unansweredquestions}
+\rs{other title?}
+  % lets do some basic other unanswered questions here, maybe discuss soft qcd in general.
+
+  When colliding protons at high energies, one finds many final state hadrons produced in the collision - between 50 and 100 charged particles are found in the central region of the detector in the pp collisions with the highest charged particle multiplicity at $\sqrt{s} = 13$ TeV. \cite{ppMultiplicity} Even considering the possibility of having multiple partons from each proton interacting with each other, dozens of charged particles in a single pp collision still seems like a lot. The mechanism behind the production of hadrons after the initial hard scattering is known as hadronisation, and as said in the previous section, this is a non-perturbative QCD process that cannot be calculated from first principles. Though we have many phenomenological models that attempt to describe this process, none of them are able to describe all experimental observations simultaneously.\footnote{The fact that there are multiple models should already indicate that these models are incomplete. If we had a complete understanding of hadronisation, there would be no need for multiple competing models.} Discrepancies between model predictions and experimental data are investigated with the goals of improving the phenomenological models as well as our understanding of hadronisation in general - these goals are of course intricately linked. 
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/Theory/ppEvent.png}
+    \caption{An event display of a high multiplicity pp collision at $\sqrt{s} = 7$ TeV, recorded by ALICE in 2010. Taken from \cite{ppEvent}.}
+    \label{fig:ppevent}
+  \end{figure}
+
+  \subsection{Strangeness enhancement}
+    One of the most important results from the ALICE collaboration is the observation of strangeness enhancement in high-multiplicity pp and pPb collisions \cite{StrangenessEnhancement}. As this thesis concerns mainly pp collisions, we will focus on those results here, though it is important to note that similar trends are observed in pPb and PbPb collisions as well. In case of PbPb collisions, strangeness enhancement has long been considered a signature of the formation of a QGP \cite{Koch1986StrangeQGP}. The observation of strangeness enhancement in smaller systems, especially pp collisions, is therefore quite surprising and interesting. It is tempting to then argue that a QGP is also formed in high-multiplicity pp collisions, however, some other phenomena that are also considered signatures of the QGP are not observed in pp collisions. One example of this is ``jet quenching'': high momentum partons lose energy when traversing the QGP, leading to (among other things) a suppression of high-\pt\ jets. When comparing jet \pt\ spectra between pp and PbPb collisions a strong suppression is observed in PbPb collisions. \cite{JetQuenchAlice} 
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.6\textwidth]{figures/Theory/StrangenessEnhancement.pdf}
+      \caption{Yields of different strange hadrons as a ratio to pion yield, as a function of charged particle multiplicity. Taken from \cite{StrangenessEnhancement}.}
+      \label{fig:strangeness_enhancement}
+    \end{figure}
+
+    The yields of strange hadrons relative to pions as a function of charged particle multiplicity are shown in Fig. \ref{fig:strangeness_enhancement}. There is a clear increase of strange hadron production with increasing multiplicity. On top of this, the slope of the increase is steeper for hadrons with higher strangeness content, with the steepest slope observed for the $\Omega$ baryon $(sss)$. The results are compared to calculations from several MC models, none of which are able to describe the data while simultaneously reproducing other key observables such as the proton-to-pion ratio (the DIPSY model seems to reproduce the data, but at the cost of grossly overestimating the proton-to-pion ratio, see Fig. 3 from \cite{StrangenessEnhancement}). This shows that our understanding of strangeness production in small systems is still incomplete, and extensions of the existing MC models have been made to try and encapsulate this behaviour. Two of these extensions will be discussed in the next section. 
+
+  \subsection{correlations using run 2 data}
+  this is a bit tricky, as the results seem to contradict this analysis.
+
+  see this paper for pp correlations, which already show discrepancies with data: \cite{ALICEppCorr}
+
+\section{Hadronisation}
+  \subsection{Lund string model}
+    %%% string model %%%
+    The Lund String model \cite{LundModel} is based on the idea that the QCD potential between two colour charges increases linearly with distance (see Eq. \ref{eq:qcdpotential}), and as such can be described by spanning a string with tension $\kappa$ between the two charges. The value of $\kappa$ is approximately 0.2 GeV$^2$, which was already established before the inception of the Lund model by Eichten et al. \cite{StringTensionQuarkonium} and has since been confirmed by lattice QCD calculations \cite{StringTensionReview}. In a very simplified picture, when a quark and an antiquark move apart from each other, e.g. after a high-energy collision, they transform their kinetic energy into potential energy stored in the string. As the distance between the quarks increases, the length of the string and therefor the potential energy stored in it also increases. At some point the potential energy becomes high enough to create a new quark-antiquark pair from the vacuum, conserving all quantum numbers, which breaks the string into two smaller strings with less total length than before. This process may happen multiple times, until the remaining string pieces are too short to create new quark-antiquark pairs, at which point the quark-antiquark pairs at the ends of each string piece combine to form hadrons. 
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\textwidth]{figures/Theory/stringfrag.pdf}
+      \caption{An initial \qqbar\ pair moves in opposite direction, causing the field (string) between them to break in multiple places, leading to multiple final state hadrons represented by the different connected rectangles. These are also referred to as yo-yo modes. Taken from \cite{LundModel}.}
+      \label{fig:stringfrag}
+    \end{figure}
+
+    A massive quark-antiquark pair cannot be created at the exact same space-time point as this would violate energy conservation. Instead, a virtual \qqbar\ pair with $E_q = E_{\overline{q}} = 0$ is created with imaginary longitudinal momentum along the string $p_L = \pm i\sqrt{\pt^2 + m^2}$. As the quark and antiquark move along the string, they gain energy from the string tension until their longitudinal momentum becomes real (zero). At this point they tunnel into real quarks, which immediately gives us a handle on the probability of this happening: \cite{StringModelSlides} 
+    \begin{align}    
+      P = \exp\left(-\frac{\pi(m^2 + \pt^2)}{2\kappa}\right). \label{eq:tunnelprob}
+    \end{align}
+    
+    From this we can see that heavier quarks are very suppressed, as are quarks with high \pt. Note that as we are in the non-perturbative regime, where quarks are most decidedly \textit{not} asymptotically free, we should use the constituent quark masses. Filling reasonable approximations of these masses into Eq. \ref{eq:tunnelprob} gives a suppression factor of approximately 0.3 for strange quarks compared to up and down quarks. It's worth mentioning that charm quarks are suppressed by a factor on the order of $10^{-11}$ (!), making their production through string breaking effectively impossible. 
+
+    In this simplified picture we would only end up with \qqbar\ pairs, leading to the production of only mesons. To also produce baryons, the Lund model introduces the concept of diquarks: two quarks bound together in a colour anti-triplet state (or two antiquarks in a colour triplet state). These diquarks can be created through the same tunnelling mechanism as quark-antiquark pairs, and can then combine with a third (anti)quark to form (anti)baryons. Taking a reasonable approximation for an up/down diquark mass as slightly less than twice the constituent quark mass of up/down quarks, we find a suppression factor of approximately 0.1 compared to single up/down quarks. 
+
+    %%% empirical support for string model %%%
+    \rs{I'd like to show a (historical) result to motivate string breaking, but I'm not sure what would be the best choice here. Any suggestions very welcome.}
+
+  %%% SKANDS MODE 2 (JUNCTIONS) %%%
+  \subsection{Extensions of the string model}
+    The simple picture of a quark-antiquark pair moving apart is a rather good description in case of photon or W/Z boson decays, where the initial state is a colour singlet and the hadronisation process is constrained to the accompanying jet. Proton-proton collisions however pose two major complications to this picture: first of all, we are colliding composite objects consisting of strongly interacting partons, which means that after the initial hard scattering, what's left of the protons (the beam remnants) are colour charged and hence strings may and will connect to them. Secondly, it is possible for multiple parton-parton interactions (MPI) to occur in a single pp collision, which are not only fundamentally correlated as the initiator partons come from the same colour-singlet (the protons), but the resulting hadronisation processes can also overlap in phase space. This means that the naive picture of considering MPIs independently is unphysical. 
+
+    This leads to the concept of colour reconnection (CR), where the different MPI systems may combine based on their \pt\ and a tuneable parameter. In the ``default'' CR scheme, that is the scheme used in PYTHIA 8 with the Monash tune \cite{MonashTune}, the partons of the different MPI systems are then reconnected in a way that minimizes the total string length. From the manual of PYTHIA, this scheme can be viewed as a slightly more sophisticated version of the one introduced in \cite{firstCR}. Historically, this CR scheme was introduced to improve the description of the average \pt\ as a function of charged particle multiplicity - if each MPI system hadronised independently, the average \pt\ would be independent of multiplicity instead of rising with it as observed in data. \cite{UA1} 
+
+    From the experimental results discussed in Section \ref{sec:unansweredquestions}, it is clear that the default PYTHIA 8 model with Monash tune is not able to correctly describe hadronisation, with the most grating discrepancies in the baryon and strangeness sectors. Two extensions are especially relevant in this context: Beyond Leading Colour \cite{Junctions} adds additional topologies for the colour connections between partons, allowing for more complicated string topologies such as junctions. The other extension is the Rope Hadronisation model \cite{Ropes}, which allows for overlapping strings to combine into so-called ropes with a higher effective string tension, leading to an enhanced production of strange quarks and diquarks according to Eq. \ref{eq:tunnelprob}.
+    \subsubsection{Junctions}
+      From SU(3) algebra, one can calculate the superpositions of colour states of two uncorrelated partons. Taking the example of two gluons, one gets 
+      \begin{align}
+        8 \otimes 8 = 27 \oplus 10 \oplus \overline{10} \oplus 8 \oplus 8 \oplus 1. \label{eq:gluongluon}
+      \end{align}
+      Here the 27 represents the leading colour configuration - each gluon carrying two units of colour charge. The other lower order terms correspond to states where colour states overlap, leading to lower net colour charge. The singlet case corresponds to two gluons having exactly opposite colour charges. Simple probability arguments show that the leading colour configurations, while most probabe, only account for 27/64 $< 50\%$ of all possible configurations. In other words, sub-leading colour configurations are far from negligible. 
+
+      One of the key characteristics of these sub-leading colour configurations is the possibility to create junctions: topologies where 2 colour charges are allowed to combine into a single anti-colour charge. The accompanying 2 anti-colours must then also combine into a single colour charge to conserve colour and baryon number. The resulting string topology looks like a Y-shape, with 3 string pieces meeting at a single point. This string may break into (multiple) \qqbar\ pairs, allowing the combined quarks to hadronise into baryons. A schematic of this process is shown in Fig. \ref{fig:junction} - note that more complex topologies involving multiple junctions are also possible. 
+
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/Theory/junction.pdf}
+        \caption{Schematic of a junction topology, where 3 quarks are connected through a junction point. Taken from \cite{Junctions}.}
+        \label{fig:junction}
+      \end{figure}
+
+      It is important to note that the reconnection procedure for these sub-leading configurations is done after the parton shower but before hadronisation, meaning that strings connected to junctions may still break and hadronise. It is also tempting to calculate the possibilities and probabilities of forming junctions by assigning colour charges to partons and subsequently applying the SU(3) algebra. However, as hadronisation and colour reconnection are non-perturbative processes we fundamentally cannot consider the colour charges of partons as well-defined quantities. So rather than attempt any first-principles calculation, the mechanism and probability of forming sub-leading colour configurations is modelled by assigning so-called ``colour indices'' ranging from 1 to 9 to partons (one for quarks, two for gluons) and allowing reconnections based on these indices. Crucially, these colour indices do \textit{not} correspond to, or even try to represent, the actual colour charge of the partons. They only have meaning in the context of combinations of indices: for example, a colour and an anti-colour index that match may reconnect, see Figure \ref{fig:reconnectnormal}. The odds of this happening is obviously 1/9, which perfectly agrees with the SU(3) algebra $3 \otimes \overline{3} = 8 \oplus 1$. 
+
+      The case of two colour indices is a bit more relevant, as junctions can actually show up here. The probability of this happening is encoded by allowing junctions to form when two colour indices are the same modulo 3, that is, if they are part of any of the triples $[1,4,7]$, $[2,5,8]$ or $[3,6,9]$. See Figure \ref{fig:reconnectjunction} for a possible reconnection. As there are 2 possible combinations for any given colour index the probability of forming a junction topology is 2/9, which does not agree perfectly with SU(3) algebra: $3 \otimes 3 = 6 \oplus \overline{3}$. This is remidied by tuning the model such that junction-like topologies are slightly enhanced, as it turns out that the calculations based on these colour indices slightly underestimate the junction probability for any of the parton combinations, not just the $qq$ and \qqbar\ cases we've just discussed. 
+
+      \begin{figure}
+        \begin{subfigure}[t]{\textwidth}
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/Theory/reconnectnormal.pdf}
+          \caption{Reconnection of a colour and an anti-colour index that match, leading to a normal string topology.}
+          \label{fig:reconnectnormal}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[t]{\textwidth}
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/Theory/reconnectjunction.pdf}
+          \caption{Reconnection of two colour indices, leading to a junction topology.}
+          \label{fig:reconnectjunction}
+        \end{subfigure}
+        \caption{Schematic of two possible reconnections based on colour indices. Taken from \cite{Junctions}.}
+        \label{fig:reconnections}
+      \end{figure}
+
+      The addition of these junction topologies makes for another baryon production mechanism, on top of the diquark mechanism discussed in the previous section. It is expected to especially affect strange baryon production, as (double) strange diquarks are heavily suppressed compared to single strange quarks. In case of \Xi\ baryon production, one would traditionally need a diquark with at least one strange quark, sometimes even a double strange diquark like in Figure \ref{fig:xijunction}. With junctions, one can also produce \Xi\ baryons by combining two single strange quarks with a light quark. These quarks may come from parton showering or string breaking. 
+
+      As can also be seen from Figure \ref{fig:xijunction}, in the traditional diquark picture the \Xi\ baryon is always connected to an anti-baryon with at least one strange quark, as they must share this strange $s\overline{s}$ pair from the diquark. In case of a double strange diquark this effect is even stronger, here a \Xi\ baryon will always be balanced by a $\overline{\Xi}$ or even $\overline{\Omega}$ baryon. With junctions however, the balancing anti-baryon only has one \qqbar\ pair in common with the \Xi\ baryon, meaning that there is much less correlation between the two. As such, studying baryon correlations may provide a way to experimentally probe the presence and impact of junction topologies in hadronisation. 
+
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{figures/Theory/Xijunction.pdf}
+        \caption{Taken from \cite{Lund2020qcdchallenges}.}
+        \label{fig:xijunction}
+      \end{figure}
+
+    \subsubsection{Colour ropes}
+      In situations where many strings are present in the same phase-space, one may expect these strings to possibly interact. This idea was already proposed in 1984 by \cite{earlyRopes}, initially in the context of heavy-ion collisions. However, considering again the possibility of multiple parton interactions in pp collisions, we may expect this scenario to be applicable here as well. Generally speaking, interactions between string can be grouped into two categories: string fusion and string shoving. String fusion refers to the idea that multiple overlapping strings may combine into a single ``rope'' with a higher effective string tension, while string shoving refers to the idea that overlapping strings may repel each other, leading to collective flow-like effects. \cite{Ropes} We will focus on the former here, and consider it's effect on hadronisation. From Equation \ref{eq:tunnelprob} one can see that a higher effective string tension $\kappa$ leads to an enhanced production of heavier (read: strange) and/or diquarks. This leads to an enhanced production of strange hadrons, expected to scale with multiplicity as higher multiplicity events are more likely to have overlapping strings. 
+
+      \rs{probably put a ropes picture here - this section can be expanded a bit more as well}
+      
+
+% References:
+% - (?) PYTHIA baryon correlations: https://link.springer.com/article/10.1140/epjc/s10052-023-12271-7
+% Hadronisation
+% - Schwinger mechanism: https://journals.aps.org/pr/abstract/10.1103/PhysRev.128.2425
+% - (?) Vacuum polarization and the absence of free quarks: https://journals.aps.org/prd/abstract/10.1103/PhysRevD.10.732
+%     (Collectivity without plasma in hadronic collisions) https://www.sciencedirect.com/science/article/pii/S037026931830087X
+%     (A shoving model for collectivity in hadronic collisions) https://arxiv.org/abs/1612.05132
+
+% MC closure
+% -> bugfix
+% -> eta (instead of y) for efficiency
