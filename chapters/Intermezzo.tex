@@ -4,19 +4,85 @@
 
 We performed a short analysis on the single \Xi\ spectra. This was motivated by the discrepancy between the results presented in this thesis and the analysis performed on data gathered in the previous data-taking period (Run 2). \cite{Adolfson2024} 
 
-\section{Efficiency correction for single \texorpdfstring{\Xi}{Xi} spectra}
-  \label{sec:intermezzo:efficiency_correction}
+\rs{Not sure how to motivate this in a ``politically correct'' way, but a large part of the motivation for this check is that the discrepancy between run 2 and 3 is flat in dphi - which indicates a normalisation issue. By analyzing the single particle spectrum, we can more or less verify the normalisation.}
 
-  The efficiency correction is different for single particle yields compared to correlation studies. This is due to the fact that in correlation studies we are interested in quantities \textit{per trigger}, whereas in single particle spectra we are interested in quantities \textit{per event}. This results in a slightly different definition of the cascade reconstruction efficiency, as well as an additional factor that can be thought of as an ``event reconstruction efficiency''. 
+Studying the single particle spectra of cascades is interesting in it's own right, as can be seen from publications such as (but not limited to) the Nature article on strangeness enhancement \cite{StrangenessEnhancement} discussed in Section \ref{sec:theory:strangeness_enhancement}. In this analysis we will present the yield of \Xi\ baryons as a function of \pt\, which serves as both a stepping stone to producing correlations between \Xi\ baryons as well as an important cross-check to validate the correlation results. After all, when one wants to analyse observables involving multiple \Xi\ baryons, one better make sure that the single \Xi\ spectra are correct. 
 
-  The cascade reconstruction efficiency is only altered at the generated level. Instead of requiring that each generated collision has a matched reconstructed counterpart, we only require that the generated collision is reconstructible, i.e. that pass our event selections. However, some of our event selections are based on reconstructed level information such as the \texttt{sel8} selection criterium, and we by definition do not have access to this information at the generated level. So we only apply the event selections that can be defined at the generated level, albeit slightly different from the reconstructed level due to fundamental differences between generated and reconstructed information. This consists of two different event selections:
-    \begin{itemize}
-      \item $V_z < 10$cm: as the position of the primary vertex is available at the generated level, this is a rather straightforward analogy to the reconstructed level selection.
-      \item INEL$>0$: at the reconstructed level this selection is applied at track level by requiring at least one central charged track that contributes to the PV. The generated level equivalent is to require at least one charged primary particle within $|\eta| < 0.8$. 
-    \end{itemize}
+\section{Efficiency corrections for \texorpdfstring{\Xi}{Xi} baryon yields}
 
-    \rs{put eff plots here}
+  The \Xi\ baryon yields are calculated according to the following equation:
+  \begin{align}
+    \frac{1}{N^\text{true}_\text{events}} \frac{\d^2 N_\Xi}{\d\pt \d\y} = \frac{\epsilon_\text{event}}{N^\text{rec.}_\text{events}} \frac{N^\text{rec.}_\text{casc.}(\pt, \y)}{\epsilon_\text{\Xi}(\pt, \eta) \Delta \pt \Delta \y}, \label{eq:single_spectra}
+  \end{align}
+
+  where $\epsilon_\text{event}$ is the event reconstruction efficiency and $\epsilon_\text{\Xi}(\pt, \eta)$ is the cascade reconstruction efficiency. As we report the yield in the central rapidity window $|\y| < 0.5$, $\Delta \y = 0.5 - (-0.5) = 1$ and drops out of the equation. Note that to be consistent with the correlation analysis we apply the efficiency correction as a function of \eta\ rather than \y\, as we require both the generated and reconstructed cascade to be within $|\eta| < 0.8$. Combining such an \eta\ selection with an efficiency correction as a function of \y\ would lead to unwanted edge effects in the efficiency correction. 
+
+  The \Xi\ efficiency correction is different for single particle yields compared to correlation studies. This is due to the fact that in correlation studies we are interested in quantities \textit{per trigger}, whereas in single particle spectra we are interested in quantities \textit{per event}. This results in a slightly different definition of the cascade reconstruction efficiency that can be written as:
+  \begin{align}
+    \epsilon(\pt, \eta) = \frac{N^\text{rec.}_\Xi(\pt, \eta)}{N^\text{gen.}_\Xi(\pt, \eta)}. \label{eq:efficiency_spectra}
+  \end{align}
+
+  Compared to the efficiency correction for correlation studies given by Equation \ref{eq:efficiency}, we no longer require that a generated cascade has a matched reconstructed event, as efficiency loss due to event loss is something we want to account for. Note that we do require that the generated event is reconstructible, i.e. that the generated event passes our event selections. However, some of our event selections such as the \texttt{sel8} selection criterium are based on reconstructed level information, and we by definition do not have access to this information at the generated level. So we only apply the event selections that can be defined at the generated level, albeit slightly different from the reconstructed level due to fundamental differences between generated and reconstructed information. This consists of two different event selections:
+  \begin{itemize}
+    \item $V_z < 10$ cm: as the position of the primary vertex is available at the generated level, this is a rather straightforward analogy to the reconstructed level selection.
+    \item INEL$>$0: at the reconstructed level this selection is applied at track level by requiring at least one central charged track that contributes to the PV. The generated level equivalent is to require at least one charged primary particle within $|\eta| < 0.8$. 
+  \end{itemize}
+
+  The event reconstruction efficiency is needed to account for any event loss that affects the per-event normalisation. It is given by 
+  \begin{align}
+    \epsilon_\text{event} = \frac{N^\text{gen.}_\text{events}}{N^\text{rec.}_\text{events}}. \label{eq:event_efficiency}
+  \end{align}
+
+  Also here we require that the generated event is reconstructible, so we only consider generated events that pass the generated level event selections described above. Note that the event efficiency is not dependent on any properties of the \Xi\ baryons, and should therefor only impact the overal normalisation of the spectra, not the shape. The efficiency corrections as a function of \pt\ and \eta\ are shown in Figure \ref{fig:SpectraEff2D}, with projections on the \pt\ axis shown in Figure \ref{fig:SpectraEffPt}. 
+
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/Efficiency/2D/hXiMinEff.pdf}
+      \caption{$\Xi^-$ efficiency}
+      \label{fig:SpectraXiMinEff}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/Efficiency/2D/hXiPlusEff.pdf}
+      \caption{$\Xi^+$ efficiency}
+      \label{fig:SpectraXiPlusEff}
+    \end{subfigure}
+    \caption{Efficiency corrections for the single \Xi\ spectra.}
+    \label{fig:SpectraEff2D}
+  \end{figure}
+
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/Efficiency/1D/hPtXiMinEff.pdf}
+      \caption{$\Xi^-$ efficiency}
+      \label{fig:SpectraXiMinEffPt}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/Efficiency/1D/hPtXiPlusEff.pdf}
+      \caption{$\Xi^+$ efficiency}
+      \label{fig:SpectraXiPlusEffPt}
+    \end{subfigure}
+    \caption{Efficiency corrections for the single \Xi\ spectra as a function of \pt.}
+    \label{fig:SpectraEffPt}
+  \end{figure}
 
 \section{Results for single \texorpdfstring{\Xi}{Xi} spectra}
   \label{sec:intermezzo:results}
-  [this is where the results go]
+  The \Xi\ baryon transverse momentum distributions calculated according to Equation \ref{eq:single_spectra} are shown in the top panel of Figure \ref{fig:SpectraRatio}, where they are compared to the results of the analysis performed on Run 2 data.\cite{Run2Spectra} The bottom panel of Figure \ref{fig:SpectraRatio} shows the ratio of the two spectra, where the vertical bars represent the statistical uncertainties added in quadrature. The results show a good agreement between the two analyses. It seems that we estimate the yield to be slightly lower than the previous analysis, but still well within the systematic uncertainties. 
+  
+  The only exception is the lowest \pt\ bin, which can be explained by considering the effect of a pseudorapidity window $|\eta| < 0.8$ in combination with a rapidity window $|y| < 0.5$. In order to compare with previous analyses, we apply this rapidity selection on top of the pseudorapidity selection that we use to be consistent with the correlation analysis. This leads to an incorrect efficiency correction in the range where $|\eta| > 0.8$ and $|y| < 0.5$, which for the \Xi\ baryon occurs at $\pt \approx 0.96$ GeV/$c$.\footnote{As $|\eta| = 0.8$ corresponds to the edge of our detector, we don't expect a large increase of yield beyond this range. However, in the efficiency correction we should not remove cascades that are generated within $|y| < 0.5$ but reconstructed with $|\eta| > 0.8$. Doing this leads to an overestimation of the efficiency, and therefor an underestimation of the yield, as can be seen in the lowest \pt\ bin.}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/Intermezzo/spectra_ratio.pdf}
+    \caption{\Xi\ baryon yields as a function of \pt. Results of this analysis are compared to the results of the analysis performed on Run 2 data.\cite{Run2Spectra} Systematic errors are displayed as shaded boxes, statistical errors as vertical bars. The ratio of the two spectra is shown in the bottom panel, here the vertical bars represent the statistical uncertainties added in quadrature.}
+    \label{fig:SpectraRatio}
+  \end{figure}
+  \rs{this is a placeholder, I'll add the sys. uncertainties for this analysis after I run on the full dataset.}
