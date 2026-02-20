@@ -73,6 +73,168 @@ Studying the single particle spectra of cascades is interesting in it's own righ
     \label{fig:SpectraEffPt}
   \end{figure}
 
+\section{Systematic uncertainties for \texorpdfstring{\Xi}{Xi} baryon yields}
+  To investigate any potential sources of discrepancies or systematic uncertainties, we started by looking into the distributions of the topological variables used in the cascade selection. Any non-trivial selection on these variables will lead to a different reconstruction efficiency. In order to accurately model this, the distributions of the topological variables should be well described by the Monte Carlo simulations used to determine the efficiency corrections, even before applying the selection on these variables. It is computationally not feasible to consider all possible cascade candidates before applying any selection, as this is equivalent to considering all possible track triplet combinations in an event. Therefore, we apply a set of `minimal' selection criteria before looking at the distributions of the topological variables. In principle these selection criteria aim to be as inclusive as possible while reducing the combinatorial background by requiring a minimum distance of all daughter tracks to the primary vertex. These minimal selection criteria are shown in Table \ref{tab:minsel}.
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|}
+      \hline
+      \multicolumn{2}{|c|}{Minimal selection criteria} \\
+      \hline
+      $|\eta_\text{tracks}|$ & $< 0.8$ \\
+      \hline
+      Number of TPC crossed rows & $> 50$ \\
+      \hline
+      DCA V0 daughters & $< 1.0$ \\
+      \hline
+      DCA cascade daughters & $< 1.0$ \\
+      \hline
+      DCA pos V0 daughter to PV & $> 0.01$ \\
+      \hline
+      DCA neg V0 daughter to PV & $> 0.01$ \\
+      \hline
+      DCA bach to PV & $> 0.02$ \\
+      \hline
+      V0 $\cos(\text{PA})$ & $> 0.97$ \\
+      \hline
+      Cascade $\cos(\text{PA})$ & $> 0.97$ \\
+      \hline
+      V0 radius & $> 0.5$ \\
+      \hline
+      Cascade radius & $> 0.5$ \\
+      \hline
+      V0 mass window & $< 14$ MeV/$c^2$\\
+      \hline
+    \end{tabular}
+    \caption{Minimal selection criteria for cascade candidates}
+    \label{tab:minsel}
+  \end{table}
+
+  We compare the distributions of some topological variables after applying the minimal selection criteria on both data and Monte Carlo simulations. In the case of the MC simulations we require that the reconstructed cascade is matched to a generated cascade, while in the data sample we apply a rough invariant mass selection of 1.31 \gev $< m_\text{inv} <$ 1.33 \gev to limit the contribution of combinatorial background. We also self-normalise the distributions to account for the difference in statistics between the two samples. Three topological variables seemed to exhibit particular discrepancies between data and MC simulations: DCA of the V0 (\Lambda) to the PV, DCA of the V0 daughters to the PV, and the cascade radius. In all three cases the selection criterium is a minimum value. The distributions of these variables are shown in Figure \ref{fig:TopologicalDistributions}, where the DCA of the V0 daughters are split by charge. 
+
+  \begin{figure}
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/Before_hDCAV0ToPV.pdf}
+      \caption{DCA of the V0 to the PV}
+      \label{fig:DCAV0ToPV}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/Before_hDCAPosToPV.pdf}
+      \caption{DCA of the positive V0 daughter to the PV}
+      \label{fig:DCAPosToPV}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/Before_hDCANegToPV.pdf}
+      \caption{DCA of the negative V0 daughter to the PV}
+      \label{fig:DCANegToPV}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/Before_hCascRadius.pdf}
+      \caption{Cascade radius}
+      \label{fig:CascRad}
+    \end{subfigure}
+
+    \caption{Distributions of topological variables for data and MC simulations after applying the minimal selection criteria. The distributions are self-normalised to account for differences in statistics between the two samples. The DCA of the V0 daughters to the PV are split by charge. }
+    \label{fig:TopologicalDistributions}
+  \end{figure}
+
+  The DCA of the V0 to the PV (\texttt{DCAV0ToPV}) differs between data and MC across a rather large range of values - any reasonable minimum value should lie between 0 and 0.1 cm, which covers the range where the discrepancy is observed. Instead of assessing the impact of this discrepancy we decide to do away with this selection criterium altogether. This is motivated in part by the fact that a reasonable cut on this variable would not discard a large fraction of the sample. 
+  
+  The DCA of the V0 daughters to the PV (\texttt{DCAPosToPV}, \texttt{DCANegToPV}) also shows a discrepancy between data and MC across a large range of values, including the region where any reasonable selection criterium would lie. To investigate the effect of this discrepancy on the \pt\ distribution of the \Xi\ baryons we vary the minimum value of this selection criterium significantly with three values: 0.01 cm, 0.20 cm, and 0.30 cm. These values are chosen to cover as much of the range of the discrepancy as possible without discarding too much of the available statistics. As this criterium works on the track level (not the \Xi\ candidate level), large minimum values will lead to a significant drop of reconstruction efficiency. To compare the different variations we copmute the \Xi\ \pt\ spectrum for each of the three variations, and look at the ratio of the lowest and highest variations to the middle variation. The results are shown in Figure \ref{fig:SpectraRatioDCAPosNegToPV}, where the uncertainties are calculated assuming they are fully correlated between the variations. The weighted averages show that the effect is rather small, with the smallest effect observed when comparing the 0.20 and 0.30 cm variations. Combining this with the fact that large minimum values for this variable lead to a significant drop in reconstruction efficiency, we decide to use 0.05 as the default value, with variations of 0.01 and 0.10 to estimate the systematic uncertainty as part of the ensemble variation. 
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/Intermezzo/systematics/spectra_ratio_DCAPosNegToPV.pdf}
+    \caption{Ratio of the \Xi\ \pt\ spectra for different variations of the minimum DCA of the V0 daughters to the PV. The vertical bars represent the statistical uncertainties subtracted in quadrature, assuming they are fully correlated between the variations. The weighted average of the ratios are also drawn as dashed lines, with the corresponding values shown in the legend.}
+    \label{fig:SpectraRatioDCAPosNegToPV}
+  \end{figure}
+
+  Lastly we have investigated the effect of the cascade radius selection criterium. Here the discrepancy between data and MC is confined to a smaller region at low radii, but unfortunately this is also the region where the distribution peaks as well as where the selection criterium lies. In much the same way as for the DCA of the V0 daughters to the PV, we vary the minimum value of this selection criterium with three values: 0.5 cm, 1.5 cm, and 2.5 cm. The results are shown in Figure \ref{fig:SpectraRatioCascadeRadius}, again as ratios to the middle value with the assumption that the uncertainties are fully correlated. Apart from the first two \pt\ bins, the effect is very small in both variations compared to the middle value. Though it is unclear what exactly causes this effect, it is not surprising that the effect is largerst at low \pt\ as the minimum decay radius is heavily correlated with the \pt\ of the cascade. We decide to use 1.5 cm as the default value, with variations of 0.5 and 2.5 cm to estimate the systematic uncertainty as part of the ensemble variation.
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/Intermezzo/systematics/spectra_ratio_CascRad.pdf}
+    \caption{Ratio of the \Xi\ \pt\ spectra for different variations of the minimum cascade radius. The vertical bars represent the statistical uncertainties subtracted in quadrature, assuming they are fully correlated between the variations. The weighted average of the ratios are also drawn as dashed lines, with the corresponding values shown in the legend.}
+    \label{fig:SpectraRatioCascadeRadius}
+  \end{figure}
+
+  \subsection{Ensemble variation of the topological selection criteria}
+    Many of the topological selection criteria are indirectly or even directly correlated with each other. Consequently, varying all selection criteria independently and adding the resulting systematic uncertainties in quadrature would most likely lead to an overestimation of the total systematic uncertainty. On top of this, it is incredibly time and resource consuming to do this. Therefor we define two sets of variations on top of the default selection criteria, where most of the criteria are either tightened or loosened together. The different selection criteria corresponding to the loose and tight selection sets are summarized in Table \ref{tab:syssel}. Only the selections that differ from the default selection (Table \ref{tab:cascsel}) are listed. 
+
+    \begin{table}[ht]
+      \centering
+      \begin{tabular}{l|c|c|c}
+        selection variable & loose & default & tight \\
+        \hline
+        Number of TPC crossed rows & $> 50$ & $> 50$ & $> 60$ \\
+        \hline
+        TPC d$E$/d$x$ & $< 6\sigma$ & $< 5\sigma$ & $< 4\sigma$ \\
+        \hline
+        DCA V0 daughters & $< 1.0$ & $< 0.5$ & $< 0.1$ \\
+        \hline
+        DCA cascade daughters & $< 1.00$ & $< 0.25$ & $< 0.20$ \\
+        \hline
+        DCA pos V0 daughter to PV & $> 0.01$ & $> 0.05$ & $> 0.10$ \\
+        \hline
+        DCA neg V0 daughter to PV & $> 0.01$ & $> 0.05$ & $> 0.10$ \\
+        \hline
+        DCA bach to PV & $> 0.02$ & $> 0.04$ & $> 0.10$ \\
+        \hline
+        V0 $\cos(\text{PA})$ & $> 0.9700$ & $> 0.9876$ & $> 0.9900$ \\
+        \hline
+        Cascade $\cos(\text{PA})$ & $> 0.9900$ & $> 0.9925$ & $> 0.9950$ \\
+        \hline
+        V0 radius & $> 0.50$ & $> 0.55$ & $> 2.50$ \\
+        \hline
+        Cascade radius & $> 0.5$ & $> 1.5$ & $> 2.5$ \\
+        \hline
+        V0 mass window & $< 14.0$ MeV/$c^2$ & $< 11.5$ MeV/$c^2$ & $< 9.0$ MeV/$c^2$ \\
+        \hline
+      \end{tabular}
+      \caption{Systematic uncertainty variations}
+      \label{tab:syssel}
+    \end{table}
+
+    The different reconstruction efficiencies that these variations give are presented in Figure \ref{fig:EffSpectraSys}. To determine the systematic uncertainty on the spectra due to the topological selection criteria, we compute the spectra for each of the variations and look at the ratio of the spectra for the loose and tight variations to the default variation. The resulting ratios are shown in Figure \ref{fig:SpectraRatioSys}, where the vertical bars represent the statistical uncertainties subtracted in quadrature, assuming they are fully correlated between the variations. \rs{For now we have determined the systematic uncertainty from this plot as a flat 1.5\%, pT independent. We can simply take the max deviation from 1 as the systematic uncertainty per bin for the spectra, but for the correlation analysis we need a single value. }
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=.8\textwidth]{figures/Intermezzo/systematics/EffSpectraSys.pdf}
+      \caption{Reconstruction efficiencies for the different systematic uncertainty variations.}
+      \label{fig:EffSpectraSys}
+    \end{figure}
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=.8\textwidth]{figures/Intermezzo/systematics/spectra_ratio_sysvars.pdf}
+      \caption{Ratio of the \Xi\ \pt\ spectra for the different systematic uncertainty variations. The vertical bars represent the statistical uncertainties subtracted in quadrature, assuming they are fully correlated between the variations.}
+      \label{fig:SpectraRatioSys}
+    \end{figure}
+
+    \rs{I'll make the plots nicer for the thesis}
+
+  \subsection{Other sources of systematic uncertainties}
+    \rs{to be expanded later}
+    We take the material budget uncertainty from the previous analysis, see Figure \ref{fig:MaterialBudget}. 
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=.8\textwidth]{figures/Intermezzo/systematics/MaterialBudgetTemp.pdf}
+      \caption{Material budget uncertainty as a function of \pt, taken from the previous analysis.}
+      \label{fig:MaterialBudget}
+    \end{figure}
+
+    \rs{maybe mention background subtraction? varying bkg fit function or fit range. }
+
 \section{Results for single \texorpdfstring{\Xi}{Xi} spectra}
   \label{sec:intermezzo:results}
   The \Xi\ baryon transverse momentum distributions calculated according to Equation \ref{eq:single_spectra} are shown in the top panel of Figure \ref{fig:SpectraRatio}, where they are compared to the results of the analysis performed on Run 2 data.\cite{Run2Spectra} The bottom panel of Figure \ref{fig:SpectraRatio} shows the ratio of the two spectra, where the vertical bars represent the statistical uncertainties added in quadrature. The results show a good agreement between the two analyses. It seems that we estimate the yield to be slightly lower than the previous analysis, but still well within the systematic uncertainties. 
@@ -86,3 +248,19 @@ Studying the single particle spectra of cascades is interesting in it's own righ
     \label{fig:SpectraRatio}
   \end{figure}
   \rs{this is a placeholder, I'll add the sys. uncertainties for this analysis after I run on the full dataset.}
+
+\section{TEMP: 2 ways to determine the systematics for the correlation analysis}
+
+  In any case I'll take 3\% as an estimate of the material budget uncertainty. 
+
+  \subsection{Take the systematics from the spectra analysis}
+
+    This comes down to a flat 1.5\% uncertainty from the topological selection criteria, and a 3\% uncertainty from the material budget, added in quadrature. We can even take the topological uncertainty to be lower than 1.5\% - as the material budget uncertainty is the dominant source of systematic uncertainty, the exact value of the topological selection criteria uncertainty doesn't have a large effect on the total systematic uncertainty.
+
+    For the OS-SS we then compute it using the absolute values of the systematic uncertainties on the OS and SS respectively, assuming they are fully correlated. 
+
+  \subsection{Take the systematics from the correlation analysis}
+
+    
+
+    

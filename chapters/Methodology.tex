@@ -85,24 +85,66 @@ Here the positive and negative superscripts denote the charge of the trigger and
         \hline
         DCA neg V0 daughter to PV & $> 0.05$ \\
         \hline
-        DCA V0 to PV & $> 0.03$ \\
-        \hline
         DCA bach to PV & $> 0.04$ \\
         \hline
         V0 $\cos(\text{PA})$ & $> 0.9876$ \\
         \hline
-        Cascade $\cos(\text{PA})$ & $> 0.9947$ \\
+        Cascade $\cos(\text{PA})$ & $> 0.9925$ \\
         \hline
         V0 radius & $> 0.55$ \\
         \hline
-        Cascade radius & $> 1.01$ \\
+        Cascade radius & $> 1.5$ \\
         \hline
-        V0 mass window & $< 11.6$ MeV/$c^2$\\
+        V0 mass window & $< 11.5$ MeV/$c^2$\\
         \hline
       \end{tabular}
       \caption{Cascade selection criteria}
       \label{tab:cascsel}
     \end{table}
+
+    %  OLD TABLE
+    % \begin{table}[ht]
+    %   \centering
+    %   \begin{tabular}{|c|c|}
+    %     \hline
+    %     \multicolumn{2}{|c|}{Cascade selection} \\
+    %     \hline
+    %     $|\eta_\text{tracks}|$ & $< 0.8$ \\
+    %     \hline
+    %     Number of TPC crossed rows & $> 50$ \\
+    %     \hline
+    %     TPC d$E$/d$x$ & $< 5\sigma$ \\
+    %     \hline
+    %     TPC $\chi^2$ & $< 4$ \\
+    %     \hline
+    %     ITS $\chi^2$ & $< 36$ \\
+    %     \hline
+    %     DCA V0 daughters & $< 0.5$ \\
+    %     \hline
+    %     DCA cascade daughters & $< 0.25$ \\
+    %     \hline
+    %     DCA pos V0 daughter to PV & $> 0.05$ \\
+    %     \hline
+    %     DCA neg V0 daughter to PV & $> 0.05$ \\
+    %     \hline
+    %     DCA V0 to PV & $> 0.03$ \\
+    %     \hline
+    %     DCA bach to PV & $> 0.04$ \\
+    %     \hline
+    %     V0 $\cos(\text{PA})$ & $> 0.9876$ \\
+    %     \hline
+    %     Cascade $\cos(\text{PA})$ & $> 0.9947$ \\
+    %     \hline
+    %     V0 radius & $> 0.55$ \\
+    %     \hline
+    %     Cascade radius & $> 1.01$ \\
+    %     \hline
+    %     V0 mass window & $< 11.6$ MeV/$c^2$\\
+    %     \hline
+    %   \end{tabular}
+    %   \caption{Cascade selection criteria}
+    %   \label{tab:cascsel}
+    % \end{table}
 
   \subsection{PID}
     The PID selection is based on the energy loss d$E$/d$x$ in the TPC being within 5$\sigma$ of the expected value for (anti-)protons, pions, and kaons. The $\sigma$ refers to the width of the band around the curve expressed in standard deviations, so a 5$\sigma$ cut means that only one in a few million true particles would fall outside the band. As the 5$\sigma$ bands around the Bethe-Bloch curves may overlap, it is possible for a track to be consistant with multiple PID hypotheses. In this case we do not reject any of the hypotheses but simply accept all of them. For high momentum tracks the bands start to overlap more significantly which means there is very little to no separation power between different PID hypotheses. For these tracks the PID selection has effectively no impact other than removing tracks with a very off d$E$/d$x$ measurement.
@@ -131,7 +173,7 @@ Here the positive and negative superscripts denote the charge of the trigger and
     % comment on the sentence of the fit: \mvl{this sentence could describe a fit to determine the peak (to determine the integration interval) or it could be to determine the background level. Say more clearly upfront which one (or both) it is}
     After all these selections are applied, we turn to the invariant mass distribution of the cascade candidates in Figure \ref{fig:Ximass}. This shows a well-defined peak around the nominal mass of the \Xi\ baryon (1321.71 MeV/$c^2$ \cite{PDG2024}) on top of the combinatorial background. Candidates far away from the mass peak are likely to be false positives so we apply an invariant mass selection to only keep candidates within the signal region. 
     % \mvl{this sentence could describe a fit to determine the peak (to determine the integration interval) or it could be to determine the background level. Say more clearly upfront which one (or both) it is}
-    To properly define both this signal region as well as the combinatorial background we fit the invariant mass distribution with a double gaussian on top of a second order polynomial.\footnote{The double gaussian (as opposed to a single gaussian) is motivated by the fact that we use both the ITS and the TPC in reconstructing the cascades. These detectors give two different resolution contributions to the invariant mass distribution.} The second order polynomial accounts for the combinatorial background and is fitted before the double gaussian and excluding the peak region to prevent the background function from fitting (part of) the signal. As we have not defined the signal region we take a conservative estimate of $[1305, 1335]$ Mev/$c^2$ and manually exclude this window from the background fitting procedure. After fitting the background, we fix the parameters of the polynomial and fit the double gaussian to the entire distribution. We define the signal region to be $\mu \pm 3\sigma$, where $\mu = \half(\mu_1 + \mu_2)$ and $\sigma = \half(\sigma_1 + \sigma_2)$, the average mean and standard deviation of the two gaussians. 
+    To properly define both this signal region as well as the combinatorial background we fit the invariant mass distribution with a double gaussian on top of a second order polynomial.\footnote{The double gaussian (as opposed to a single gaussian) is motivated by the fact that we use both the ITS and the TPC in reconstructing the cascades. These detectors give two different resolution contributions to the invariant mass distribution.} The second order polynomial accounts for the combinatorial background and is fitted before the double gaussian and excluding the peak region to prevent the background function from fitting (part of) the signal. As we have not defined the signal region we take a conservative estimate of $[1305, 1335]$ MeV/$c^2$ and manually exclude this window from the background fitting procedure. After fitting the background, we fix the parameters of the polynomial and fit the double gaussian to the entire distribution. We define the signal region to be $\mu \pm 3\sigma$, where $\mu = \half(\mu_1 + \mu_2)$ and $\sigma = \half(\sigma_1 + \sigma_2)$, the average mean and standard deviation of the two gaussians. 
     % \rs{would it make sense to report some purity numbers here?}\mvl{Yes I think that would be useful. You could also show one or two fits with the signal range etc as illustration.}
 
     \begin{figure}[ht]
@@ -322,68 +364,66 @@ Here the positive and negative superscripts denote the charge of the trigger and
 
     \rs{probably we should add a plot here (or at the very end of this section?) that shows the final systematic uncertainties as a function of \dphi\ and \dy\ for OS, SS, OS-SS.}
 
-    \subsection{Systematic uncertainties from selection variables}
-      \label{sec:syssel}
-      One of the main sources for systematic uncertainties are the choices made in the selection criteria for cascades. To estimate the uncertainty from these choices we vary most selections to a looser and a tighter variant. Ideally we would vary each selection one by one and add the associated uncertainties in quadrature, but because many selection variables are correlated this would lead to an overestimation of the uncertainty. Instead we vary all selections simultaneously to a looser and a tighter variant, with some exceptions. For example, the number of TPC crossed rows is not loosened with respect to the default value of 50, as this is already quite a relaxed selection.
+    % \subsection{Systematic uncertainties from selection variables}
+    %   \label{sec:syssel}
+    %   One of the main sources for systematic uncertainties are the choices made in the selection criteria for cascades. To estimate the uncertainty from these choices we vary most selections to a looser and a tighter variant. Ideally we would vary each selection one by one and add the associated uncertainties in quadrature, but because many selection variables are correlated this would lead to an overestimation of the uncertainty. Instead we vary all selections simultaneously to a looser and a tighter variant, with some exceptions. For example, the number of TPC crossed rows is not loosened with respect to the default value of 50, as this is already quite a relaxed selection.
 
-      The different selection criteria corresponding to the loose and tight selection sets are summarized in Table \ref{tab:syssel}. Only the selections that differ from the default selection (Table \ref{tab:cascsel}) are listed. 
-      \begin{table}[ht]
-      \centering
-      \begin{tabular}{l|c|c|c}
-        selection variable & loose & default & tight \\
-        \hline
-        Number of TPC crossed rows & $> 50$ & $> 50$ & $> 80$ \\
-        \hline
-        TPC d$E$/d$x$ & $< 6\sigma$ & $< 5\sigma$ & $< 4\sigma$ \\
-        \hline
-        DCA V0 daughters & $< 1.0$ & $< 0.5$ & $< 0.1$ \\
-        \hline
-        DCA cascade daughters & $< 1.00$ & $< 0.25$ & $< 0.20$ \\
-        \hline
-        DCA pos V0 daughter to PV & $> 0.01$ & $> 0.05$ & $> 0.10$ \\
-        \hline
-        DCA neg V0 daughter to PV & $> 0.01$ & $> 0.05$ & $> 0.10$ \\
-        \hline
-        DCA V0 to PV & $> 0$ & $> 0.03$ & $> 0.10$ \\
-        \hline
-        DCA bach to PV & $> 0.02$ & $> 0.04$ & $> 0.10$ \\
-        \hline
-        V0 $\cos(\text{PA})$ & $> 0.9700$ & $> 0.9876$ & $> 0.9900$ \\
-        \hline
-        Cascade $\cos(\text{PA})$ & $> 0.9700$ & $> 0.9947$ & $> 0.9970$ \\
-        \hline
-        V0 radius & $> 0.50$ & $> 0.55$ & $> 2.50$ \\
-        \hline
-        Cascade radius & $> 0.50$ & $> 1.01$ & $> 1.50$ \\
-        \hline
-        V0 mass window & $< 14.0$ MeV/$c^2$ & $< 11.6$ MeV/$c^2$ & $< 6.0$ MeV/$c^2$ \\
-        \hline
-      \end{tabular}
-      \caption{Systematic uncertainty variations}
-      \label{tab:syssel}
-    \end{table}
+    %   The different selection criteria corresponding to the loose and tight selection sets are summarized in Table \ref{tab:syssel}. Only the selections that differ from the default selection (Table \ref{tab:cascsel}) are listed. 
+    %   \begin{table}[ht]
+    %     \centering
+    %     \begin{tabular}{l|c|c|c}
+    %       selection variable & loose & default & tight \\
+    %       \hline
+    %       Number of TPC crossed rows & $> 50$ & $> 50$ & $> 60$ \\
+    %       \hline
+    %       TPC d$E$/d$x$ & $< 6\sigma$ & $< 5\sigma$ & $< 4\sigma$ \\
+    %       \hline
+    %       DCA V0 daughters & $< 1.0$ & $< 0.5$ & $< 0.1$ \\
+    %       \hline
+    %       DCA cascade daughters & $< 1.00$ & $< 0.25$ & $< 0.20$ \\
+    %       \hline
+    %       DCA pos V0 daughter to PV & $> 0.01$ & $> 0.05$ & $> 0.10$ \\
+    %       \hline
+    %       DCA neg V0 daughter to PV & $> 0.01$ & $> 0.05$ & $> 0.10$ \\
+    %       \hline
+    %       DCA bach to PV & $> 0.02$ & $> 0.04$ & $> 0.10$ \\
+    %       \hline
+    %       V0 $\cos(\text{PA})$ & $> 0.9700$ & $> 0.9876$ & $> 0.9900$ \\
+    %       \hline
+    %       Cascade $\cos(\text{PA})$ & $> 0.9900$ & $> 0.9925$ & $> 0.9950$ \\
+    %       \hline
+    %       V0 radius & $> 0.50$ & $> 0.55$ & $> 2.50$ \\
+    %       \hline
+    %       Cascade radius & $> 0.5$ & $> 1.5$ & $> 2.5$ \\
+    %       \hline
+    %       V0 mass window & $< 14.0$ MeV/$c^2$ & $< 11.5$ MeV/$c^2$ & $< 9.0$ MeV/$c^2$ \\
+    %       \hline
+    %     \end{tabular}
+    %     \caption{Systematic uncertainty variations}
+    %     \label{tab:syssel}
+    %   \end{table}
 
-    These different selection sets will lead to different cascade reconstruction efficiencies. It is important that we recalculate the efficiency for each selection set to ensure that the variation in the final correlation function is really due to systematic effects, and not due to a predictable change in efficiency. The different \Xi\ efficiences are presented in Fig. \ref{fig:XiMinEffSys}. As expected, the loose selections lead to a higher efficiency while the tight selections lead to a lower efficiency.
-    \begin{figure}[ht]
-      \centering
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Methodology/systematics/loose/hPtXiMinEff.pdf}
-        \caption{$\Xi^-$ reconstruction efficiency with loose selections}
-      \end{subfigure}
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Methodology/systematics/default/hPtXiMinEff.pdf}
-        \caption{$\Xi^-$ reconstruction efficiency with default selections}
-      \end{subfigure}
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Methodology/systematics/tight/hPtXiMinEff.pdf}
-        \caption{$\Xi^-$ reconstruction efficiency with tight selections}
-      \end{subfigure}
-    \caption{$\Xi^-$ reconstruction efficiency for the three different selection sets}
-    \label{fig:XiMinEffSys}
-    \end{figure}
+    %   These different selection sets will lead to different cascade reconstruction efficiencies. It is important that we recalculate the efficiency for each selection set to ensure that the variation in the final correlation function is really due to systematic effects, and not due to a predictable change in efficiency. The different \Xi\ efficiences are presented in Fig. \ref{fig:XiMinEffSys}. As expected, the loose selections lead to a higher efficiency while the tight selections lead to a lower efficiency.
+    %   \begin{figure}[ht]
+    %     \centering
+    %     \begin{subfigure}[t]{.49\textwidth}
+    %       \centering
+    %       \includegraphics[width=\textwidth]{figures/Methodology/systematics/loose/hPtXiMinEff.pdf}
+    %       \caption{$\Xi^-$ reconstruction efficiency with loose selections}
+    %     \end{subfigure}
+    %     \begin{subfigure}[t]{.49\textwidth}
+    %       \centering
+    %       \includegraphics[width=\textwidth]{figures/Methodology/systematics/default/hPtXiMinEff.pdf}
+    %       \caption{$\Xi^-$ reconstruction efficiency with default selections}
+    %     \end{subfigure}
+    %     \begin{subfigure}[t]{.49\textwidth}
+    %       \centering
+    %       \includegraphics[width=\textwidth]{figures/Methodology/systematics/tight/hPtXiMinEff.pdf}
+    %       \caption{$\Xi^-$ reconstruction efficiency with tight selections}
+    %     \end{subfigure}
+    %   \caption{$\Xi^-$ reconstruction efficiency for the three different selection sets}
+    %   \label{fig:XiMinEffSys}
+    %   \end{figure}
 
     \subsection{Sideband window definition}
       \label{sec:syssb}
