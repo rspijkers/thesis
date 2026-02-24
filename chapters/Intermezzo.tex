@@ -3,7 +3,6 @@
 [this is a small introduction]
 
 \pc{Why not starting this chapter by showing this discrepancy with the run2 analysis for the per-trigger yield? This can be rather brief but still show both results from collision data and MC. This can then easily motivate your spectra study. In your thesis you don't have to be politically correct imho, while at the same time keep a level of detail which doesn't match an analysis note.
-
 Also clearly indicate that the energies you compare are (slightly) different. One does not expect any significant differences in either of the result from this, but still important to point out.}
 
 We performed a short analysis on the single \Xi\ spectra. This was motivated by the discrepancy between the results presented in this thesis and the analysis performed on data gathered in the previous data-taking period (Run 2). \cite{Adolfson2024} 
@@ -43,7 +42,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
 
   Also here we require that the generated event is reconstructible, so we only consider generated events that pass the generated level event selections described above. Note that the event efficiency is not dependent on any properties of the \Xi\ baryons, and should therefor only impact the overal normalisation of the spectra, not the shape. The efficiency corrections as a function of \pt\ and \eta\ are shown in Figure \ref{fig:SpectraEff2D}, with projections on the \pt\ axis shown in Figure \ref{fig:SpectraEffPt}. 
 
-  \begin{figure}[ht]
+  \begin{figure}[t]
     \centering
     \begin{subfigure}[t]{.49\textwidth}
       \centering
@@ -62,7 +61,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
     \label{fig:SpectraEff2D}
   \end{figure}
 
-  \begin{figure}[ht]
+  \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{.49\textwidth}
       \centering
@@ -121,7 +120,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
 
   We compare the distributions of some topological variables after applying the minimal selection criteria on both data and Monte Carlo simulations. In the case of the MC simulations we require that the reconstructed cascade is matched to a generated cascade, while in the data sample we apply a rough invariant mass selection of 1.31 $< m_\text{inv} <$ 1.33 \gev~to limit the contribution of combinatorial background. We also self-normalise the distributions to account for the difference in statistics between the two samples. Three topological variables seemed to exhibit particular discrepancies between data and MC simulations: DCA of the V0 (\Lambda) to the PV, DCA of the V0 daughters to the PV, and the cascade radius. In all three cases the selection criterium is a minimum value. The distributions of these variables are shown in Figure \ref{fig:TopologicalDistributions}, where the DCA of the V0 daughters are split by charge. 
 
-  \begin{figure}
+  \begin{figure}[ht]
     \centering
     \begin{subfigure}[t]{.49\textwidth}
       \centering
@@ -159,7 +158,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
   
   The DCA of the V0 daughters to the PV (\texttt{DCAPosToPV}, \texttt{DCANegToPV}) also shows a discrepancy between data and MC across a large range of values, including the region where any reasonable selection criterium would lie. To investigate the effect of this discrepancy on the \pt\ distribution of the \Xi\ baryons we vary the minimum value of this selection criterium significantly with three values: 0.01 cm, 0.20 cm, and 0.30 cm. These values are chosen to cover as much of the range of the discrepancy as possible without discarding too much of the available statistics. As this criterium works on the track level (not the \Xi\ candidate level), large minimum values will lead to a significant drop of reconstruction efficiency. To compare the different variations we compute the \Xi\ \pt\ spectrum for each of the three variations, and look at the ratio of the lowest and highest variations to the middle variation. The results are shown in Figure \ref{fig:SpectraRatioDCAPosNegToPV}, where the uncertainties are calculated assuming they are fully correlated between the variations. The weighted averages show that the effect is rather small, with the smallest effect observed when comparing the 0.20 and 0.30 cm variations. Combining this with the fact that large minimum values for this variable lead to a significant drop in reconstruction efficiency, we decide to use 0.05 as the default value, with variations of 0.01 and 0.10 to estimate the systematic uncertainty as part of the ensemble variation. 
 
-  \begin{figure}
+  \begin{figure}[ht]
     \centering
     \includegraphics[width=.8\textwidth]{figures/Intermezzo/systematics/spectra_ratio_DCAPosNegToPV.pdf}
     \caption{Ratio of the \Xi\ \pt\ spectra for different variations of the minimum DCA of the V0 daughters to the PV. The vertical bars represent the statistical uncertainties subtracted in quadrature, assuming they are fully correlated between the variations. The weighted average of the ratios are also drawn as dashed lines, with the corresponding values shown in the legend.}
@@ -234,7 +233,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
     \rs{to be expanded later}
     We take the material budget uncertainty from the previous analysis, see Figure \ref{fig:MaterialBudget}. 
 
-    \begin{figure}
+    \begin{figure}[ht]
       \centering
       \includegraphics[width=.8\textwidth]{figures/Intermezzo/systematics/MaterialBudgetTemp.pdf}
       \caption{Material budget uncertainty as a function of \pt, taken from the previous analysis.}
@@ -257,19 +256,76 @@ Studying the single particle spectra of cascades is interesting in it's own righ
   \end{figure}
   \rs{this is a placeholder, I'll add the sys. uncertainties for this analysis after I run on the full dataset.}
 
+
+  \pc{At the end of thic chapter we need to conclude what we learned. If the goal was to match the published spectra, then I would say that this is achieved and needs to be stated so. If, however, the goal is to verify that your analysis is more robust (if not correct) relative to the run2 correlation analysis (see my first comment on how to motivate this spectra study at the start of this chapter), then I would make a strong argument here. It's not a proof that you are correct and they are wrong, but it does add points to the credibility of your analysis.}
+
 \section{TEMP: 2 ways to determine the systematics for the correlation analysis}
 
-  In any case I'll take 3\% as an estimate of the material budget uncertainty. 
+  In any case I'll take 3\% as an estimate of the material budget uncertainty. The MC closure test is consistent within 1 roger-barlow standard deviation, so it is not considered as a source of systematic uncertainty. 
 
   \subsection{Take the systematics from the spectra analysis}
 
-    This comes down to a flat 1.5\% uncertainty from the topological selection criteria, and a 3\% uncertainty from the material budget, added in quadrature. We can even take the topological uncertainty to be lower than 1.5\% - as the material budget uncertainty is the dominant source of systematic uncertainty, the exact value of the topological selection criteria uncertainty doesn't have a large effect on the total systematic uncertainty.
+    This comes down to a flat 1.5\% uncertainty from the topological selection criteria, a sub-percent level contribution from sideband definition for the SB correlations\footnote{only in OS and Subtracted case}, and a 3\% uncertainty from the material budget, added in quadrature. We can even take the topological uncertainty to be lower than 1.5\% - as the material budget uncertainty is the dominant source of systematic uncertainty, the exact value of the topological selection criteria uncertainty doesn't have a large effect on the total systematic uncertainty.
+    For the OS-SS we then compute it using the absolute values of the systematic uncertainties on the OS and SS respectively, assuming they are fully correlated. The results are presented in Figure \ref{fig:SystematicsSpec}.
 
-    For the OS-SS we then compute it using the absolute values of the systematic uncertainties on the OS and SS respectively, assuming they are fully correlated. 
+    \begin{figure}[ht]
+      \centering
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_OS_spec.pdf}
+        \caption{OS with systematic uncertainties computed from the spectra analysis.}
+        \label{fig:SystematicsOSSpec}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_SS_spec.pdf}
+        \caption{SS with systematic uncertainties computed from the spectra analysis.}
+        \label{fig:SystematicsSSSpec}
+      \end{subfigure}
+      
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_Sub_spec.pdf}
+        \caption{OS - SS with systematic uncertainties computed from the spectra analysis.}
+        \label{fig:SystematicsSubSpec}
+      \end{subfigure}
+      \caption{Systematic uncertainties for the OS, SS, and OS - SS correlation results, computed from the spectra analysis.}
+      \label{fig:SystematicsSpec}
+    \end{figure}
+
+    
 
   \subsection{Take the systematics from the correlation analysis}
 
+    As is the case before, we add a flat 3\% uncertainty to account for the material budget uncertainty, and a sub-percent level contribution from the sideband definition for the SB correlations. For the systematic uncertainty from the topological selection criteria, we repeat the exercise of varying the selection criteria between loose, default, and tight variations, but this time we look at the effect on the correlation results instead of the spectra. For the OS and SS correlations we look at the ratio between the variation and the default, while for the OS - SS we look at the absolute difference between the variation and the default, as the ratio is not well defined when the default value is close to zero. We consider the average deviation away from 1 (or 0 in the case of OS - SS) to determine the systematic uncertainties. The final systematic is determined by taking the average of the two different variations. The results are presented in Figure \ref{fig:SystematicsCorr}.
 
-    \pc{At the end of thic chapter we need to conclude what we learned. If the goal was to match the published spectra, then I would say that this is achieved and needs to be stated so. If, however, the goal is to verify that your analysis is more robust (if not correct) relative to the run2 correlation analysis (see my first comment on how to motivate this spectra study at the start of this chapter), then I would make a strong argument here. It's not a proof that you are correct and they are wrong, but it does add points to the credibility of your analysis.}
+    \begin{figure}[ht]
+      \centering
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_OS_corr.pdf}
+        \caption{OS with systematic uncertainties computed from the correlation analysis.}
+        \label{fig:SystematicsOSCorr}
+      \end{subfigure}
+      \hfill
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_SS_corr.pdf}
+        \caption{SS with systematic uncertainties computed from the correlation analysis.}
+        \label{fig:SystematicsSSCorr}
+      \end{subfigure}
+      
+      \begin{subfigure}[t]{.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_Sub_corr.pdf}
+        \caption{OS - SS with systematic uncertainties computed from the correlation analysis.}
+        \label{fig:SystematicsSubCorr}
+      \end{subfigure}
+      \caption{Systematic uncertainties for the OS, SS, and OS - SS correlation results, computed from the correlation analysis.}
+      \label{fig:SystematicsCorr}
+    \end{figure}
+
+
 
     
