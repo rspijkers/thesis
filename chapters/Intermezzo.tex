@@ -2,6 +2,10 @@
 
 [this is a small introduction]
 
+\pc{Why not starting this chapter by showing this discrepancy with the run2 analysis for the per-trigger yield? This can be rather brief but still show both results from collision data and MC. This can then easily motivate your spectra study. In your thesis you don't have to be politically correct imho, while at the same time keep a level of detail which doesn't match an analysis note.
+
+Also clearly indicate that the energies you compare are (slightly) different. One does not expect any significant differences in either of the result from this, but still important to point out.}
+
 We performed a short analysis on the single \Xi\ spectra. This was motivated by the discrepancy between the results presented in this thesis and the analysis performed on data gathered in the previous data-taking period (Run 2). \cite{Adolfson2024} 
 
 \rs{Not sure how to motivate this in a ``politically correct'' way, but a large part of the motivation for this check is that the discrepancy between run 2 and 3 is flat in dphi - which indicates a normalisation issue. By analyzing the single particle spectrum, we can more or less verify the normalisation.}
@@ -10,12 +14,16 @@ Studying the single particle spectra of cascades is interesting in it's own righ
 
 \section{Efficiency corrections for \texorpdfstring{\Xi}{Xi} baryon yields}
 
+\pc{I would change the formulation below, saying that the formula reflects what you report. The fully corrected yield has, in principle, additional corrections e.g. feed-down. One can argue of course that these corrections are not that significant for the case of the $\Xi$, but this statement first needs to be quantified and even if it turns out to be true the need for such correction depends on the level of precision you want/need to achieve.}
+
   The \Xi\ baryon yields are calculated according to the following equation:
   \begin{align}
     \frac{1}{N^\text{true}_\text{events}} \frac{\d^2 N_\Xi}{\d\pt \d\y} = \frac{\epsilon_\text{event}}{N^\text{rec.}_\text{events}} \frac{N^\text{rec.}_\text{casc.}(\pt, \y)}{\epsilon_\text{\Xi}(\pt, \eta) \Delta \pt \Delta \y}, \label{eq:single_spectra}
   \end{align}
 
   where $\epsilon_\text{event}$ is the event reconstruction efficiency and $\epsilon_\text{\Xi}(\pt, \eta)$ is the cascade reconstruction efficiency. As we report the yield in the central rapidity window $|\y| < 0.5$, $\Delta \y = 0.5 - (-0.5) = 1$ and drops out of the equation. Note that to be consistent with the correlation analysis we apply the efficiency correction as a function of \eta\ rather than \y\, as we require both the generated and reconstructed cascade to be within $|\eta| < 0.8$. Combining such an \eta\ selection with an efficiency correction as a function of \y\ would lead to unwanted edge effects in the efficiency correction. 
+
+\pc{You can motivate this more clearly by saying that the event normalisation in the per-trigger study cancels out.}
 
   The \Xi\ efficiency correction is different for single particle yields compared to correlation studies. This is due to the fact that in correlation studies we are interested in quantities \textit{per trigger}, whereas in single particle spectra we are interested in quantities \textit{per event}. This results in a slightly different definition of the cascade reconstruction efficiency that can be written as:
   \begin{align}
@@ -111,7 +119,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
     \label{tab:minsel}
   \end{table}
 
-  We compare the distributions of some topological variables after applying the minimal selection criteria on both data and Monte Carlo simulations. In the case of the MC simulations we require that the reconstructed cascade is matched to a generated cascade, while in the data sample we apply a rough invariant mass selection of 1.31 \gev $< m_\text{inv} <$ 1.33 \gev to limit the contribution of combinatorial background. We also self-normalise the distributions to account for the difference in statistics between the two samples. Three topological variables seemed to exhibit particular discrepancies between data and MC simulations: DCA of the V0 (\Lambda) to the PV, DCA of the V0 daughters to the PV, and the cascade radius. In all three cases the selection criterium is a minimum value. The distributions of these variables are shown in Figure \ref{fig:TopologicalDistributions}, where the DCA of the V0 daughters are split by charge. 
+  We compare the distributions of some topological variables after applying the minimal selection criteria on both data and Monte Carlo simulations. In the case of the MC simulations we require that the reconstructed cascade is matched to a generated cascade, while in the data sample we apply a rough invariant mass selection of 1.31 $< m_\text{inv} <$ 1.33 \gev~to limit the contribution of combinatorial background. We also self-normalise the distributions to account for the difference in statistics between the two samples. Three topological variables seemed to exhibit particular discrepancies between data and MC simulations: DCA of the V0 (\Lambda) to the PV, DCA of the V0 daughters to the PV, and the cascade radius. In all three cases the selection criterium is a minimum value. The distributions of these variables are shown in Figure \ref{fig:TopologicalDistributions}, where the DCA of the V0 daughters are split by charge. 
 
   \begin{figure}
     \centering
@@ -149,7 +157,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
 
   The DCA of the V0 to the PV (\texttt{DCAV0ToPV}) differs between data and MC across a rather large range of values - any reasonable minimum value should lie between 0 and 0.1 cm, which covers the range where the discrepancy is observed. Instead of assessing the impact of this discrepancy we decide to do away with this selection criterium altogether. This is motivated in part by the fact that a reasonable cut on this variable would not discard a large fraction of the sample. 
   
-  The DCA of the V0 daughters to the PV (\texttt{DCAPosToPV}, \texttt{DCANegToPV}) also shows a discrepancy between data and MC across a large range of values, including the region where any reasonable selection criterium would lie. To investigate the effect of this discrepancy on the \pt\ distribution of the \Xi\ baryons we vary the minimum value of this selection criterium significantly with three values: 0.01 cm, 0.20 cm, and 0.30 cm. These values are chosen to cover as much of the range of the discrepancy as possible without discarding too much of the available statistics. As this criterium works on the track level (not the \Xi\ candidate level), large minimum values will lead to a significant drop of reconstruction efficiency. To compare the different variations we copmute the \Xi\ \pt\ spectrum for each of the three variations, and look at the ratio of the lowest and highest variations to the middle variation. The results are shown in Figure \ref{fig:SpectraRatioDCAPosNegToPV}, where the uncertainties are calculated assuming they are fully correlated between the variations. The weighted averages show that the effect is rather small, with the smallest effect observed when comparing the 0.20 and 0.30 cm variations. Combining this with the fact that large minimum values for this variable lead to a significant drop in reconstruction efficiency, we decide to use 0.05 as the default value, with variations of 0.01 and 0.10 to estimate the systematic uncertainty as part of the ensemble variation. 
+  The DCA of the V0 daughters to the PV (\texttt{DCAPosToPV}, \texttt{DCANegToPV}) also shows a discrepancy between data and MC across a large range of values, including the region where any reasonable selection criterium would lie. To investigate the effect of this discrepancy on the \pt\ distribution of the \Xi\ baryons we vary the minimum value of this selection criterium significantly with three values: 0.01 cm, 0.20 cm, and 0.30 cm. These values are chosen to cover as much of the range of the discrepancy as possible without discarding too much of the available statistics. As this criterium works on the track level (not the \Xi\ candidate level), large minimum values will lead to a significant drop of reconstruction efficiency. To compare the different variations we compute the \Xi\ \pt\ spectrum for each of the three variations, and look at the ratio of the lowest and highest variations to the middle variation. The results are shown in Figure \ref{fig:SpectraRatioDCAPosNegToPV}, where the uncertainties are calculated assuming they are fully correlated between the variations. The weighted averages show that the effect is rather small, with the smallest effect observed when comparing the 0.20 and 0.30 cm variations. Combining this with the fact that large minimum values for this variable lead to a significant drop in reconstruction efficiency, we decide to use 0.05 as the default value, with variations of 0.01 and 0.10 to estimate the systematic uncertainty as part of the ensemble variation. 
 
   \begin{figure}
     \centering
@@ -168,7 +176,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
   \end{figure}
 
   \subsection{Ensemble variation of the topological selection criteria}
-    Many of the topological selection criteria are indirectly or even directly correlated with each other. Consequently, varying all selection criteria independently and adding the resulting systematic uncertainties in quadrature would most likely lead to an overestimation of the total systematic uncertainty. On top of this, it is incredibly time and resource consuming to do this. Therefor we define two sets of variations on top of the default selection criteria, where most of the criteria are either tightened or loosened together. The different selection criteria corresponding to the loose and tight selection sets are summarized in Table \ref{tab:syssel}. Only the selections that differ from the default selection (Table \ref{tab:cascsel}) are listed. 
+    Many of the topological selection criteria are indirectly or even directly correlated with each other. Consequently, varying all selection criteria independently and adding the resulting systematic uncertainties in quadrature would most likely lead to an overestimation of the total systematic uncertainty. On top of this, it is incredibly time and resource consuming to do this. Therefore we define two sets of variations on top of the default selection criteria, where most of the criteria are either tightened or loosened together. The different selection criteria corresponding to the loose and tight selection sets are summarized in Table \ref{tab:syssel}. Only the selections that differ from the default selection (Table \ref{tab:cascsel}) are listed. 
 
     \begin{table}[ht]
       \centering
@@ -261,6 +269,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
 
   \subsection{Take the systematics from the correlation analysis}
 
-    
+
+    \pc{At the end of thic chapter we need to conclude what we learned. If the goal was to match the published spectra, then I would say that this is achieved and needs to be stated so. If, however, the goal is to verify that your analysis is more robust (if not correct) relative to the run2 correlation analysis (see my first comment on how to motivate this spectra study at the start of this chapter), then I would make a strong argument here. It's not a proof that you are correct and they are wrong, but it does add points to the credibility of your analysis.}
 
     
