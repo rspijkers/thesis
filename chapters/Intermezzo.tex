@@ -264,73 +264,164 @@ We have also investigated the effect of the cascade radius selection criterium. 
 
   \pc{At the end of thic chapter we need to conclude what we learned. If the goal was to match the published spectra, then I would say that this is achieved and needs to be stated so. If, however, the goal is to verify that your analysis is more robust (if not correct) relative to the run2 correlation analysis (see my first comment on how to motivate this spectra study at the start of this chapter), then I would make a strong argument here. It's not a proof that you are correct and they are wrong, but it does add points to the credibility of your analysis.}
 
-\section{TEMP: 2 ways to determine the systematics for the correlation analysis}
+  % \subsection{Take the systematics from the spectra analysis}
 
-  In any case I'll take 3\% as an estimate of the material budget uncertainty. The MC closure test is consistent within 1 roger-barlow standard deviation, so it is not considered as a source of systematic uncertainty. 
 
-  \subsection{Take the systematics from the spectra analysis}
 
-    This comes down to a flat 1.5\% uncertainty from the topological selection criteria, a sub-percent level contribution from sideband definition for the SB correlations\footnote{only in OS and Subtracted case}, and a 3\% uncertainty from the material budget, added in quadrature. We can even take the topological uncertainty to be lower than 1.5\% - as the material budget uncertainty is the dominant source of systematic uncertainty, the exact value of the topological selection criteria uncertainty doesn't have a large effect on the total systematic uncertainty.
-    For the OS-SS we then compute it using the absolute values of the systematic uncertainties on the OS and SS respectively, assuming they are fully correlated. The results are presented in Figure \ref{fig:SystematicsSpec}.
-
-    \begin{figure}[ht]
-      \centering
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_OS_spec.pdf}
-        \caption{OS with systematic uncertainties computed from the spectra analysis.}
-        \label{fig:SystematicsOSSpec}
-      \end{subfigure}
-      \hfill
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_SS_spec.pdf}
-        \caption{SS with systematic uncertainties computed from the spectra analysis.}
-        \label{fig:SystematicsSSSpec}
-      \end{subfigure}
+    % \begin{figure}[ht]
+    %   \centering
+    %   \begin{subfigure}[t]{.49\textwidth}
+    %     \centering
+    %     \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_OS_spec.pdf}
+    %     \caption{OS with systematic uncertainties computed from the spectra analysis.}
+    %     \label{fig:SystematicsOSSpec}
+    %   \end{subfigure}
+    %   \hfill
+    %   \begin{subfigure}[t]{.49\textwidth}
+    %     \centering
+    %     \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_SS_spec.pdf}
+    %     \caption{SS with systematic uncertainties computed from the spectra analysis.}
+    %     \label{fig:SystematicsSSSpec}
+    %   \end{subfigure}
       
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_Sub_spec.pdf}
-        \caption{OS - SS with systematic uncertainties computed from the spectra analysis.}
-        \label{fig:SystematicsSubSpec}
-      \end{subfigure}
-      \caption{Systematic uncertainties for the OS, SS, and OS - SS correlation results, computed from the spectra analysis.}
-      \label{fig:SystematicsSpec}
-    \end{figure}
+    %   \begin{subfigure}[t]{.49\textwidth}
+    %     \centering
+    %     \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_Sub_spec.pdf}
+    %     \caption{OS - SS with systematic uncertainties computed from the spectra analysis.}
+    %     \label{fig:SystematicsSubSpec}
+    %   \end{subfigure}
+    %   \caption{Systematic uncertainties for the OS, SS, and OS - SS correlation results, computed from the spectra analysis.}
+    %   \label{fig:SystematicsSpec}
+    % \end{figure}
 
-    
+\section{Systematic uncertainties from the topological selection criteria}
 
-  \subsection{Take the systematics from the correlation analysis}
+  % Put here also the plots of the ratios of the systematic variations, with and without ME correction. Argue that the error bars look strange but that this is a result of calculating the Roger-Barlow uncertainties assuming completely correlated datasamples on weighted datapoints. To remedy this, we remove the ME correction as this is not expected to change by varying the topological selections. Even without the ME there are still some strange error bars, but the picture does improve. As the efficiency correction is applied by weighting the datapoints, and this is exactly what changes when varying the topological selections, we cannot get rid of the weighted datapoints. So basically, it is what it is, this is the best we can do, and even though the error bars look strange they are understood. There is not a clear dependence on \dphi\ of the systematic variation, so we will fit it with a constant to determine the systematic uncertainty from the topological selection criteria. We cannot use the weighted average as this would place undue importance on datapoints that have very small error bars - again, due to the weighting of the datapoints. There does not seem to be any significant difference between the ratio of averages or average of ratios, so it is sort of trivial which one we use. We decide on the ratio of averages as this is theoretically more robust against single-bin outliers. It should be noted that the agreement between the two methods is a sign that there is no funny business going on with the datapoints themselves - it is just the error bars due to the weights. As said below we take the average of the Loose/Default and Tight/Default as the systematic uncertainty. 
 
-    As is the case before, we add a flat 3\% uncertainty to account for the material budget uncertainty, and a sub-percent level contribution from the sideband definition for the SB correlations. For the systematic uncertainty from the topological selection criteria, we repeat the exercise of varying the selection criteria between loose, default, and tight variations, but this time we look at the effect on the correlation results instead of the spectra. For the OS and SS correlations we look at the ratio between the variation and the default, while for the OS - SS we look at the absolute difference between the variation and the default, as the ratio is not well defined when the default value is close to zero. We consider the average deviation away from 1 (or 0 in the case of OS - SS) to determine the systematic uncertainties. The final systematic is determined by taking the average of the two different variations. The results are presented in Figure \ref{fig:SystematicsCorr}.
+  % As is the case before, we add a flat 3\% uncertainty to account for the material budget uncertainty, and a sub-percent level contribution from the sideband definition for the SB correlations. For the systematic uncertainty from the topological selection criteria, we repeat the exercise of varying the selection criteria between loose, default, and tight variations, but this time we look at the effect on the correlation results instead of the spectra. For the OS and SS correlations we look at the ratio between the variation and the default, while for the OS - SS we look at the absolute difference between the variation and the default, as the ratio is not well defined when the default value is close to zero. We consider the average deviation away from 1 (or 0 in the case of OS - SS) to determine the systematic uncertainties. The final systematic is determined by taking the average of the two different variations. The results are presented in Figure \ref{fig:SystematicsCorr}.
 
-    \begin{figure}[ht]
+  Another option to estimate the systematic uncertainties is to apply the same variations of the topological selection criteria as described in the previous section, but this time look at the effect on the correlation results instead of the spectra. In principle this would be a preferable method for determining the systematic uncertainties for the correlation analysis, as we are directly gauging the effect of the variations on the correlation results instead of using the effect on the spectra as a proxy. \rs{$<$-- rephrase this}
+  For the OS and SS correlations we look at the ratio between the variation and the default, while for the OS - SS we look at the difference between the variation and the default, as the ratio is not well defined when either is close to zero. The per-trigger normalised pair yields are reported as a function of \dphi in Figures \ref{fig:CorrSysVarOS}, \ref{fig:CorrSysVarSS}, \ref{fig:CorrSysVarSub} for the different variations and sign combinations. The bottom panel shows the ratio (difference) of the variation with respect to the default for the OS and SS (OS - SS), with a dashed horizontal line at 1 (0). The statistical uncertainties are propagated to the ratio assuming they are fully correlated, motivated by the fact that the analysis is performed on the same dataset. This assumption is only valid when the datasets are identical or one is an exact subset of the other. Even though we start out with the exact same dataset, by applying different topological selections we end up with two different datasets. However, as any candidate that passes the tighter selection (whether that be the "tight" variation compared to the default, or the default compared to the "loose") will also pass the looser selection, we may consider the tighter variation a subset of the looser variation. 
+  
+  The bigger problem lies in the weighting of the datapoints, which happens on account of the efficiency and mixed events corrections. Let's consider the latter correction. Variations in the cascade sample due to a different topological selection will inevitably lead to a different mixed events correction. This difference should be small, as single particle effects are not expected to have a significant impact on two-particle effects, but small differences will still lead to different weights for the datapoints in the correlation analysis. These small differences violate the assumption of identical datasets. This is only exacerbated by the efficiency correction, which weights the datapoints by the inverse of the reconstruction efficiency. As the efficiency is directly affected by the topological selection criteria, these weights will fundamentally differ between the variations. 
+
+  In practice this means that uncertainties on the ratio (difference) of the variations with respect to the default are correlated in an unknown way, and treating them as if they are fully correlated can lead to drastic under- and overestimations of the propagated uncertainties. Clear examples of either case can be seen in Figure \ref{fig:CorrSysVarLooseOS}, specifically the 7th and 14th bins. In the first case the ratio seems to deviate from 1 by approximately 6\% with a very small uncertainty, which happens when the two datapoints have almost identical absolute uncertainties but different values. In the second case the ratio seems to be almost exactly 1 but with a large uncertainty, here the exact opposite happens - the two datapoints have almost identical values but different uncertainties. This clearly cannot happen when the datasets are identical (either unweighted or both weighted in the exact same manner), as under this assumption two datapoints with identical values would have identical uncertainties. 
+
+  There is unfortunately not much we can do about this, since the efficiency correction encodes the effect of the topological selection criteria which is exactly what we're trying to probe. We have considered removing the mixed events correction under the assumption that it should remain the same between the variations - the entire correction would then cancel in the ratio between the variation anyway. Indeed this does improve the behaviour of the uncertainties, but it does not remove the problem entirely. On top of this, for the OS - SS correlations we estimate the systematic uncertainty from the absolute difference between the variation and the default, so the mixed events corrections do not cancel. As the correction is applied by increasing the weight of the datapoints away from \dy\ and \dphi\ equal to zero, removing the correction would lead to an underestimation of the systematic uncertainty. \rs{maybe mention here what could be done in the future?}
+
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
       \centering
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_OS_corr.pdf}
-        \caption{OS with systematic uncertainties computed from the correlation analysis.}
-        \label{fig:SystematicsOSCorr}
-      \end{subfigure}
-      \hfill
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_SS_corr.pdf}
-        \caption{SS with systematic uncertainties computed from the correlation analysis.}
-        \label{fig:SystematicsSSCorr}
-      \end{subfigure}
-      
-      \begin{subfigure}[t]{.49\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/Intermezzo/systematics/systematics_Sub_corr.pdf}
-        \caption{OS - SS with systematic uncertainties computed from the correlation analysis.}
-        \label{fig:SystematicsSubCorr}
-      \end{subfigure}
-      \caption{Systematic uncertainties for the OS, SS, and OS - SS correlation results, computed from the correlation analysis.}
-      \label{fig:SystematicsCorr}
-    \end{figure}
+      \includegraphics[width=\textwidth]{figures/systematics/topo_RatioPlot_Loose_OS.pdf}
+      \caption{OS correlation results for the different systematic uncertainty variations.}
+      \label{fig:CorrSysVarLooseOS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/topo_RatioPlot_Tight_OS.pdf}
+      \caption{OS correlation results for the different systematic uncertainty variations.}
+      \label{fig:CorrSysVarTightOS}
+    \end{subfigure}
+    \caption{asd}
+    \label{fig:CorrSysVarOS}
+  \end{figure}
 
+  \begin{figure}[ht]
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/topo_RatioPlot_Loose_SS.pdf}
+      \caption{SS correlation results for the different systematic uncertainty variations.}
+      \label{fig:CorrSysVarLooseSS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/topo_RatioPlot_Tight_SS.pdf}
+      \caption{SS correlation results for the different systematic uncertainty variations.}
+      \label{fig:CorrSysVarTightSS}
+    \end{subfigure}
+    \caption{asd}
+    \label{fig:CorrSysVarSS}
+  \end{figure}
 
+  \begin{figure}[ht]
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/topo_RatioPlot_Loose_Sub.pdf}
+      \caption{OS - SS correlation results for the different systematic uncertainty variations.}
+      \label{fig:CorrSysVarLooseSub}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/topo_RatioPlot_Tight_Sub.pdf}
+      \caption{OS - SS correlation results for the different systematic uncertainty variations.}
+      \label{fig:CorrSysVarTightSub}
+    \end{subfigure}
+    \caption{asd}
+    \label{fig:CorrSysVarSub}
+  \end{figure}
 
-    
+  When considering the ratio (difference) of the variations, we observe no clear behaviour as a function of \dphi. Based on this we decide to calculate the systematic uncertainty as a constant fit to the ratio (difference). Even this can be done in multiple ways, and to investigate which would be the most robust we look at three different methods:
+  \begin{enumerate}
+    \item The unweighted arithmetic mean of the ratio (difference) across \dphi.
+    \item The weighted arithmetic mean of the ratio (difference) across \dphi.
+    \item The ratio of sums (difference of averages). Here we sum (average) first across \dphi\ before calculating the ratio (difference). 
+  \end{enumerate}
+
+  In all three methods we assume no bin-to-bin correlation of the uncertainties. The results of the different methods are shown in Figure \ref{fig:SystematicAvgTightOS} for the tight variation of the OS correlation. We have chosen this specific case to highlight the difference between the methods, but the considerations hold for all cases. It is immediately clear that the weighted average places undue importance on datapoints with small uncertainties, as these uncertainties are likely underestimated as discussed above. In this specific example this will lead to an overestimation of the systematic uncertainty. Both the unweighed average and the ratio of sums give a more reasonable estimate of the systematic uncertainty, and the agreement between the two is a sign that both methods are robust against any outliers. In theory we expect the ratio of sums to be slightly more robust against outliers as they are ``integrated out'' before calculating the ratio, so we decide to use this method to determine the average. The corresponding values and their uncertainties are reported in Table \ref{tab:sysvals} \rs{todo make this table}
+
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=.8\textwidth]{figures/systematics/topo_Tight_OS.pdf}
+    \caption{Different ways of determining the average systematic uncertainty from the ratio of the tight variation to the default for the OS correlation.}
+    \label{fig:SystematicAvgTightOS}
+  \end{figure}
+
+  However, from the error band (the value of which is reported in the legend) it is clear that there is a sizeable uncertainty on the systematic uncertainty itself. Indeed, even momentarily disregarding the uncertainties on the datapoints, the spread of the ratio across \dphi\ is rather large. This is a sign that we suffer from a limited amount of statistics in determining the systematic uncertainty. For this reason we decide to estimate the systematic uncertainty from the topological variations with the systematic uncertainty obtained for the spectra analysis. This is motivated by the fact that the OS and SS correlations are defined as a trigger-normalised pair yield, which in essence comes down to an associate yield, a similar quantity to the single particle yield that we calculate for the spectra. \rs{$<$-- formulate this better?} Where we could straightforwardly take the \pt\ dependent systematic uncertainty for the \pt\ spectrum, the \pt\ dependence of the correlation results is not clear. As the \Xi\ baryon yield is higher for lower \pt\, we should definitely take this into account when determining the systematic uncertainty for the correlation analysis. For this reason we take a flat 1.5\% relative systematic uncertainty corresponding to the maximum deviation observed in Figure \ref{fig:SpectraRatioSys} for \pt\ between 1 and 2 GeV/$c$. 
+
+  Applying this 1.5\% to the OS - SS correlation would only work under the assumption that it too is a quantity equivalent to a single particle yield, which is not so clear. The systematic uncertainties for the OS and SS are likely to be correlated in a way that leads to a significant reduction of the systematic uncertainty for the OS - SS, so we propagate the magnitudes of the systematic uncertainties for the OS and SS to the OS - SS assuming they are fully correlated. We do this since the associate \Xi\ baryons are in either case an average over both signs. However, this method unsurprisingly leads to a negligible systematic uncertainty on the awayside, where the OS and SS correlations take similar values. We suspect that this is an underestimation of the systematic uncertainty, as there will be sources of the systematic uncertainty that are not fully correlated between the OS and SS. To take this into account, we take the systematic uncertainty obtained from the correlation analysis as the lower limit for the systematic uncertainty of the OS - SS correlation, which is defined as the average of the absolute values of the systematic uncertainties obtained from the tight and loose variations. 
+
+  \section{Other sources of sysetmatic uncertainties}
+
+  In much the same way as the spectra analysis, we want to take the systematic uncertainty from the material budget into account. As a \pt\ dependent systematic uncertainty is not applicable to the correlation analysis, we take a flat 3\% uncertainty across all \dphi\ bins. At first glance this may seem as an overestimation based on Figure \ref{fig:MaterialBudget}, but as most \Xi\ baryons are reconstructed at low \pt\ we choose to have this region guide our estimate of the systematic uncertainty. In the future one may want to do a more detailed study of the effect of the material budget uncertainty on the correlation results by varying the detector material budget in the MC simulations that are used to compute the \Xi\ baryon reconstruction efficiency. 
+
+  We have also considered the sideband definition as a potential source of systematic uncertainty, as these are used to estimate the contribution of the combinatorial background to the OS and OS - SS correlations. By choosing an alternate sideband definition $[\mu + 4\sigma, \mu + 8\sigma]$ (and the corresponding window chosen symmetrically on the other side of the peak) and comparing to the default definition $[\mu + 4\sigma, \mu + 10\sigma]$ we see a small but significant difference in the correlation result. This is taken as a flat uncertainty across all \dphi\ bins for the OS and SS correlations, but not for the OS - SS correlation as the difference was not significant in this case. 
+
+  Finally, we have investigated the non-closure of the MC closure test. As the closure test is consistent within 1 roger-barlow standard deviation, we do not consider this as a source of systematic uncertainty. 
+
+  \rs{perhaps put plots in the appendix showing the comparisons}
+
+  \begin{figure}[ht]
+    \centering
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/systematics_OS.pdf}
+      \caption{OS with systematic uncertainties computed from the correlation analysis.}
+      \label{fig:SystematicsOSCorr}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/systematics_SS.pdf}
+      \caption{SS with systematic uncertainties computed from the correlation analysis.}
+      \label{fig:SystematicsSSCorr}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{.49\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{figures/systematics/systematics_Sub.pdf}
+      \caption{OS - SS with systematic uncertainties computed from the correlation analysis.}
+      \label{fig:SystematicsSubCorr}
+    \end{subfigure}
+    \caption{Systematic uncertainties for the OS, SS, and OS - SS correlation results.}
+    \label{fig:SystematicsCorr}
+  \end{figure}
+
+  The final systematic uncertainty for all OS, SS, and the subtracted versions are presented in Figure \ref{fig:SystematicsCorr}. In all cases the systematic uncertainty is similar in size or smaller than the statistical uncertainty, the former is especially the case on the near-side peaks as the statistical uncertainties scale with the square root of the datapoints, whereas the systematic uncertainties are at least partially taken to scale linearly. It should also be noted that the systematic uncertainties for the subtracted version are smaller than for the OS, which is a consequence of the correlation between the OS and SS systematic uncertainties that we have assumed. This is also confirmed by the systematic uncertainty obtained from the correlation analysis, where we have assumed no correlation but still see a significant reduction of the systematic uncertainty for the OS - SS correlation compared to the OS correlations.
+
+  \rs{should I make a table or histogram (or both) with the different sources + total systematic uncertainty?}
+
+  
