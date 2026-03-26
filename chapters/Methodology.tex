@@ -147,10 +147,10 @@ Here the positive and negative superscripts denote the charge of the trigger and
     % \end{table}
 
   \subsection{PID}
-    The PID selection is based on the energy loss d$E$/d$x$ in the TPC being within 5$\sigma$ of the expected value for (anti-)protons, pions, and kaons. The $\sigma$ refers to the width of the band around the curve expressed in standard deviations, so a 5$\sigma$ cut means that only one in a few million true particles would fall outside the band. As the 5$\sigma$ bands around the Bethe-Bloch curves may overlap, it is possible for a track to be consistant with multiple PID hypotheses. In this case we do not reject any of the hypotheses but simply accept all of them. For high momentum tracks the bands start to overlap more significantly which means there is very little to no separation power between different PID hypotheses. For these tracks the PID selection has effectively no impact other than removing tracks with a very off d$E$/d$x$ measurement.
+    The PID selection is based on the energy loss d$E$/d$x$ in the TPC being within 5$\sigma$ of the expected value for (anti-)protons, pions, and kaons. The $\sigma$ refers to the width of the band around the curve expressed in standard deviations, so a 5$\sigma$ cut means that only one in a few million true particles would fall outside the band. As the 5$\sigma$ bands around the Bethe-Bloch curves may overlap, it is possible for a track to be consistant with multiple PID hypotheses. In this case we do not reject any of the hypotheses but simply accept all of them. For higher momentum tracks the bands start to overlap more significantly which means there is very little to no separation power between different PID hypotheses. For these tracks the PID selection has effectively no impact other than removing tracks with a very off d$E$/d$x$ measurement.
     
-    \rs{add energy loss plots? or maybe we should put those in the detector chapter?}
-    \pc{I would indeed add some plots here; At the same time, I wonder how relevant this paragraph is since the 5$\sigma$ selection you apply by default doesn't alter significantly either the efficciency or the purity of your samples. Maybe it becomes more relevant, however, when you discuss your systematics where some variations on the number of $\sigma$ will be performed?}
+    % \rs{add energy loss plots? or maybe we should put those in the detector chapter? edited: I've now added them to the detector chapter.}
+    % \pc{I would indeed add some plots here; At the same time, I wonder how relevant this paragraph is since the 5$\sigma$ selection you apply by default doesn't alter significantly either the efficciency or the purity of your samples. Maybe it becomes more relevant, however, when you discuss your systematics where some variations on the number of $\sigma$ will be performed?}
 
   \subsection{Topological selections}
 % \pc{I would not start a new sub-section for each topoligical variable. In addition, I would add a plot for each of them showing, if possible (e.g. from MC) the distributions highlighting with different filled colours the part of the signal and the none of the bkg. I suggest also to give the numbers and cite the table}
@@ -353,16 +353,16 @@ Here the positive and negative superscripts denote the charge of the trigger and
       \label{fig:ME1D}
     \end{figure}
 
-  \section{Systematic uncertainties}
-  \label{sec:systematics}
-    Systematic uncertainties are a measure of our ignorance about biases introduced by choices made in the analysis procedure. It is a challenge to accurately quantify these uncertainties because they try to encapsulate a bias we do not fully understand - if we did, we could correct for it. The sources we consider for systematic uncertainties in this analysis are listed here:
-    \begin{itemize}
-      \item Cascade selection criteria
-      \item Sideband window definition
-      \item Monte Carlo closure test
-    \end{itemize}
+  % \section{Systematic uncertainties}
+  % \label{sec:systematics}
+  %   Systematic uncertainties are a measure of our ignorance about biases introduced by choices made in the analysis procedure. It is a challenge to accurately quantify these uncertainties because they try to encapsulate a bias we do not fully understand - if we did, we could correct for it. The sources we consider for systematic uncertainties in this analysis are listed here:
+  %   \begin{itemize}
+  %     \item Cascade selection criteria
+  %     \item Sideband window definition
+  %     \item Monte Carlo closure test
+  %   \end{itemize}
 
-    \rs{probably we should add a plot here (or at the very end of this section?) that shows the final systematic uncertainties as a function of \dphi\ and \dy\ for OS, SS, OS-SS.}
+  %   \rs{probably we should add a plot here (or at the very end of this section?) that shows the final systematic uncertainties as a function of \dphi\ and \dy\ for OS, SS, OS-SS.}
 
     % \subsection{Systematic uncertainties from selection variables}
     %   \label{sec:syssel}
@@ -425,9 +425,9 @@ Here the positive and negative superscripts denote the charge of the trigger and
     %   \label{fig:XiMinEffSys}
     %   \end{figure}
 
-    \subsection{Sideband window definition}
-      \label{sec:syssb}
+    % \subsection{Sideband window definition}
+    %   \label{sec:syssb}
 
 
-    \subsection{Monte Carlo closure test}
-      \label{sec:sysmc}
+    % \subsection{Monte Carlo closure test}
+    %   \label{sec:sysmc}
