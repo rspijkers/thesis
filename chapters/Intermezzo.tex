@@ -13,34 +13,43 @@ We start by comparing the correlation results of this analysis to the results of
 
 The results of this analysis are shown in plots \ref{fig:OS,SS,Sub} for the opposite sign (OS), same sign (SS), and subtracted distributions respectively \rs{I have to make nice versions of these plots, with the uncertainties properly propagated}, with ratios to the run 2 results shown in the bottom panels. For the OS-SS (or OB - SB as it is called in the run 2 analysis) results we plot the difference in the bottom panel rather than the ratio, as the datapoints are close to zero. From these comparisons it is clear that there is a significant discrepancy between the results of the two analyses, with the results of this analysis being systematically lower than the results of the run 2 analysis. The discrepancy seems to be constant across \dphi\ in the OS and SS cases (for the subtracted case it is hard to quantify this the ratio is not well defined on the awayside), which points to a difference in definition in the observable or a normalisation issue. 
 
-We have also compared the Monte Carlo closure test\footnote{For more details on the Monte Carlo closure test, see Section \ref{sec:mc_closure}} results of this analysis to the Monte Carlo results of the run 2 analysis. This checks that the analysis procedure is able to reproduce the known input of the Monte Carlo simulations, verifying that there is no ``trivial'' mistake in the analysis procedure. The added benefit of comparing the results of this check with the MC results of the run 2 analysis is that it can also verify that there is no difference in the definition of the observable. \rs{I have to be a bit careful in how I word this next part. In short, there \textit{is} a difference (factor 2) in the definition of the observable in the MC (truth) case. However, the authors have assured us that there is no such mistake in the analysis of the collision data, so the data should still agree between run 2 and 3. This then leads us to investigating the discrepancy as a normalisation issue. As the normalisation of the per-trigger yield is basically given by the single particle spectra, we can check whether the single particle spectra of this analysis are consistent with the single particle spectra of the run 2 analysis. The spectra analysis that is, so a different analysis from the correlation analysis.}
+We have also compared the Monte Carlo closure test\footnote{For more details on the Monte Carlo closure test, see Section \ref{sec:mc_closure}} results of this analysis to the Monte Carlo results of the run 2 analysis. This checks that the analysis procedure is able to reproduce the known input of the Monte Carlo simulations, verifying that there is no ``trivial'' mistake in the analysis procedure. The added benefit of comparing the results of this check with the MC results of the run 2 analysis is that it can also verify that there is no difference in the definition of the observable. This comparison shows that there is a similar discrepancy between the MC truth level results of this work and those of the previous analysis. This is most likely caused by the requirement that the trigger \Xi\ baryon has to have a higher \pt\ than the associated \Xi\ baryon, which is not applied in the run 2 analysis on MC data. The authors have assured us that even though this requirement is missing in the analysis of the MC data, the selection is properly applied in the analysis of the collision data.
+
+Another potential cause of the discrepancy is a difference in the normalisation the per-trigger yield, as any error in the normalisation would lead to a constant discrepancy across \dphi\ as observed. The normalisation by the number of triggers is very closely related to the single particle spectrum, with the number of triggers basically corresponding to the integral of the single particle spectrum over the relevant kinematic range. To verify this part of the analysis, we compute the single \Xi\ spectrum and compare it to the previously published \Xi\ spectrum.\cite{Run2Spectra} Some alterations have to be made in order to make this comparison valid as will be explained in the next sections. 
+
+% \rs{I have to be a bit careful in how I word this next part. In short, there \textit{is} a difference (factor 2) in the definition of the observable in the MC (truth) case. However, the authors have assured us that there is no such mistake in the analysis of the collision data, so the data should still agree between run 2 and 3. This then leads us to investigating the discrepancy as a normalisation issue. As the normalisation of the per-trigger yield is basically given by the single particle spectra, we can check whether the single particle spectra of this analysis are consistent with the single particle spectra of the run 2 analysis. The spectra analysis that is, so a different analysis from the correlation analysis.}
 
 \section{Efficiency corrections for \texorpdfstring{\Xi}{Xi} baryon yields}
 
 \pc{I would change the formulation below, saying that the formula reflects what you report. The fully corrected yield has, in principle, additional corrections e.g. feed-down. One can argue of course that these corrections are not that significant for the case of the $\Xi$, but this statement first needs to be quantified and even if it turns out to be true the need for such correction depends on the level of precision you want/need to achieve.}
 
-  The \Xi\ baryon yields are calculated according to the following equation:
+  We report the \Xi\ baryon spectrum according to Equation \ref{eq:single_spectra}, which includes a normalisation to the number of events and the relevant efficiency corrections. It should be noted that the fully corrected \Xi\ baryon yield would in principle also include corrections for feed-down from more exotic baryon decays, which is not included here. The main contribution of this effect would come from \Omega\ baryons that decay into a charged \Xi\ baryon and a $\pi^0$ with a branching ratio of approximately 8.5\% \cite{PDG2024}. As the \Omega\ baryons are about 10 times as rare as the \Xi\ baryons, the feed-down contribution is expected to be on the order of 1\% and therefor not relevant for the level of precision we are aiming for.
+
   \begin{align}
-    \frac{1}{N^\text{true}_\text{events}} \frac{\d^2 N_\Xi}{\d\pt \d\y} = \frac{\epsilon_\text{event}}{N^\text{rec.}_\text{events}} \frac{N^\text{rec.}_\text{casc.}(\pt, \y)}{\epsilon_\text{\Xi}(\pt, \eta) \Delta \pt \Delta \y}, \label{eq:single_spectra}
+    \frac{1}{N^\text{true}_\text{events}} \frac{\d^2 N_\Xi}{\d\pt \d\y} = \frac{\epsilon_\text{event}}{N^\text{rec.}_\text{events}} \frac{N^\text{rec.}_\text{casc.}(\pt, \y)}{\epsilon_\text{\Xi}(\pt, \eta) \Delta \pt \Delta \y}. \label{eq:single_spectra}
   \end{align}
 
-  where $\epsilon_\text{event}$ is the event reconstruction efficiency and $\epsilon_\text{\Xi}(\pt, \eta)$ is the cascade reconstruction efficiency. As we report the yield in the central rapidity window $|\y| < 0.5$, $\Delta \y = 0.5 - (-0.5) = 1$ and drops out of the equation. Note that to be consistent with the correlation analysis we apply the efficiency correction as a function of \eta\ rather than \y\, as we require both the generated and reconstructed cascade to be within $|\eta| < 0.8$. Combining such an \eta\ selection with an efficiency correction as a function of \y\ would lead to unwanted edge effects in the efficiency correction.
-  \mvl{The event correction is a bit tricky: if you reject events in an unbiased way (e.g. with the vtx-z < 10 cm cut), you don't need to correct. I would mention here that you use both an event efficiency and a Xi efficiency to account for events that are not selected e.g. due to low multiplicity.}
+  Here $\epsilon_\text{event}$ is the event reconstruction efficiency and $\epsilon_\text{\Xi}(\pt, \eta)$ is the cascade reconstruction efficiency. As we report the yield in the central rapidity window $|\y| < 0.5$, $\Delta \y = 0.5 - (-0.5) = 1$ and drops out of the equation. Note that to be consistent with the correlation analysis we apply the efficiency correction as a function of \eta\ rather than \y\, as we require both the generated and reconstructed cascade to be within $|\eta| < 0.8$. Combining such an \eta\ selection with an efficiency correction as a function of \y\ would lead to unwanted edge effects in the efficiency correction.
+  \mvl{The event correction is a bit tricky: if you reject events in an unbiased way (e.g. with the vtx-z < 10 cm cut), you don't need to correct. I would mention here that you use both an event efficiency and a Xi efficiency to account for events that are not selected e.g. due to low multiplicity.} \rs{I'm not sure I understand this comment, the event efficiency simply accounts for the fact that we only reconstruct a fraction of the generated events, which we want to correct for (unbiased or not)}
 
 \pc{You can motivate this more clearly by saying that the event normalisation in the per-trigger study cancels out.} \mvl{Not sure whether this remark fits well here. Could move this to the end of the spectra part?}
 
-  The \Xi\ efficiency correction is different for single particle yields compared to correlation studies. This is due to the fact that in correlation studies we are interested in quantities \textit{per trigger}, whereas in single particle spectra we are interested in quantities \textit{per event}. This results in a slightly different definition of the cascade reconstruction efficiency that can be written as:
-  \mvl{This equation looks trivial; as you point out below, the key point is whether you do some preselection on the particle-level events or not. It would be nice to exaplin this more explicitly if that can be done in a compact way}
+  Let's consider the \Xi\ baryon efficiency correction for single particle yields. Compared to the efficiency correction for correlation studies given by Equation \ref{eq:efficiency}, we no longer require that a generated cascade has a matched reconstructed event, as efficiency loss due to event loss is something we want to account for. This is due to the fact that in correlation studies we are interested in quantities \textit{per trigger}, whereas in single particle spectra we are interested in quantities \textit{per event}. Remember that in the correlation analysis any ineficciency due to event loss cancels out due to the trigger normalisation. This means that the efficiency correction for the spectrum analysis reduces to simply the ratio of the number of reconstructed cascades to the number of generated cascades in a given \pt\ and \eta\ bin:
+
   \begin{align}
     \epsilon(\pt, \eta) = \frac{N^\text{rec.}_\Xi(\pt, \eta)}{N^\text{gen.}_\Xi(\pt, \eta)}. \label{eq:efficiency_spectra}
   \end{align}
 
-   \mvl{Move this up:} Compared to the efficiency correction for correlation studies given by Equation \ref{eq:efficiency}, we no longer require that a generated cascade has a matched reconstructed event, as efficiency loss due to event loss is something we want to account for. Note that we do require that the generated event is reconstructable, i.e. that the generated event passes our event selections.\mvl{next few sentences are a bit convoluted; could start from stating that in the analysis we select on reconstructed quantities and then immediately go to the two bullets with a remark that they have a close analogy at the particle level}However, some of our event selections such as the \texttt{sel8} selection criterium are based on reconstructed level information, and we by definition do not have access to this information at the generated level. So we only apply the event selections that can be defined at the generated level, albeit slightly different from the reconstructed level due to fundamental differences between generated and reconstructed information. This consists of two different event selections:
+  \mvl{This equation looks trivial; as you point out below, the key point is whether you do some preselection on the particle-level events or not. It would be nice to exaplin this more explicitly if that can be done in a compact way}\rs{I've rewritten this section as above.}
+  
+  Note that we do require that the generated event is reconstructable, i.e. that the generated event passes our event selections, ideally with the same event selections applied in the correlation analysis as listed in Section \ref{sec:eventsel}. 
+  \mvl{next few sentences are a bit convoluted; could start from stating that in the analysis we select on reconstructed quantities and then immediately go to the two bullets with a remark that they have a close analogy at the particle level}\rs{I've added a half sentence in the previous one, which I think clarifies this.}
+  However, some of our event selections such as the \texttt{sel8} selection criterium are based on reconstructed level information, and we by definition do not have access to this information at the generated level. So we only apply the event selections that can be defined at the generated level, albeit slightly different from the reconstructed level due to fundamental differences between generated and reconstructed information. This consists of two different event selections:
   \begin{itemize}
     \item $V_z < 10$ cm: as the position of the primary vertex is available at the generated level, this is a rather straightforward analogy to the reconstructed level selection.
     \item INEL$>$0: at the reconstructed level this selection is applied at track level by requiring at least one central charged track that contributes to the PV. The generated level equivalent is to require at least one charged primary particle within $|\eta| < 0.8$. 
   \end{itemize}
-  \mvl{Also mention the readout-frame selection?}
+  \mvl{Also mention the readout-frame selection?}\rs{probably not, as it's not relevant at the MC level}
 
   \mvl{Suggest to insert a slightly more up-front discussion about different selections and their effect; in particular whether they are biased or unbiased.}
 
@@ -90,36 +99,38 @@ We have also compared the Monte Carlo closure test\footnote{For more details on 
   \end{figure}
 
 \section{Systematic uncertainties for \texorpdfstring{\Xi}{Xi} baryon yields}
-  To investigate any potential sources of discrepancies or systematic uncertainties, we started by looking into the distributions of the topological variables used in the cascade selection. Any non-trivial selection on these variables will lead to a different reconstruction efficiency. In order to accurately model this, the distributions of the topological variables should be well described by the Monte Carlo simulations used to determine the efficiency corrections, even before applying the selection on these variables. \mvl{This computationally not feasible argument is not the whole point; only the single-track cuts reduce the combinatorics, but you also apply pair- and triplet cuts. That is probably also for storage needs. I would just state what is done: 'In the analysis software, a preselection is applied to reduce the number of Xi candidates. This selection rejects mostly background. Further tuning of the selections is done on the analysis level.' or so....}It is computationally not feasible to consider all possible cascade candidates before applying any selection, as this is equivalent to considering all possible track triplet combinations in an event. Therefore, we apply a set of `minimal' selection criteria before looking at the distributions of the topological variables. In principle these selection criteria aim to be as inclusive as possible while reducing the combinatorial background by requiring a minimum distance of all daughter tracks to the primary vertex. These minimal selection criteria are shown in Table \ref{tab:minsel}.
+  To investigate any potential sources of discrepancies or systematic uncertainties, we started by looking into the distributions of the topological variables used in the cascade selection. Any non-trivial selection on these variables will lead to a different reconstruction efficiency. In order to accurately model this, the distributions of the topological variables should be well described by the Monte Carlo simulations used to determine the efficiency corrections, even before applying the selection on these variables. 
+  \mvl{This computationally not feasible argument is not the whole point; only the single-track cuts reduce the combinatorics, but you also apply pair- and triplet cuts. That is probably also for storage needs. I would just state what is done: 'In the analysis software, a preselection is applied to reduce the number of Xi candidates. This selection rejects mostly background. Further tuning of the selections is done on the analysis level.' or so....}\rs{I've rewritten thist part, while also explicitly mentioning that there are cuts that invariably will reject some signal as well.}
+  In the analysis software, a preselection is applied to reduce the number of Xi candidates before looking at the distributions of the topological variables. These selection criteria aim to be as inclusive as possible, rejecting mostly background. Some of the criteria are specifically aimed at removing the combinatorial background, such as imposing a minimum DCA of the daughter tracks to the primary vertex. It should be noted that this will unavoidably reject some signal, as there is nothing that fundamentally prevents a daughter track to have a small DCA to the PV - it's just that the vast majority of the tracks with a small DCA to the PV are primary, and contribute to the combinatorial background. A summary of the preselection criteria are shown in Table \ref{tab:minsel}.
 
   \begin{table}[ht]
     \centering
-    \begin{tabular}{|c|c|}
+    \begin{tabular}{c|c}
       \hline
-      \multicolumn{2}{|c|}{Minimal selection criteria} \\
+      \multicolumn{2}{c}{Minimal selection criteria} \\
       \hline
       $|\eta_\text{tracks}|$ & $< 0.8$ \\
-      \hline
+      % \hline
       Number of TPC crossed rows & $> 50$ \\
-      \hline
+      % \hline
       DCA V0 daughters & $< 1.0$ \\
-      \hline
+      % \hline
       DCA cascade daughters & $< 1.0$ \\
-      \hline
+      % \hline
       DCA pos V0 daughter to PV & $> 0.01$ \\
-      \hline
+      % \hline
       DCA neg V0 daughter to PV & $> 0.01$ \\
-      \hline
+      % \hline
       DCA bach to PV & $> 0.02$ \\
-      \hline
+      % \hline
       V0 $\cos(\text{PA})$ & $> 0.97$ \\
-      \hline
+      % \hline
       Cascade $\cos(\text{PA})$ & $> 0.97$ \\
-      \hline
+      % \hline
       V0 radius & $> 0.5$ \\
-      \hline
+      % \hline
       Cascade radius & $> 0.5$ \\
-      \hline
+      % \hline
       V0 mass window & $< 14$ MeV/$c^2$\\
       \hline
     \end{tabular}
