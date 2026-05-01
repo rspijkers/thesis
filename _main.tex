@@ -1,4 +1,5 @@
-\documentclass[12pt, twoside]{book}
+\documentclass[11pt, b5paper, twoside]{book}
+% \documentclass[11pt, twoside]{book} % Use this to compile on regular format, incase you prefer that for proofreading.
 \usepackage{style}
 \usepackage{commands}
 
@@ -16,21 +17,27 @@
 % \input{skeleton}
 
 \chapter{Introduction}
+\label{ch:introduction}
 \input{chapters/Introduction}
 
 \chapter{Theory}
+\label{ch:theory}
 \input{chapters/Theory.tex}
 
 \chapter{Detector}
+\label{ch:detector}
 \input{chapters/Detector.tex}
 
 \chapter{Analysis Details}
+\label{ch:methodology}
 \input{chapters/Methodology.tex}
 
 \chapter{Intermezzo}
+\label{ch:intermezzo}
 \input{chapters/Intermezzo.tex}
 
 \chapter{Results}
+\label{ch:results}
 \input{chapters/Results.tex}
 
 \appendix
@@ -38,6 +45,13 @@
 \chapter{MC closure}
 \label{ch:mc_closure}
 \input{chapters/appendices/McClosure.tex}
+
+\chapter{Model plot dump}
+\input{chapters/appendices/MCplotdump.tex}
+
+\chapter{PYTHIA settings}
+\label{ch:pythia_settings}
+\input{chapters/appendices/PYTHIA.tex}
 
 %\section{Methodology write-up}
 % \input{WriteUp.tex}

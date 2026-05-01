@@ -11,7 +11,7 @@ Studying the single particle spectra of cascades is interesting in it's own righ
 
 We start by comparing the correlation results of this analysis to the results of the analysis performed on Run 2 data.\cite{Adolfson2024} The results of the run 2 analysis as published are shown in Figure \ref{fig:todo}, where the left panel is the relevant part for this discussion. Here the difference in azimuthal angle between \Xi\-pairs with opposite (same) baryon numbers, denoted as OB (SB), is shown in the top panel. Both distributions are divided by the number of triggers. The difference between these two distributions, denoted as OB - SB, is shown in the bottom panel. 
 
-The results of this analysis are shown in plots \ref{fig:OS,SS,Sub} for the opposite sign (OS), same sign (SS), and subtracted distributions respectively \rs{I have to make nice versions of these plots, with the uncertainties properly propagated}, with ratios to the run 2 results shown in the bottom panels. For the OS-SS (or OB - SB as it is called in the run 2 analysis) results we plot the difference in the bottom panel rather than the ratio, as the datapoints are close to zero. From these comparisons it is clear that there is a significant discrepancy between the results of the two analyses, with the results of this analysis being systematically lower than the results of the run 2 analysis. The discrepancy seems to be constant across \dphi\ in the OS and SS cases (for the subtracted case it is hard to quantify this the ratio is not well defined on the awayside), which points to a difference in definition in the observable or a normalisation issue. 
+The results of this analysis are shown in plots \ref{fig:OS,SS,Sub} for the opposite sign (OS), same sign (SS), and subtracted distributions respectively \rs{I have to make nice versions of these plots, with the uncertainties properly propagated}, with ratios to the run 2 results shown in the bottom panels. For the OS-SS (or OB - SB as it is called in the run 2 analysis) results we plot the difference in the bottom panel rather than the ratio, as the datapoints are close to zero and the ratio is ill-defined. From these comparisons it is clear that there is a significant discrepancy between the results of the two analyses, with the results of this analysis being systematically lower than the results of the run 2 analysis. The discrepancy seems to be constant across \dphi\ in the OS and SS cases (for the subtracted case it is hard to quantify this the ratio is not well defined on the awayside), which points to a difference in definition in the observable or a normalisation issue. 
 
 We have also compared the Monte Carlo closure test\footnote{For more details on the Monte Carlo closure test, see Section \ref{sec:mc_closure}} results of this analysis to the Monte Carlo results of the run 2 analysis. This checks that the analysis procedure is able to reproduce the known input of the Monte Carlo simulations, verifying that there is no ``trivial'' mistake in the analysis procedure. The added benefit of comparing the results of this check with the MC results of the run 2 analysis is that it can also verify that there is no difference in the definition of the observable. This comparison shows that there is a similar discrepancy between the MC truth level results of this work and those of the previous analysis. This is most likely caused by the requirement that the trigger \Xi\ baryon has to have a higher \pt\ than the associated \Xi\ baryon, which is not applied in the run 2 analysis on MC data. The authors have assured us that even though this requirement is missing in the analysis of the MC data, the selection is properly applied in the analysis of the collision data.
 
@@ -399,7 +399,7 @@ We have also investigated the effect of the cascade radius selection criterium. 
 
   Applying this 1.5\% to the OS - SS correlation would only work under the assumption that it too is a quantity equivalent to a single particle yield, which is not so clear. The systematic uncertainties for the OS and SS are likely to be correlated in a way that leads to a significant reduction of the systematic uncertainty for the OS - SS, so we propagate the magnitudes of the systematic uncertainties for the OS and SS to the OS - SS assuming they are fully correlated. We do this since the associate \Xi\ baryons are in either case an average over both signs. However, this method unsurprisingly leads to a negligible systematic uncertainty on the awayside, where the OS and SS correlations take similar values. We suspect that this is an underestimation of the systematic uncertainty, as there will be sources of the systematic uncertainty that are not fully correlated between the OS and SS. To take this into account, we take the systematic uncertainty obtained from the correlation analysis as the lower limit for the systematic uncertainty of the OS - SS correlation, which is defined as the average of the absolute values of the systematic uncertainties obtained from the tight and loose variations. 
 
-  \section{Other sources of sysetmatic uncertainties}
+  \section{Other sources of systematic uncertainties}
 
   In much the same way as the spectra analysis, we want to take the systematic uncertainty from the material budget into account. As a \pt\ dependent systematic uncertainty is not applicable to the correlation analysis, we take a flat 3\% uncertainty across all \dphi\ bins. At first glance this may seem as an overestimation based on Figure \ref{fig:MaterialBudget}, but as most \Xi\ baryons are reconstructed at low \pt\ we choose to have this region guide our estimate of the systematic uncertainty. In the future one may want to do a more detailed study of the effect of the material budget uncertainty on the correlation results by varying the detector material budget in the MC simulations that are used to compute the \Xi\ baryon reconstruction efficiency. 
 
@@ -414,21 +414,21 @@ We have also investigated the effect of the cascade radius selection criterium. 
     \begin{subfigure}[t]{.49\textwidth}
       \centering
       \includegraphics[width=\textwidth]{figures/systematics/systematics_OS.pdf}
-      \caption{OS with systematic uncertainties computed from the correlation analysis.}
+      \caption{OS with final systematic uncertainties.}
       \label{fig:SystematicsOSCorr}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.49\textwidth}
       \centering
       \includegraphics[width=\textwidth]{figures/systematics/systematics_SS.pdf}
-      \caption{SS with systematic uncertainties computed from the correlation analysis.}
+      \caption{SS with final systematic uncertainties.}
       \label{fig:SystematicsSSCorr}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{.49\textwidth}
       \centering
       \includegraphics[width=\textwidth]{figures/systematics/systematics_Sub.pdf}
-      \caption{OS - SS with systematic uncertainties computed from the correlation analysis.}
+      \caption{OS - SS with final systematic uncertainties.}
       \label{fig:SystematicsSubCorr}
     \end{subfigure}
     \caption{Systematic uncertainties for the OS, SS, and OS - SS correlation results.}
