@@ -1,5 +1,6 @@
 ## custom ignores
 _main.pdf
+figures/Modelstudy/*
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
